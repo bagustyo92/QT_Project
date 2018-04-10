@@ -50,7 +50,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(395, 321);
+        MainWindow->resize(472, 353);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
@@ -87,7 +87,7 @@ public:
 
         pushButton_cuciSetrika = new QPushButton(centralWidget);
         pushButton_cuciSetrika->setObjectName(QStringLiteral("pushButton_cuciSetrika"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(pushButton_cuciSetrika->sizePolicy().hasHeightForWidth());
@@ -129,8 +129,11 @@ public:
         horizontalLayout->setContentsMargins(-1, 0, -1, -1);
         pushButton_ambilCucian = new QPushButton(centralWidget);
         pushButton_ambilCucian->setObjectName(QStringLiteral("pushButton_ambilCucian"));
-        sizePolicy1.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
-        pushButton_ambilCucian->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
+        pushButton_ambilCucian->setSizePolicy(sizePolicy2);
 
         horizontalLayout->addWidget(pushButton_ambilCucian);
 
@@ -147,7 +150,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 395, 21));
+        menuBar->setGeometry(QRect(0, 0, 472, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));

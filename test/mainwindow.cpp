@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    readerDialog = new ReaderDialog(this);
+    controlMesin = new ControlMesin(this);
 }
 
 MainWindow::~MainWindow()
@@ -15,34 +17,26 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void changeWindow()
-{
-    ReaderDialog readerDialog;
-    readerDialog.setModal(true);
-    readerDialog.exec();
-}
 
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
-//    ReaderDialog readerDialog;
-    changeWindow();
-//    connect(ui->pushButton_cuciSetrika, SIGNAL(clicked(bool)), readerDialog
+    readerDialog->setLabelText("CUCI SETRIKA");
+    readerDialog->show();
 }
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
-    changeWindow();
+    readerDialog->setLabelText("CUCI LIPAT");
+    readerDialog->show();
 }
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
-    changeWindow();
+    readerDialog->setLabelText("CUCI KERING");
+    readerDialog->show();
 }
 
 void MainWindow::on_pushButton_controlMesin_clicked()
 {
-    ControlMesin controlMesin;
-    controlMesin.setModal(true);
-    controlMesin.exec();
-
+    controlMesin->show();
 }

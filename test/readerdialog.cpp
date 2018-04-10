@@ -9,6 +9,11 @@ ReaderDialog::ReaderDialog(QWidget *parent) :
     ui->setupUi(this);
 }
 
+ReaderDialog::setLabelText(const QString text)
+{
+    ui->titleValue->setText(text);
+}
+
 ReaderDialog::~ReaderDialog()
 {
     delete ui;

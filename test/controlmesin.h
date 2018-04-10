@@ -15,6 +15,7 @@ public:
     explicit ControlMesin(QWidget *parent = 0);
     ~ControlMesin();
 
+
 private:
     Ui::ControlMesin *ui;
 };

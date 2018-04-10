@@ -27,7 +27,7 @@ class Ui_ReaderDialog
 {
 public:
     QVBoxLayout *verticalLayout;
-    QLabel *label_5;
+    QLabel *titleValue;
     QFrame *line_2;
     QLabel *label;
     QFrame *line;
@@ -46,17 +46,17 @@ public:
         ReaderDialog->resize(400, 300);
         verticalLayout = new QVBoxLayout(ReaderDialog);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        label_5 = new QLabel(ReaderDialog);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        titleValue = new QLabel(ReaderDialog);
+        titleValue->setObjectName(QStringLiteral("titleValue"));
         QFont font;
         font.setPointSize(11);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
-        label_5->setFont(font);
-        label_5->setAlignment(Qt::AlignCenter);
+        titleValue->setFont(font);
+        titleValue->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(label_5);
+        verticalLayout->addWidget(titleValue);
 
         line_2 = new QFrame(ReaderDialog);
         line_2->setObjectName(QStringLiteral("line_2"));
@@ -145,7 +145,7 @@ public:
     void retranslateUi(QDialog *ReaderDialog)
     {
         ReaderDialog->setWindowTitle(QApplication::translate("ReaderDialog", "Dialog", nullptr));
-        label_5->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
+        titleValue->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
         label->setText(QApplication::translate("ReaderDialog", "LABEL PERINTAH DAN KETERANGAN", nullptr));
         label_3->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", nullptr));
         label_4->setText(QApplication::translate("ReaderDialog", "- Informasi Tarif", nullptr));
