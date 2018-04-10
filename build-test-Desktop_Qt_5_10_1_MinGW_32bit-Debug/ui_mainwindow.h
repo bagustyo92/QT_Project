@@ -65,6 +65,7 @@ public:
         sizePolicy.setHeightForWidth(label_menuUtama->sizePolicy().hasHeightForWidth());
         label_menuUtama->setSizePolicy(sizePolicy);
         QFont font;
+        font.setPointSize(11);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);

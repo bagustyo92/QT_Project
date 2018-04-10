@@ -23,6 +23,8 @@ private slots:
 
     void on_pushButton_cuciKering_clicked();
 
+    void on_pushButton_controlMesin_clicked();
+
 private:
     Ui::MainWindow *ui;
     ReaderDialog *readerDialog;

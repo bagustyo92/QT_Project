@@ -26,12 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    readerdialog.cpp
+    readerdialog.cpp \
+    controlmesin.cpp
 
 HEADERS += \
         mainwindow.h \
-    readerdialog.h
+    readerdialog.h \
+    controlmesin.h
 
 FORMS += \
         mainwindow.ui \
-    readerdialog.ui
+    readerdialog.ui \
+    controlmesin.ui

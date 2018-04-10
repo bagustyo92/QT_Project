@@ -36,6 +36,7 @@ public:
     QLabel *label_3;
     QLabel *label_4;
     QLabel *label_2;
+    QFrame *line_3;
     QPushButton *backButton;
 
     void setupUi(QDialog *ReaderDialog)
@@ -48,6 +49,7 @@ public:
         label_5 = new QLabel(ReaderDialog);
         label_5->setObjectName(QStringLiteral("label_5"));
         QFont font;
+        font.setPointSize(11);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
@@ -112,6 +114,13 @@ public:
 
 
         horizontalLayout->addLayout(verticalLayout_2);
+
+        line_3 = new QFrame(ReaderDialog);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout->addWidget(line_3);
 
         backButton = new QPushButton(ReaderDialog);
         backButton->setObjectName(QStringLiteral("backButton"));

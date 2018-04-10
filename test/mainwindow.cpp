@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "readerdialog.h"
+#include "controlmesin.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,7 +24,9 @@ void changeWindow()
 
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
+//    ReaderDialog readerDialog;
     changeWindow();
+//    connect(ui->pushButton_cuciSetrika, SIGNAL(clicked(bool)), readerDialog
 }
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
@@ -34,4 +37,12 @@ void MainWindow::on_pushButton_cuciLipat_clicked()
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
     changeWindow();
+}
+
+void MainWindow::on_pushButton_controlMesin_clicked()
+{
+    ControlMesin controlMesin;
+    controlMesin.setModal(true);
+    controlMesin.exec();
+
 }

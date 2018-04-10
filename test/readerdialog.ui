@@ -18,6 +18,7 @@
     <widget class="QLabel" name="label_5">
      <property name="font">
       <font>
+       <pointsize>11</pointsize>
        <weight>75</weight>
        <bold>true</bold>
        <underline>true</underline>
@@ -110,6 +111,13 @@
       </layout>
      </item>
      <item>
+      <widget class="Line" name="line_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="backButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -135,8 +143,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>288</x>
-     <y>214</y>
+     <x>389</x>
+     <y>289</y>
     </hint>
     <hint type="destinationlabel">
      <x>476</x>
