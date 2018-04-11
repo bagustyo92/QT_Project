@@ -38,8 +38,8 @@ public:
     QLabel *label_2;
     QComboBox *listResi;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *pushButton_cuci;
+    QPushButton *pushButton_kering;
     QFrame *line;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *pushButton_3;
@@ -128,25 +128,25 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pushButton = new QPushButton(ControlMesin);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton_cuci = new QPushButton(ControlMesin);
+        pushButton_cuci->setObjectName(QStringLiteral("pushButton_cuci"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(30);
-        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(pushButton_cuci->sizePolicy().hasHeightForWidth());
+        pushButton_cuci->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(pushButton_cuci);
 
-        pushButton_2 = new QPushButton(ControlMesin);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_kering = new QPushButton(ControlMesin);
+        pushButton_kering->setObjectName(QStringLiteral("pushButton_kering"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(pushButton_kering->sizePolicy().hasHeightForWidth());
+        pushButton_kering->setSizePolicy(sizePolicy2);
 
-        horizontalLayout_2->addWidget(pushButton_2);
+        horizontalLayout_2->addWidget(pushButton_kering);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -185,8 +185,8 @@ public:
         label_3->setText(QApplication::translate("ControlMesin", "CONTROL MESIN CUCI", nullptr));
         label->setText(QApplication::translate("ControlMesin", "List Nomer Mesin", nullptr));
         label_2->setText(QApplication::translate("ControlMesin", "List Resi", nullptr));
-        pushButton->setText(QApplication::translate("ControlMesin", "CUCI", nullptr));
-        pushButton_2->setText(QApplication::translate("ControlMesin", "KERING", nullptr));
+        pushButton_cuci->setText(QApplication::translate("ControlMesin", "CUCI", nullptr));
+        pushButton_kering->setText(QApplication::translate("ControlMesin", "KERING", nullptr));
         pushButton_3->setText(QApplication::translate("ControlMesin", "BACK", nullptr));
     } // retranslateUi
 
