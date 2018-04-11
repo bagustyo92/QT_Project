@@ -14,7 +14,7 @@ class ReaderDialog : public QDialog
 public:
     explicit ReaderDialog(QWidget *parent = 0);
     ~ReaderDialog();
-    setLabelText(const QString text);
+    void setLabelText(const QString text);
 
 private:
     Ui::ReaderDialog *ui;
