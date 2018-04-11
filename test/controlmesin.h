@@ -19,9 +19,13 @@ public:
 private slots:
 
 
-    void on_listNomerMesin_currentIndexChanged(const QString &arg1);
+    void on_listNomerMesin_activated(const QString &arg1);
 
     void on_pushButton_3_clicked();
+
+    void on_pushButton_kering_clicked();
+
+    void on_pushButton_cuci_clicked();
 
 private:
     Ui::ControlMesin *ui;
