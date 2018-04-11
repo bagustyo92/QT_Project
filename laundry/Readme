@@ -1,0 +1,18 @@
+Prosedur menjalankan aplikasi etollDB dan EML
+
+1.jalankan terlebih dahulu aplikasi etollDB dengan command
+	sudo pcscd
+	sudo /var/etollDB/etollDB
+
+2.Jalankan aplikasi ELM
+	sudo /var/elm/elm
+	
+	
+
+
+Commpile ELM
+
+1. pada file source code masukan command
+	make
+	
+2. jika tidak ada masalah file execute ada di folder xelm di dalam folder source code

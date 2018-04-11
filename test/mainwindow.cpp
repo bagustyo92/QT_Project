@@ -21,22 +21,22 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
     readerDialog->setLabelText("CUCI SETRIKA");
-    readerDialog->show();
+    readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
     readerDialog->setLabelText("CUCI LIPAT");
-    readerDialog->show();
+    readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
     readerDialog->setLabelText("CUCI KERING");
-    readerDialog->show();
+    readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_controlMesin_clicked()
 {
-    controlMesin->show();
+    controlMesin->exec();
 }

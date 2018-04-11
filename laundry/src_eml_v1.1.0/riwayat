@@ -1,0 +1,19 @@
+V0.0.1
+- Menghilangkan window gui gtk+
+V0.0.2
+- Mengubah nama ebv menjadi elm
+v0.0.3
+- Mengubah nama atribut gerbang dkk
+v0.0.4
+- Koneksi ke database untuk ambill tarif
+v0.0.6
+- Repair koneksi database
+V0.0.07
+- srlnum perbaikan
+- counter periode
+V1.1.0
+- tarik data dari server ketika search
+
+
+
+
