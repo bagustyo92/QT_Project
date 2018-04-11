@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/var/etollDB/etollDB & /var/elm/elm && fg
+/var/etollDB/etollDB && fg /var/elm/elm &
