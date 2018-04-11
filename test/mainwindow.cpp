@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     readerDialog = new ReaderDialog(this);
     controlMesin = new ControlMesin(this);
+    this->setFixedSize(500, 500);
 }
 
 MainWindow::~MainWindow()

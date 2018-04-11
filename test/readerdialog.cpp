@@ -7,6 +7,7 @@ ReaderDialog::ReaderDialog(QWidget *parent) :
     ui(new Ui::ReaderDialog)
 {
     ui->setupUi(this);
+    this->setFixedSize(500, 500);
 }
 
 void ReaderDialog::setLabelText(const QString text)
