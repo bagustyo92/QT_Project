@@ -14,11 +14,11 @@ void SocketConnectELM::StartConnection(QString paket){
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 
     qDebug() << "Connecting to the ELM ...";
-    socket->connectToHost("google.co.id", 80);
+    socket->connectToHost("172.16.2.123", 8888);
 
     if (socket->waitForConnected(3000)){
-        socket->write("HEAD / HTTP/1.0\r\n\r\n");
-//        qDebug() << "Error: " << socket->errorString();
+//        socket->write("HEAD / HTTP/3.0\r\n\r\n");
+        socket->write("HAI THERE I'M CLIENT");
     } else {
         qDebug() << "Error: " << socket->errorString();
     }
