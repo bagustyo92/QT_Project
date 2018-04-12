@@ -18,6 +18,7 @@ public:
     ~MainWindow();
 
 private slots:
+    void connectingToElm(QString paket);
     void on_pushButton_cuciSetrika_clicked();
     void on_pushButton_cuciLipat_clicked();
     void on_pushButton_cuciKering_clicked();

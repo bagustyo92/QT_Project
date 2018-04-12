@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     readerdialog.cpp \
-    controlmesin.cpp
+    controlmesin.cpp \
+    socketconnectelm.cpp
 
 HEADERS += \
         mainwindow.h \
     readerdialog.h \
-    controlmesin.h
+    controlmesin.h \
+    socketconnectelm.h
 
 FORMS += \
         mainwindow.ui \
