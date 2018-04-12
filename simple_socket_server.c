@@ -54,14 +54,15 @@ int main(int argc , char *argv[])
     puts("Connection accepted");
 
     //Receive a message from client
-    while( (read_size = read(client_sock , client_message , sizeof(client_message))) > 0 )
+    read_size = read(client_sock , client_message , sizeof(client_message))
+    while( read_size > 0 )
     {
         //Send the message back to client
         puts("Client Said : ");
         puts(client_message);
         write(client_sock , server_message , strlen(server_message));
         memset( &client_message, 0, sizeof(client_message));
-        printf(read_size);
+        read_size = 0;
     }
 
     if(read_size == 0)
