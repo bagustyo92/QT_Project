@@ -61,7 +61,7 @@ int main(int argc , char *argv[])
         puts(client_message);
         write(client_sock , server_message , strlen(server_message));
         memset( &client_message, 0, sizeof(client_message));
-        puts(read_size);
+        printf(read_size);
     }
 
     if(read_size == 0)
