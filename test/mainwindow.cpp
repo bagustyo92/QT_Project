@@ -20,9 +20,9 @@ MainWindow::~MainWindow()
 }
 
 SocketConnectELM connectingElm;
-QString paket;
+char *paket;
 
-void MainWindow::connectingToElm(QString paket){
+void MainWindow::connectingToElm(char *paket){
     connectingElm.StartConnection(paket);
 }
 
@@ -37,12 +37,16 @@ void MainWindow::on_pushButton_cuciSetrika_clicked()
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
     readerDialog->setLabelText("CUCI LIPAT");
+    paket = "cuci_lipat";
+    connectingToElm(paket);
     readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
     readerDialog->setLabelText("CUCI KERING");
+    paket = "cuci_kering";
+    connectingToElm(paket);
     readerDialog->exec();
 }
 

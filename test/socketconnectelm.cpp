@@ -5,7 +5,7 @@ SocketConnectELM::SocketConnectELM(QObject *parent) : QObject(parent)
 
 }
 
-void SocketConnectELM::StartConnection(QString paket){
+void SocketConnectELM::StartConnection(const char *paket){
     socket = new QTcpSocket(this);
 
     connect(socket, SIGNAL(connected()), this, SLOT(connected()));
@@ -18,7 +18,7 @@ void SocketConnectELM::StartConnection(QString paket){
 
     if (socket->waitForConnected(3000)){
 //        socket->write("HEAD / HTTP/3.0\r\n\r\n");
-        socket->write("HAI THERE I'M CLIENT");
+        socket->write(paket);
     } else {
         qDebug() << "Error: " << socket->errorString();
     }

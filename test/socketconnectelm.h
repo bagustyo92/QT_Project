@@ -12,7 +12,7 @@ class SocketConnectELM : public QObject
     Q_OBJECT
 public:
     explicit SocketConnectELM(QObject *parent = nullptr);
-    void StartConnection(QString paket);
+    void StartConnection(const char *paket);
 
 signals:
 
