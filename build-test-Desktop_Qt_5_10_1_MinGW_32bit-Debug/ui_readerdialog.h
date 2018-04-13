@@ -27,15 +27,14 @@ class Ui_ReaderDialog
 {
 public:
     QVBoxLayout *verticalLayout;
-    QLabel *titleValue;
+    QLabel *labelTitle;
     QFrame *line_2;
     QLabel *label;
     QFrame *line;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_2;
+    QLabel *labelCurrentBalance;
+    QLabel *labelPaket;
     QFrame *line_3;
     QPushButton *backButton;
 
@@ -46,17 +45,17 @@ public:
         ReaderDialog->resize(400, 300);
         verticalLayout = new QVBoxLayout(ReaderDialog);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        titleValue = new QLabel(ReaderDialog);
-        titleValue->setObjectName(QStringLiteral("titleValue"));
+        labelTitle = new QLabel(ReaderDialog);
+        labelTitle->setObjectName(QStringLiteral("labelTitle"));
         QFont font;
         font.setPointSize(11);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
-        titleValue->setFont(font);
-        titleValue->setAlignment(Qt::AlignCenter);
+        labelTitle->setFont(font);
+        labelTitle->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(titleValue);
+        verticalLayout->addWidget(labelTitle);
 
         line_2 = new QFrame(ReaderDialog);
         line_2->setObjectName(QStringLiteral("line_2"));
@@ -88,29 +87,22 @@ public:
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        label_3 = new QLabel(ReaderDialog);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        labelCurrentBalance = new QLabel(ReaderDialog);
+        labelCurrentBalance->setObjectName(QStringLiteral("labelCurrentBalance"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(labelCurrentBalance->sizePolicy().hasHeightForWidth());
+        labelCurrentBalance->setSizePolicy(sizePolicy1);
 
-        verticalLayout_2->addWidget(label_3);
+        verticalLayout_2->addWidget(labelCurrentBalance);
 
-        label_4 = new QLabel(ReaderDialog);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        sizePolicy1.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy1);
+        labelPaket = new QLabel(ReaderDialog);
+        labelPaket->setObjectName(QStringLiteral("labelPaket"));
+        sizePolicy1.setHeightForWidth(labelPaket->sizePolicy().hasHeightForWidth());
+        labelPaket->setSizePolicy(sizePolicy1);
 
-        verticalLayout_2->addWidget(label_4);
-
-        label_2 = new QLabel(ReaderDialog);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy1);
-
-        verticalLayout_2->addWidget(label_2);
+        verticalLayout_2->addWidget(labelPaket);
 
 
         horizontalLayout->addLayout(verticalLayout_2);
@@ -145,11 +137,10 @@ public:
     void retranslateUi(QDialog *ReaderDialog)
     {
         ReaderDialog->setWindowTitle(QApplication::translate("ReaderDialog", "Dialog", nullptr));
-        titleValue->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
+        labelTitle->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
         label->setText(QApplication::translate("ReaderDialog", "LABEL PERINTAH DAN KETERANGAN", nullptr));
-        label_3->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", nullptr));
-        label_4->setText(QApplication::translate("ReaderDialog", "- Informasi Tarif", nullptr));
-        label_2->setText(QApplication::translate("ReaderDialog", "- Tap Card", nullptr));
+        labelCurrentBalance->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", nullptr));
+        labelPaket->setText(QApplication::translate("ReaderDialog", "- Informasi Tarif", nullptr));
         backButton->setText(QApplication::translate("ReaderDialog", "BACK", nullptr));
     } // retranslateUi
 

@@ -28,25 +28,28 @@ void MainWindow::connectingToElm(char *paket){
 
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
-    readerDialog->setLabelText("CUCI SETRIKA");
     paket = "cuci_setrika";
     connectingToElm(paket);
+
+    readerDialog->setLabelText("CUCI SETRIKA", 1);
     readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
-    readerDialog->setLabelText("CUCI LIPAT");
     paket = "cuci_lipat";
     connectingToElm(paket);
+
+    readerDialog->setLabelText("CUCI LIPAT", 1);
     readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
-    readerDialog->setLabelText("CUCI KERING");
     paket = "cuci_kering";
     connectingToElm(paket);
+
+    readerDialog->setLabelText("CUCI KERING", 1);
     readerDialog->exec();
 }
 

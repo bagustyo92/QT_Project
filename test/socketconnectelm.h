@@ -21,9 +21,12 @@ public slots:
     void disconnected();
     void bytesWritten(qint64 bytes);
     void readyRead();
+    bool statusReader();
+
 
 private:
     QTcpSocket *socket;
+
 };
 
 #endif // SOCKETCONNECTELM_H

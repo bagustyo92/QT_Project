@@ -7,13 +7,14 @@
     #include<sys/socket.h>
     #include<arpa/inet.h> //inet_addr
     #include<unistd.h>    //write
+    // #include <json.h>   //import JSON
 
 int main(int argc , char *argv[])
 {
     int socket_desc , client_sock , c , read_size;
     struct sockaddr_in server , client;
     char client_message[2000];
-    char server_message[2000] = "HAI THERE I'M SERVER :)";
+    char server_message[2000] = "OK";
 
 
             //Create socket
@@ -84,3 +85,8 @@ int main(int argc , char *argv[])
 
     return 0;
 }
+
+// char * jsonFormatting(char * paket){
+//     struct json_object *jobj;
+//     char *val = "{tarif : }"
+// }

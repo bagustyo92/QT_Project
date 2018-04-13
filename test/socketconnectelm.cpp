@@ -1,4 +1,5 @@
 #include "socketconnectelm.h"
+#include "readerdialog.h"
 
 SocketConnectELM::SocketConnectELM(QObject *parent) : QObject(parent)
 {
@@ -17,7 +18,6 @@ void SocketConnectELM::StartConnection(const char *paket){
     socket->connectToHost("172.16.2.123", 8888);
 
     if (socket->waitForConnected(3000)){
-//        socket->write("HEAD / HTTP/3.0\r\n\r\n");
         socket->write(paket);
     } else {
         qDebug() << "Error: " << socket->errorString();
@@ -34,9 +34,23 @@ void SocketConnectELM::disconnected(){
 
 void SocketConnectELM::bytesWritten(qint64 bytes){
     qDebug() << "Number of byte write : " << bytes;
+
 }
 
+QByteArray val;
 void SocketConnectELM::readyRead(){
     qDebug() << "Reading Response from ELM ....";
-    qDebug() << socket->readAll();
+    val = socket->readAll();
+    qDebug() << val;
+    ReaderDialog readerDialog;
+    readerDialog.setLabelText(val, 2);
+//    readerDialog.setLabelText(val, 3);
+}
+
+bool SocketConnectELM::statusReader(){
+    if (val == "OK"){
+        return true;
+    } else {
+        return false;
+    }
 }
