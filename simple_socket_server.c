@@ -2,11 +2,12 @@
         C socket server example
     */
 
-    #include<stdio.h>
-    #include<string.h>    //strlen
-    #include<sys/socket.h>
-    #include<arpa/inet.h> //inet_addr
-    #include<unistd.h>    //write
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>    //strlen
+#include<sys/socket.h>
+#include<arpa/inet.h> //inet_addr
+#include<unistd.h>    //write
     // #include <json.h>   //import JSON
 
 int main(int argc , char *argv[])
