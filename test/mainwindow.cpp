@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     readerDialog = new ReaderDialog(this);
     controlMesin = new ControlMesin(this);
+    cardReader = new DialogCardReader(this);
     this->setFixedSize(500, 500);
 }
 
@@ -32,7 +33,8 @@ void MainWindow::on_pushButton_cuciSetrika_clicked()
     readerDialog->setLabelText(value, 3);
     readerDialog->setLabelText("CUCI SETRIKA", 1);
 
-    readerDialog->exec();
+    cardReader->exec();
+//    readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
@@ -43,7 +45,8 @@ void MainWindow::on_pushButton_cuciLipat_clicked()
     readerDialog->setLabelText(value, 3);
     readerDialog->setLabelText("CUCI LIPAT", 1);
 
-    readerDialog->exec();
+    cardReader->exec();
+//    readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_cuciKering_clicked()
@@ -54,7 +57,8 @@ void MainWindow::on_pushButton_cuciKering_clicked()
     readerDialog->setLabelText(value, 3);
     readerDialog->setLabelText("CUCI KERING", 1);
 
-    readerDialog->exec();
+    cardReader->exec();
+//    readerDialog->exec();
 }
 
 void MainWindow::on_pushButton_controlMesin_clicked()

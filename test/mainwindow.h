@@ -5,6 +5,7 @@
 #include "readerdialog.h"
 #include "controlmesin.h"
 #include "socketconnectelm.h"
+#include "dialogcardreader.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +32,7 @@ private:
     ReaderDialog *readerDialog;
     SocketConnectELM *socketConnect;
     ControlMesin *controlMesin;
+    DialogCardReader *cardReader;
 };
 
 #endif // MAINWINDOW_H

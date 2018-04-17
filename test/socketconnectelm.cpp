@@ -47,12 +47,3 @@ void SocketConnectELM::readyRead(){
     MainWindow mainWindow;
     mainWindow.onServerReply(val);
 }
-
-
-//bool SocketConnectELM::statusReader(){
-//    if (val == "OK"){
-//        return true;
-//    } else {
-//        return false;
-//    }
-//}

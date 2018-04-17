@@ -28,15 +28,21 @@ SOURCES += \
         mainwindow.cpp \
     readerdialog.cpp \
     controlmesin.cpp \
-    socketconnectelm.cpp
+    socketconnectelm.cpp \
+    dialogcardreader.cpp
 
 HEADERS += \
         mainwindow.h \
     readerdialog.h \
     controlmesin.h \
-    socketconnectelm.h
+    socketconnectelm.h \
+    dialogcardreader.h
 
 FORMS += \
         mainwindow.ui \
     readerdialog.ui \
-    controlmesin.ui
+    controlmesin.ui \
+    dialogcardreader.ui
+
+RESOURCES += \
+    resouces.qrc

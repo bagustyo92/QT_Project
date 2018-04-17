@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\readerdialog.o
+./release\controlmesin.o
+./release\socketconnectelm.o
+./release\dialogcardreader.o
+./release\qrc_resouces.o
+./release\moc_mainwindow.o
+./release\moc_readerdialog.o
+./release\moc_controlmesin.o
+./release\moc_socketconnectelm.o
+./release\moc_dialogcardreader.o
+);
