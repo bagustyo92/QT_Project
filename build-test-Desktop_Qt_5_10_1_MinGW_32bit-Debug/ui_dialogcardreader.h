@@ -15,9 +15,11 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -30,7 +32,10 @@ public:
     QFrame *line;
     QLabel *labelPicture;
     QFrame *line_2;
+    QHBoxLayout *horizontalLayout;
     QPushButton *backButton;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *nextButton;
 
     void setupUi(QDialog *DialogCardReader)
     {
@@ -76,6 +81,9 @@ public:
 
         verticalLayout->addWidget(line_2);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         backButton = new QPushButton(DialogCardReader);
         backButton->setObjectName(QStringLiteral("backButton"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -87,7 +95,21 @@ public:
         backButton->setAutoRepeatInterval(100);
         backButton->setAutoDefault(true);
 
-        verticalLayout->addWidget(backButton);
+        horizontalLayout->addWidget(backButton);
+
+        horizontalSpacer = new QSpacerItem(40, 5, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        nextButton = new QPushButton(DialogCardReader);
+        nextButton->setObjectName(QStringLiteral("nextButton"));
+        sizePolicy.setHeightForWidth(nextButton->sizePolicy().hasHeightForWidth());
+        nextButton->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(nextButton);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
 
         retranslateUi(DialogCardReader);
@@ -102,6 +124,7 @@ public:
         label->setText(QApplication::translate("DialogCardReader", "SILAHKAN TAP KARTU", nullptr));
         labelPicture->setText(QApplication::translate("DialogCardReader", "TextLabel", nullptr));
         backButton->setText(QApplication::translate("DialogCardReader", "BACK", nullptr));
+        nextButton->setText(QApplication::translate("DialogCardReader", "NEXT", nullptr));
     } // retranslateUi
 
 };

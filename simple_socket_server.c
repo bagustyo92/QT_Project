@@ -1,7 +1,7 @@
     /*
         C socket server example
     */
-
+#include<time.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>    //strlen
@@ -10,12 +10,26 @@
 #include<unistd.h>    //write
     // #include <json.h>   //import JSON
 
+void delay(int number_of_seconds)
+{
+    // Converting time into milli_seconds
+    int milli_seconds = 1000 * number_of_seconds;
+ 
+    // Stroing start time
+    clock_t start_time = clock();
+ 
+    // looping till required time is not acheived
+    while (clock() < start_time + milli_seconds)
+        ;
+}
+
 int main(int argc , char *argv[])
 {
     int socket_desc , client_sock , c , read_size;
     struct sockaddr_in server , client;
     char client_message[2000];
     char server_message[2000] = "OK";
+    char server_sent[2000] = "15.200";
 
 
             //Create socket
@@ -64,18 +78,17 @@ int main(int argc , char *argv[])
         while( read_size > 0 )
         {
             //Send the message back to client
-            fputs("Client Said : ");
+            printf("Client Said : ");
             puts(client_message);
             for (int i=0; i<5; i++){
                 write(client_sock , server_message , strlen(server_message));
                 memset( &client_message, 0, sizeof(client_message));
                 read_size = 0;
-                fputs("Server Said : ");
+                printf("Server Said : ");
                 puts(server_message);
                 delay(1000);
             }
-            server_message = "12.800";
-            write(client_sock , server_message , strlen(server_message));
+            write(client_sock , server_sent , strlen(server_sent));
             memset( &client_message, 0, sizeof(client_message));
             read_size = 0;
         }

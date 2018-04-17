@@ -1,5 +1,6 @@
 #include "socketconnectelm.h"
 #include "mainwindow.h"
+#include "dialogcardreader.h"
 
 SocketConnectELM::SocketConnectELM(QObject *parent) : QObject(parent)
 {
@@ -44,6 +45,11 @@ void SocketConnectELM::readyRead(){
     qDebug() << "Reading Response from ELM ....";
     val = socket->readAll();
     qDebug() << val;
+
+    //sent to main
     MainWindow mainWindow;
     mainWindow.onServerReply(val);
+
+    //sent to cardDialog
+    DialogCardReader cardReader;
 }

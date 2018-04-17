@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::DialogCardReader *ui;
+    void onServerReply(QString message);
 };
 
 #endif // DIALOGCARDREADER_H

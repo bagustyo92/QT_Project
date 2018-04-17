@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QtNetwork/QTcpSocket>
+#include <QtNetwork/QAbstractSocket>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,13 +28,12 @@ void MainWindow::onServerReply(QString message){
 }
 
 void MainWindow::onServerHandle(){
-    if (value != "OK"){
-        cardReader->close();
-        readerDialog->setLabelText(value, 2);
-        readerDialog->setLabelText(value, 3);
-        readerDialog->exec();
-    } else {
+    readerDialog->setLabelText(value, 2);
+    readerDialog->setLabelText(value, 3);
+    if (value == "OK"){
         cardReader->exec();
+    } else {
+        readerDialog->exec();
     }
 }
 
@@ -40,37 +41,24 @@ void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
     paket = "cuci_setrika";
     connectingElm.StartConnection(paket);
-//    readerDialog->setLabelText(value, 2);
-//    readerDialog->setLabelText(value, 3);
-    onServerHandle();
     readerDialog->setLabelText("CUCI SETRIKA", 1);
-
-//    cardReader->exec();
-//    readerDialog->exec();
+    onServerHandle();
 }
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
     paket = "cuci_lipat";
     connectingElm.StartConnection(paket);
-    readerDialog->setLabelText(value, 2);
-    readerDialog->setLabelText(value, 3);
     readerDialog->setLabelText("CUCI LIPAT", 1);
-
-    cardReader->exec();
-//    readerDialog->exec();
+    onServerHandle();
 }
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
     paket = "cuci_kering";
     connectingElm.StartConnection(paket);
-    readerDialog->setLabelText(value, 2);
-    readerDialog->setLabelText(value, 3);
     readerDialog->setLabelText("CUCI KERING", 1);
-
-    cardReader->exec();
-//    readerDialog->exec();
+    onServerHandle();
 }
 
 void MainWindow::on_pushButton_controlMesin_clicked()
