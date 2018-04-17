@@ -17,6 +17,7 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -29,6 +30,7 @@ public:
     QFrame *line;
     QLabel *labelPicture;
     QFrame *line_2;
+    QPushButton *backButton;
 
     void setupUi(QDialog *DialogCardReader)
     {
@@ -74,8 +76,22 @@ public:
 
         verticalLayout->addWidget(line_2);
 
+        backButton = new QPushButton(DialogCardReader);
+        backButton->setObjectName(QStringLiteral("backButton"));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
+        backButton->setSizePolicy(sizePolicy1);
+        backButton->setLayoutDirection(Qt::LeftToRight);
+        backButton->setAutoRepeatInterval(100);
+        backButton->setAutoDefault(true);
+
+        verticalLayout->addWidget(backButton);
+
 
         retranslateUi(DialogCardReader);
+        QObject::connect(backButton, SIGNAL(clicked()), DialogCardReader, SLOT(close()));
 
         QMetaObject::connectSlotsByName(DialogCardReader);
     } // setupUi
@@ -85,6 +101,7 @@ public:
         DialogCardReader->setWindowTitle(QApplication::translate("DialogCardReader", "Dialog", nullptr));
         label->setText(QApplication::translate("DialogCardReader", "SILAHKAN TAP KARTU", nullptr));
         labelPicture->setText(QApplication::translate("DialogCardReader", "TextLabel", nullptr));
+        backButton->setText(QApplication::translate("DialogCardReader", "BACK", nullptr));
     } // retranslateUi
 
 };

@@ -18,10 +18,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void onServerReply(QString);
+    void onServerHandle();
+    void connectingToElm(char *paket);
     ~MainWindow();
 
 private slots:
-    void connectingToElm(char *paket);
     void on_pushButton_cuciSetrika_clicked();
     void on_pushButton_cuciLipat_clicked();
     void on_pushButton_cuciKering_clicked();

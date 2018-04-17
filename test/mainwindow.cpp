@@ -25,15 +25,27 @@ void MainWindow::onServerReply(QString message){
     value = message;
 }
 
+void MainWindow::onServerHandle(){
+    if (value != "OK"){
+        cardReader->close();
+        readerDialog->setLabelText(value, 2);
+        readerDialog->setLabelText(value, 3);
+        readerDialog->exec();
+    } else {
+        cardReader->exec();
+    }
+}
+
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
     paket = "cuci_setrika";
     connectingElm.StartConnection(paket);
-    readerDialog->setLabelText(value, 2);
-    readerDialog->setLabelText(value, 3);
+//    readerDialog->setLabelText(value, 2);
+//    readerDialog->setLabelText(value, 3);
+    onServerHandle();
     readerDialog->setLabelText("CUCI SETRIKA", 1);
 
-    cardReader->exec();
+//    cardReader->exec();
 //    readerDialog->exec();
 }
 
