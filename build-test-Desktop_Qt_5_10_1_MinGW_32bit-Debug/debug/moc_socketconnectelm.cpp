@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SocketConnectELM_t {
-    QByteArrayData data[8];
-    char stringdata0[83];
+    QByteArrayData data[7];
+    char stringdata0[70];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,12 +37,11 @@ QT_MOC_LITERAL(2, 27, 0), // ""
 QT_MOC_LITERAL(3, 28, 12), // "disconnected"
 QT_MOC_LITERAL(4, 41, 12), // "bytesWritten"
 QT_MOC_LITERAL(5, 54, 5), // "bytes"
-QT_MOC_LITERAL(6, 60, 9), // "readyRead"
-QT_MOC_LITERAL(7, 70, 12) // "statusReader"
+QT_MOC_LITERAL(6, 60, 9) // "readyRead"
 
     },
     "SocketConnectELM\0connected\0\0disconnected\0"
-    "bytesWritten\0bytes\0readyRead\0statusReader"
+    "bytesWritten\0bytes\0readyRead"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,7 +51,7 @@ static const uint qt_meta_data_SocketConnectELM[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -60,18 +59,16 @@ static const uint qt_meta_data_SocketConnectELM[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x0a /* Public */,
-       3,    0,   40,    2, 0x0a /* Public */,
-       4,    1,   41,    2, 0x0a /* Public */,
-       6,    0,   44,    2, 0x0a /* Public */,
-       7,    0,   45,    2, 0x0a /* Public */,
+       1,    0,   34,    2, 0x0a /* Public */,
+       3,    0,   35,    2, 0x0a /* Public */,
+       4,    1,   36,    2, 0x0a /* Public */,
+       6,    0,   39,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::LongLong,    5,
     QMetaType::Void,
-    QMetaType::Bool,
 
        0        // eod
 };
@@ -86,8 +83,6 @@ void SocketConnectELM::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 1: _t->disconnected(); break;
         case 2: _t->bytesWritten((*reinterpret_cast< qint64(*)>(_a[1]))); break;
         case 3: _t->readyRead(); break;
-        case 4: { bool _r = _t->statusReader();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -118,13 +113,13 @@ int SocketConnectELM::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 4;
     }
     return _id;
 }

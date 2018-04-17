@@ -86,7 +86,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->connectingToElm((*reinterpret_cast< char*(*)>(_a[1]))); break;
         case 1: _t->on_pushButton_cuciSetrika_clicked(); break;
         case 2: _t->on_pushButton_cuciLipat_clicked(); break;
         case 3: _t->on_pushButton_cuciKering_clicked(); break;

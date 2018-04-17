@@ -13,8 +13,12 @@ class ReaderDialog : public QDialog
 
 public:
     explicit ReaderDialog(QWidget *parent = 0);
+
     ~ReaderDialog();
-    void setLabelText(const QString val, int label);
+
+public slots :
+    void setLabelText(QString val, int label);
+
 
 private:
     Ui::ReaderDialog *ui;

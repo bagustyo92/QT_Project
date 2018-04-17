@@ -33,7 +33,10 @@ public:
     QFrame *line;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
+    QLabel *label_2;
     QLabel *labelCurrentBalance;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_3;
     QLabel *labelPaket;
     QFrame *line_3;
     QPushButton *backButton;
@@ -87,6 +90,11 @@ public:
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        label_2 = new QLabel(ReaderDialog);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        verticalLayout_2->addWidget(label_2);
+
         labelCurrentBalance = new QLabel(ReaderDialog);
         labelCurrentBalance->setObjectName(QStringLiteral("labelCurrentBalance"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -96,6 +104,16 @@ public:
         labelCurrentBalance->setSizePolicy(sizePolicy1);
 
         verticalLayout_2->addWidget(labelCurrentBalance);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        label_3 = new QLabel(ReaderDialog);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        verticalLayout_2->addWidget(label_3);
 
         labelPaket = new QLabel(ReaderDialog);
         labelPaket->setObjectName(QStringLiteral("labelPaket"));
@@ -139,7 +157,9 @@ public:
         ReaderDialog->setWindowTitle(QApplication::translate("ReaderDialog", "Dialog", nullptr));
         labelTitle->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
         label->setText(QApplication::translate("ReaderDialog", "LABEL PERINTAH DAN KETERANGAN", nullptr));
+        label_2->setText(QApplication::translate("ReaderDialog", "INFORMASI TARIF :", nullptr));
         labelCurrentBalance->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", nullptr));
+        label_3->setText(QApplication::translate("ReaderDialog", "INFORMASI SALDO :", nullptr));
         labelPaket->setText(QApplication::translate("ReaderDialog", "- Informasi Tarif", nullptr));
         backButton->setText(QApplication::translate("ReaderDialog", "BACK", nullptr));
     } // retranslateUi

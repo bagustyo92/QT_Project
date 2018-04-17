@@ -1,10 +1,11 @@
 #include "socketconnectelm.h"
-#include "readerdialog.h"
+#include "mainwindow.h"
 
 SocketConnectELM::SocketConnectELM(QObject *parent) : QObject(parent)
 {
 
 }
+
 
 void SocketConnectELM::StartConnection(const char *paket){
     socket = new QTcpSocket(this);
@@ -13,6 +14,7 @@ void SocketConnectELM::StartConnection(const char *paket){
     connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected()));
     connect(socket, SIGNAL(bytesWritten(qint64 bytes)), this, SLOT(bytesWritten(qint64 bytes)));
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+
 
     qDebug() << "Connecting to the ELM ...";
     socket->connectToHost("172.16.2.123", 8888);
@@ -34,23 +36,23 @@ void SocketConnectELM::disconnected(){
 
 void SocketConnectELM::bytesWritten(qint64 bytes){
     qDebug() << "Number of byte write : " << bytes;
-
 }
 
-QByteArray val;
+QString val;
+
 void SocketConnectELM::readyRead(){
     qDebug() << "Reading Response from ELM ....";
     val = socket->readAll();
     qDebug() << val;
-    ReaderDialog readerDialog;
-    readerDialog.setLabelText(val, 2);
-//    readerDialog.setLabelText(val, 3);
+    MainWindow mainWindow;
+    mainWindow.onServerReply(val);
 }
 
-bool SocketConnectELM::statusReader(){
-    if (val == "OK"){
-        return true;
-    } else {
-        return false;
-    }
-}
+
+//bool SocketConnectELM::statusReader(){
+//    if (val == "OK"){
+//        return true;
+//    } else {
+//        return false;
+//    }
+//}

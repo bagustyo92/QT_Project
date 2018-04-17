@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "readerdialog.h"
 #include "controlmesin.h"
+#include "socketconnectelm.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +16,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void onServerReply(QString);
     ~MainWindow();
 
 private slots:
@@ -27,9 +29,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     ReaderDialog *readerDialog;
-    Ui::ReaderDialog *ui_readerDialog;
+    SocketConnectELM *socketConnect;
     ControlMesin *controlMesin;
-    Ui::ControlMesin *ui_controlMesin;
 };
 
 #endif // MAINWINDOW_H
