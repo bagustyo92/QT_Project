@@ -65,9 +65,12 @@ int main(int argc , char *argv[])
             //Send the message back to client
             puts("Client Said : ");
             puts(client_message);
-            write(client_sock , server_message , strlen(server_message));
-            memset( &client_message, 0, sizeof(client_message));
-            read_size = 0;
+            for (int i=0; i<5; i++){
+                write(client_sock , server_message , strlen(server_message));
+                memset( &client_message, 0, sizeof(client_message));
+                read_size = 0;
+                delay(1000);
+            }
         }
 
         if(read_size == 0)
