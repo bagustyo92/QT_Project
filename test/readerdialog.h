@@ -2,6 +2,8 @@
 #define READERDIALOG_H
 
 #include <QDialog>
+#include <QWidget>
+#include "socketconnectelm.h"
 
 namespace Ui {
 class ReaderDialog;
@@ -22,6 +24,7 @@ public slots :
 
 private:
     Ui::ReaderDialog *ui;
+    SocketConnectELM *getConnection;
 };
 
 #endif // READERDIALOG_H

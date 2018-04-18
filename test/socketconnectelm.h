@@ -12,6 +12,7 @@ class SocketConnectELM : public QObject
 public:
     explicit SocketConnectELM(QObject *parent = nullptr);
     void StartConnection(const char *paket);
+    QString getMessage();
 
 public slots:
     void connected();

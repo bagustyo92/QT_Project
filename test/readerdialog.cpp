@@ -1,12 +1,19 @@
 #include "readerdialog.h"
 #include "ui_readerdialog.h"
+#include "mainwindow.h"
 
 ReaderDialog::ReaderDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ReaderDialog)
 {
     ui->setupUi(this);
-    this->setFixedSize(500, 500);
+    getConnection = new SocketConnectELM(this);
+    qDebug() << "read : " << getConnection->getMessage();
+    if (getConnection->getMessage() == "NO"){
+        this->showFullScreen();
+    }
+    MainWindow mainWindow;
+    setLabelText(QString(mainWindow.getTitle()), 1);
 }
 
 /*

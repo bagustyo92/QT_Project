@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "readerdialog.h"
 #include "controlmesin.h"
 #include "socketconnectelm.h"
 #include "dialogcardreader.h"
@@ -17,9 +16,9 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void onServerReply(QString);
-    void onServerHandle();
     void connectingToElm(char *paket);
+    void onServerReply(QString);
+    QString getTitle();
     ~MainWindow();
 
 private slots:
@@ -30,7 +29,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    ReaderDialog *readerDialog;
     SocketConnectELM *socketConnect;
     ControlMesin *controlMesin;
     DialogCardReader *cardReader;

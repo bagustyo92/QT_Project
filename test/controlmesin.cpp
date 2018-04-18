@@ -8,7 +8,7 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui(new Ui::ControlMesin)
 {
     ui->setupUi(this);
-    this->setFixedSize(500, 500);
+//    this->setFixedSize(500, 500);
     for (int i=1; i<=10; i++){
         ui->listNomerMesin->addItem("Mesin " + QString::number(i));
         ui->listResi->addItem("Mesin " + QString::number(i));

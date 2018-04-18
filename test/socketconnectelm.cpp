@@ -7,6 +7,7 @@ SocketConnectELM::SocketConnectELM(QObject *parent) : QObject(parent)
 
 }
 
+QString message;
 
 void SocketConnectELM::StartConnection(const char *paket){
     socket = new QTcpSocket(this);
@@ -44,7 +45,7 @@ QString val;
 void SocketConnectELM::readyRead(){
     qDebug() << "Reading Response from ELM ....";
     val = socket->readAll();
-    qDebug() << val;
+    qDebug() << "Server Said : " << val;
 
     //sent to main
     MainWindow mainWindow;
@@ -52,4 +53,9 @@ void SocketConnectELM::readyRead(){
 
     //sent to cardDialog
     DialogCardReader cardReader;
+    cardReader.onServerReply(val);
+}
+
+QString SocketConnectELM::getMessage(){
+    return val;
 }
