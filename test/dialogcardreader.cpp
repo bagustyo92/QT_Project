@@ -21,12 +21,11 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
 void DialogCardReader::onServerReply(QString message){
     //    SocketConnectELM socket;
     getConnection = new SocketConnectELM(this);
-    if (getConnection->getMessage() == "NO"){
+    if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
         readerDialog = new ReaderDialog(this);
 //        mainWindow = new MainWindow(this);
 //        readerDialog->setLabelText(QString(mainWindow->getTitle()), 1);
         readerDialog->setLabelText(getConnection->getMessage(), 2);
-        readerDialog->setLabelText(getConnection->getMessage(), 3);
         readerDialog->exec();
     }
 }

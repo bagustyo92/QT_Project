@@ -70,13 +70,6 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>INFORMASI TARIF :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="labelCurrentBalance">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -91,26 +84,6 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>INFORMASI SALDO :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelPaket">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>- Informasi Tarif</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>

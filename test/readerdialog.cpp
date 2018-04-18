@@ -9,7 +9,7 @@ ReaderDialog::ReaderDialog(QWidget *parent) :
     ui->setupUi(this);
     getConnection = new SocketConnectELM(this);
     qDebug() << "read : " << getConnection->getMessage();
-    if (getConnection->getMessage() == "NO"){
+    if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
         this->showFullScreen();
     }
     MainWindow mainWindow;
@@ -33,9 +33,6 @@ void ReaderDialog::setLabelText(QString val, int label)
         break;
     case 2:
         ui->labelCurrentBalance->setText(val);
-        break;
-    case 3:
-        ui->labelPaket->setText(val);
         break;
     default:
         break;
