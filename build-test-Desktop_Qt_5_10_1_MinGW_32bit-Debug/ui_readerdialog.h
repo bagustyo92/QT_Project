@@ -29,13 +29,9 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *labelTitle;
     QFrame *line_2;
-    QLabel *label;
+    QLabel *labelCurrentBalance;
     QFrame *line;
     QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *labelCurrentBalance;
-    QHBoxLayout *horizontalLayout_2;
-    QFrame *line_3;
     QPushButton *backButton;
 
     void setupUi(QDialog *ReaderDialog)
@@ -47,6 +43,11 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         labelTitle = new QLabel(ReaderDialog);
         labelTitle->setObjectName(QStringLiteral("labelTitle"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(labelTitle->sizePolicy().hasHeightForWidth());
+        labelTitle->setSizePolicy(sizePolicy);
         QFont font;
         font.setPointSize(11);
         font.setBold(true);
@@ -64,16 +65,16 @@ public:
 
         verticalLayout->addWidget(line_2);
 
-        label = new QLabel(ReaderDialog);
-        label->setObjectName(QStringLiteral("label"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
-        label->setAlignment(Qt::AlignCenter);
+        labelCurrentBalance = new QLabel(ReaderDialog);
+        labelCurrentBalance->setObjectName(QStringLiteral("labelCurrentBalance"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(labelCurrentBalance->sizePolicy().hasHeightForWidth());
+        labelCurrentBalance->setSizePolicy(sizePolicy1);
+        labelCurrentBalance->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(labelCurrentBalance);
 
         line = new QFrame(ReaderDialog);
         line->setObjectName(QStringLiteral("line"));
@@ -85,40 +86,10 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        labelCurrentBalance = new QLabel(ReaderDialog);
-        labelCurrentBalance->setObjectName(QStringLiteral("labelCurrentBalance"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(labelCurrentBalance->sizePolicy().hasHeightForWidth());
-        labelCurrentBalance->setSizePolicy(sizePolicy1);
-
-        verticalLayout_2->addWidget(labelCurrentBalance);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-
-        verticalLayout_2->addLayout(horizontalLayout_2);
-
-
-        horizontalLayout->addLayout(verticalLayout_2);
-
-        line_3 = new QFrame(ReaderDialog);
-        line_3->setObjectName(QStringLiteral("line_3"));
-        line_3->setFrameShape(QFrame::VLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-
-        horizontalLayout->addWidget(line_3);
-
         backButton = new QPushButton(ReaderDialog);
         backButton->setObjectName(QStringLiteral("backButton"));
-        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
-        backButton->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
+        backButton->setSizePolicy(sizePolicy1);
 
         horizontalLayout->addWidget(backButton);
 
@@ -136,7 +107,6 @@ public:
     {
         ReaderDialog->setWindowTitle(QApplication::translate("ReaderDialog", "Dialog", nullptr));
         labelTitle->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
-        label->setText(QApplication::translate("ReaderDialog", "LABEL PERINTAH DAN KETERANGAN", nullptr));
         labelCurrentBalance->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", nullptr));
         backButton->setText(QApplication::translate("ReaderDialog", "BACK", nullptr));
     } // retranslateUi
