@@ -2,11 +2,14 @@
 #include "ui_readerdialog.h"
 #include "mainwindow.h"
 
+#define BUTTON_BACK "background-color:rgb(246, 0, 107); color:white; font-weight: bold;"
+
 ReaderDialog::ReaderDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ReaderDialog)
 {
     ui->setupUi(this);
+    ui->backButton->setStyleSheet(BUTTON_BACK);
     getConnection = new SocketConnectELM(this);
     qDebug() << "read : " << getConnection->getMessage();
     if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){

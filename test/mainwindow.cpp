@@ -5,11 +5,20 @@
 #include <QDebug>
 #include <QMessageBox>
 
+#define BUTTON_COLOR "background-color:rgb(1, 180, 246); color:white; font-weight: bold;"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->pushButton_ambilCucian->setStyleSheet(BUTTON_COLOR);
+    ui->pushButton_controlMesin->setStyleSheet(BUTTON_COLOR);
+    ui->pushButton_cuciKering->setStyleSheet(BUTTON_COLOR);
+    ui->pushButton_cuciLipat->setStyleSheet(BUTTON_COLOR);
+    ui->pushButton_cuciSetrika->setStyleSheet(BUTTON_COLOR);
+
     controlMesin = new ControlMesin(this);
     cardReader = new DialogCardReader(this);
 }

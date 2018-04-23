@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -37,18 +36,14 @@ public:
     QLabel *label_menuUtama;
     QSpacerItem *verticalSpacer_2;
     QVBoxLayout *verticalLayout;
-    QFrame *line;
     QPushButton *pushButton_cuciSetrika;
     QPushButton *pushButton_cuciLipat;
     QPushButton *pushButton_cuciKering;
-    QFrame *line_2;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_ambilCucian;
     QSpacerItem *horizontalSpacer;
-    QFrame *line_3;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_controlMesin;
-    QFrame *line_5;
     QSpacerItem *verticalSpacer_3;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -59,6 +54,51 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(472, 353);
+        QPalette palette;
+        QBrush brush(QColor(255, 255, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        QBrush brush1(QColor(1, 180, 246, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush1);
+        QBrush brush2(QColor(34, 87, 191, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Dark, brush2);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        QBrush brush3(QColor(12, 59, 151, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush3);
+        palette.setBrush(QPalette::Active, QPalette::Shadow, brush2);
+        palette.setBrush(QPalette::Active, QPalette::Highlight, brush2);
+        QBrush brush4(QColor(115, 169, 235, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::HighlightedText, brush4);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Dark, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush3);
+        palette.setBrush(QPalette::Inactive, QPalette::Shadow, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Highlight, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::HighlightedText, brush4);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Dark, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Shadow, brush2);
+        QBrush brush5(QColor(0, 120, 215, 255));
+        brush5.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush5);
+        palette.setBrush(QPalette::Disabled, QPalette::HighlightedText, brush4);
+        MainWindow->setPalette(palette);
+        MainWindow->setStyleSheet(QStringLiteral(""));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
@@ -94,13 +134,6 @@ public:
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(-1, 0, -1, -1);
-        line = new QFrame(centralWidget);
-        line->setObjectName(QStringLiteral("line"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout->addWidget(line);
-
         pushButton_cuciSetrika = new QPushButton(centralWidget);
         pushButton_cuciSetrika->setObjectName(QStringLiteral("pushButton_cuciSetrika"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -108,8 +141,26 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(pushButton_cuciSetrika->sizePolicy().hasHeightForWidth());
         pushButton_cuciSetrika->setSizePolicy(sizePolicy1);
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        QBrush brush6(QColor(0, 0, 0, 255));
+        brush6.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush6);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush6);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        QBrush brush7(QColor(120, 120, 120, 255));
+        brush7.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush7);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush6);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        pushButton_cuciSetrika->setPalette(palette1);
         QFont font1;
-        font1.setPointSize(13);
+        font1.setPointSize(15);
         pushButton_cuciSetrika->setFont(font1);
 
         verticalLayout->addWidget(pushButton_cuciSetrika);
@@ -126,23 +177,20 @@ public:
         pushButton_cuciKering->setObjectName(QStringLiteral("pushButton_cuciKering"));
         sizePolicy1.setHeightForWidth(pushButton_cuciKering->sizePolicy().hasHeightForWidth());
         pushButton_cuciKering->setSizePolicy(sizePolicy1);
+        QPalette palette2;
+        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette2.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette2.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush7);
+        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush7);
+        pushButton_cuciKering->setPalette(palette2);
         pushButton_cuciKering->setFont(font1);
 
         verticalLayout->addWidget(pushButton_cuciKering);
 
 
         verticalLayout_2->addLayout(verticalLayout);
-
-        line_2 = new QFrame(centralWidget);
-        line_2->setObjectName(QStringLiteral("line_2"));
-        QFont font2;
-        font2.setBold(false);
-        font2.setWeight(50);
-        line_2->setFont(font2);
-        line_2->setFrameShape(QFrame::HLine);
-        line_2->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_2->addWidget(line_2);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -156,18 +204,11 @@ public:
 
         horizontalLayout->addWidget(pushButton_ambilCucian);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        line_3 = new QFrame(centralWidget);
-        line_3->setObjectName(QStringLiteral("line_3"));
-        line_3->setFrameShape(QFrame::VLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-
-        horizontalLayout->addWidget(line_3);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
@@ -184,13 +225,6 @@ public:
 
 
         verticalLayout_2->addLayout(horizontalLayout);
-
-        line_5 = new QFrame(centralWidget);
-        line_5->setObjectName(QStringLiteral("line_5"));
-        line_5->setFrameShape(QFrame::HLine);
-        line_5->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_2->addWidget(line_5);
 
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
 

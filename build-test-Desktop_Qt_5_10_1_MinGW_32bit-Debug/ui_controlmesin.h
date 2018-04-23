@@ -29,7 +29,9 @@ class Ui_ControlMesin
 {
 public:
     QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer_2;
     QLabel *label_3;
+    QSpacerItem *verticalSpacer;
     QFrame *line_2;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_3;
@@ -45,14 +47,44 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_3;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QDialog *ControlMesin)
     {
         if (ControlMesin->objectName().isEmpty())
             ControlMesin->setObjectName(QStringLiteral("ControlMesin"));
         ControlMesin->resize(400, 300);
+        QPalette palette;
+        QBrush brush(QColor(255, 255, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush1(QColor(0, 0, 0, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        QBrush brush2(QColor(12, 59, 151, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        QBrush brush3(QColor(120, 120, 120, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        ControlMesin->setPalette(palette);
         verticalLayout_2 = new QVBoxLayout(ControlMesin);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        verticalLayout_2->addItem(verticalSpacer_2);
+
         label_3 = new QLabel(ControlMesin);
         label_3->setObjectName(QStringLiteral("label_3"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -61,7 +93,7 @@ public:
         sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy);
         QFont font;
-        font.setPointSize(11);
+        font.setPointSize(20);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
@@ -69,6 +101,10 @@ public:
         label_3->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_3);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        verticalLayout_2->addItem(verticalSpacer);
 
         line_2 = new QFrame(ControlMesin);
         line_2->setObjectName(QStringLiteral("line_2"));
@@ -92,6 +128,7 @@ public:
         sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy1);
         QFont font1;
+        font1.setPointSize(15);
         font1.setBold(true);
         font1.setWeight(75);
         label->setFont(font1);
@@ -103,6 +140,9 @@ public:
         listNomerMesin->setObjectName(QStringLiteral("listNomerMesin"));
         sizePolicy.setHeightForWidth(listNomerMesin->sizePolicy().hasHeightForWidth());
         listNomerMesin->setSizePolicy(sizePolicy);
+        QFont font2;
+        font2.setPointSize(15);
+        listNomerMesin->setFont(font2);
 
         verticalLayout_3->addWidget(listNomerMesin);
 
@@ -122,6 +162,7 @@ public:
 
         listResi = new QComboBox(ControlMesin);
         listResi->setObjectName(QStringLiteral("listResi"));
+        listResi->setFont(font2);
 
         verticalLayout_4->addWidget(listResi);
 
@@ -140,6 +181,7 @@ public:
         sizePolicy2.setVerticalStretch(30);
         sizePolicy2.setHeightForWidth(pushButton_cuci->sizePolicy().hasHeightForWidth());
         pushButton_cuci->setSizePolicy(sizePolicy2);
+        pushButton_cuci->setFont(font2);
 
         horizontalLayout_2->addWidget(pushButton_cuci);
 
@@ -147,6 +189,7 @@ public:
         pushButton_kering->setObjectName(QStringLiteral("pushButton_kering"));
         sizePolicy1.setHeightForWidth(pushButton_kering->sizePolicy().hasHeightForWidth());
         pushButton_kering->setSizePolicy(sizePolicy1);
+        pushButton_kering->setFont(font2);
 
         horizontalLayout_2->addWidget(pushButton_kering);
 
@@ -170,13 +213,18 @@ public:
         pushButton_3 = new QPushButton(ControlMesin);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setEnabled(true);
-        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
         pushButton_3->setSizePolicy(sizePolicy3);
+        pushButton_3->setFont(font2);
 
         horizontalLayout_3->addWidget(pushButton_3);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -196,7 +244,7 @@ public:
         label_2->setText(QApplication::translate("ControlMesin", "List Resi", nullptr));
         pushButton_cuci->setText(QApplication::translate("ControlMesin", "CUCI", nullptr));
         pushButton_kering->setText(QApplication::translate("ControlMesin", "KERING", nullptr));
-        pushButton_3->setText(QApplication::translate("ControlMesin", "BACK", nullptr));
+        pushButton_3->setText(QApplication::translate("ControlMesin", "<   KEMBALI", nullptr));
     } // retranslateUi
 
 };

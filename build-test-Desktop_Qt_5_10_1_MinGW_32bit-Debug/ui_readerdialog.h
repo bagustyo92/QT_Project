@@ -32,9 +32,12 @@ public:
     QLabel *labelTitle;
     QSpacerItem *verticalSpacer;
     QFrame *line_2;
+    QLabel *label;
     QLabel *labelCurrentBalance;
     QFrame *line;
+    QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_2;
     QPushButton *backButton;
     QSpacerItem *horizontalSpacer;
 
@@ -43,6 +46,23 @@ public:
         if (ReaderDialog->objectName().isEmpty())
             ReaderDialog->setObjectName(QStringLiteral("ReaderDialog"));
         ReaderDialog->resize(400, 300);
+        QPalette palette;
+        QBrush brush(QColor(255, 255, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        QBrush brush1(QColor(12, 59, 151, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        QBrush brush2(QColor(120, 120, 120, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        ReaderDialog->setPalette(palette);
         verticalLayout = new QVBoxLayout(ReaderDialog);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
@@ -77,6 +97,17 @@ public:
 
         verticalLayout->addWidget(line_2);
 
+        label = new QLabel(ReaderDialog);
+        label->setObjectName(QStringLiteral("label"));
+        QFont font1;
+        font1.setPointSize(15);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label->setFont(font1);
+        label->setAlignment(Qt::AlignCenter);
+
+        verticalLayout->addWidget(label);
+
         labelCurrentBalance = new QLabel(ReaderDialog);
         labelCurrentBalance->setObjectName(QStringLiteral("labelCurrentBalance"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -84,10 +115,6 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(labelCurrentBalance->sizePolicy().hasHeightForWidth());
         labelCurrentBalance->setSizePolicy(sizePolicy1);
-        QFont font1;
-        font1.setPointSize(15);
-        font1.setBold(true);
-        font1.setWeight(75);
         labelCurrentBalance->setFont(font1);
         labelCurrentBalance->setAlignment(Qt::AlignCenter);
 
@@ -100,15 +127,23 @@ public:
 
         verticalLayout->addWidget(line);
 
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout->addItem(verticalSpacer_3);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
         backButton = new QPushButton(ReaderDialog);
         backButton->setObjectName(QStringLiteral("backButton"));
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
         QFont font2;
-        font2.setPointSize(13);
+        font2.setPointSize(15);
         backButton->setFont(font2);
 
         horizontalLayout->addWidget(backButton);
@@ -131,8 +166,9 @@ public:
     {
         ReaderDialog->setWindowTitle(QApplication::translate("ReaderDialog", "Dialog", nullptr));
         labelTitle->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
+        label->setText(QApplication::translate("ReaderDialog", "Transaksi Anda BERHASIL!", nullptr));
         labelCurrentBalance->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", nullptr));
-        backButton->setText(QApplication::translate("ReaderDialog", "KEMBALI", nullptr));
+        backButton->setText(QApplication::translate("ReaderDialog", "<    KEMBALI", nullptr));
     } // retranslateUi
 
 };

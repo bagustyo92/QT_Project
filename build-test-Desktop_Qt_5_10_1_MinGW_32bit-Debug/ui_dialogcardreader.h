@@ -46,6 +46,26 @@ public:
         if (DialogCardReader->objectName().isEmpty())
             DialogCardReader->setObjectName(QStringLiteral("DialogCardReader"));
         DialogCardReader->resize(400, 300);
+        QPalette palette;
+        QBrush brush(QColor(255, 255, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        QBrush brush1(QColor(12, 59, 151, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        QBrush brush2(QColor(120, 120, 120, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        DialogCardReader->setPalette(palette);
         verticalLayout = new QVBoxLayout(DialogCardReader);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
@@ -78,6 +98,9 @@ public:
 
         labelPicture = new QLabel(DialogCardReader);
         labelPicture->setObjectName(QStringLiteral("labelPicture"));
+        QFont font1;
+        font1.setPointSize(15);
+        labelPicture->setFont(font1);
         labelPicture->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(labelPicture);
@@ -96,8 +119,6 @@ public:
         backButton->setObjectName(QStringLiteral("backButton"));
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
-        QFont font1;
-        font1.setPointSize(13);
         backButton->setFont(font1);
         backButton->setLayoutDirection(Qt::LeftToRight);
         backButton->setAutoRepeatInterval(100);
@@ -105,7 +126,7 @@ public:
 
         horizontalLayout->addWidget(backButton);
 
-        horizontalSpacer = new QSpacerItem(40, 5, QSizePolicy::Maximum, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
@@ -116,7 +137,7 @@ public:
 
         horizontalLayout->addWidget(line_3);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
@@ -147,8 +168,8 @@ public:
         DialogCardReader->setWindowTitle(QApplication::translate("DialogCardReader", "Dialog", nullptr));
         label->setText(QApplication::translate("DialogCardReader", "SILAHKAN TAP KARTU", nullptr));
         labelPicture->setText(QApplication::translate("DialogCardReader", "TextLabel", nullptr));
-        backButton->setText(QApplication::translate("DialogCardReader", "BACK", nullptr));
-        nextButton->setText(QApplication::translate("DialogCardReader", "NEXT", nullptr));
+        backButton->setText(QApplication::translate("DialogCardReader", "<   KEMBALI", nullptr));
+        nextButton->setText(QApplication::translate("DialogCardReader", "SELANJUTNYA", nullptr));
     } // retranslateUi
 
 };

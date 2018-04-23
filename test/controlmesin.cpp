@@ -3,6 +3,9 @@
 #include <QMessageBox>
 #include <QDebug>
 
+#define BUTTON_COLOR "background-color:rgb(1, 180, 246); color:white; font-weight: bold;"
+#define BUTTON_BACK "background-color:rgb(246, 0, 107); color:white; font-weight: bold;"
+
 ControlMesin::ControlMesin(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ControlMesin)
@@ -12,9 +15,13 @@ ControlMesin::ControlMesin(QWidget *parent) :
     for (int i=1; i<=10; i++){
         ui->listNomerMesin->addItem("Mesin " + QString::number(i));
         ui->listResi->addItem("Mesin " + QString::number(i));
+        ui->listNomerMesin->setStyleSheet(BUTTON_COLOR);
+        ui->listResi->setStyleSheet(BUTTON_COLOR);
     }
     ui->pushButton_cuci->setDisabled(true);
     ui->pushButton_kering->setDisabled(true);
+
+    ui->pushButton_3->setStyleSheet(BUTTON_BACK);
 }
 
 
