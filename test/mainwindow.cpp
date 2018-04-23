@@ -3,6 +3,7 @@
 #include <QtNetwork/QTcpSocket>
 #include <QtNetwork/QAbstractSocket>
 #include <QDebug>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,25 +27,33 @@ void MainWindow::onServerReply(QString message){
 SocketConnectELM connectingElm;
 char *paket;
 
+void MainWindow::onStatusConnect(){
+    if (!connectingElm.getStatus()){
+        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke Server ELM!");
+    } else {
+        cardReader->showFullScreen();
+    }
+}
+
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
     paket = "1";
     connectingElm.StartConnection(paket);
-    cardReader->showFullScreen();
+    onStatusConnect();
 }
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
     paket = "2";
     connectingElm.StartConnection(paket);
-    cardReader->showFullScreen();
+    onStatusConnect();
 }
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
     paket = "3";
     connectingElm.StartConnection(paket);
-    cardReader->showFullScreen();
+    onStatusConnect();
 }
 
 QString MainWindow::getTitle(){

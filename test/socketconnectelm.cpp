@@ -1,6 +1,7 @@
 #include "socketconnectelm.h"
 #include "mainwindow.h"
 #include "dialogcardreader.h"
+#include "QMessageBox"
 
 SocketConnectELM::SocketConnectELM(QObject *parent) : QObject(parent)
 {
@@ -28,12 +29,15 @@ void SocketConnectELM::StartConnection(const char *paket){
     }
 }
 
+bool status;
 void SocketConnectELM::connected(){
     qDebug() << "Connected to ELM!";
+    status = true;
 }
 
 void SocketConnectELM::disconnected(){
     qDebug() << "Disconected to ELM!";
+    status = false;
 }
 
 void SocketConnectELM::bytesWritten(qint64 bytes){
@@ -58,4 +62,8 @@ void SocketConnectELM::readyRead(){
 
 QString SocketConnectELM::getMessage(){
     return val;
+}
+
+bool SocketConnectELM::getStatus(){
+    return status;
 }

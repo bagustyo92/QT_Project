@@ -28,6 +28,7 @@ class Ui_DialogCardReader
 {
 public:
     QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer;
     QLabel *label;
     QFrame *line;
     QLabel *labelPicture;
@@ -35,7 +36,10 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *backButton;
     QSpacerItem *horizontalSpacer;
+    QFrame *line_3;
+    QSpacerItem *horizontalSpacer_2;
     QPushButton *nextButton;
+    QSpacerItem *verticalSpacer_3;
 
     void setupUi(QDialog *DialogCardReader)
     {
@@ -44,6 +48,10 @@ public:
         DialogCardReader->resize(400, 300);
         verticalLayout = new QVBoxLayout(DialogCardReader);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout->addItem(verticalSpacer);
+
         label = new QLabel(DialogCardReader);
         label->setObjectName(QStringLiteral("label"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -52,7 +60,7 @@ public:
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
         QFont font;
-        font.setPointSize(11);
+        font.setPointSize(20);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
@@ -86,30 +94,46 @@ public:
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         backButton = new QPushButton(DialogCardReader);
         backButton->setObjectName(QStringLiteral("backButton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
-        backButton->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
+        backButton->setSizePolicy(sizePolicy);
+        QFont font1;
+        font1.setPointSize(13);
+        backButton->setFont(font1);
         backButton->setLayoutDirection(Qt::LeftToRight);
         backButton->setAutoRepeatInterval(100);
         backButton->setAutoDefault(true);
 
         horizontalLayout->addWidget(backButton);
 
-        horizontalSpacer = new QSpacerItem(40, 5, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 5, QSizePolicy::Maximum, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
+
+        line_3 = new QFrame(DialogCardReader);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout->addWidget(line_3);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
 
         nextButton = new QPushButton(DialogCardReader);
         nextButton->setObjectName(QStringLiteral("nextButton"));
         sizePolicy.setHeightForWidth(nextButton->sizePolicy().hasHeightForWidth());
         nextButton->setSizePolicy(sizePolicy);
+        nextButton->setFont(font1);
 
         horizontalLayout->addWidget(nextButton);
 
 
         verticalLayout->addLayout(horizontalLayout);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout->addItem(verticalSpacer_3);
 
 
         retranslateUi(DialogCardReader);

@@ -13,6 +13,7 @@ public:
     explicit SocketConnectELM(QObject *parent = nullptr);
     void StartConnection(const char *paket);
     QString getMessage();
+    bool getStatus();
 
 public slots:
     void connected();

@@ -20,6 +20,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -32,7 +33,9 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer;
     QLabel *label_menuUtama;
+    QSpacerItem *verticalSpacer_2;
     QVBoxLayout *verticalLayout;
     QFrame *line;
     QPushButton *pushButton_cuciSetrika;
@@ -41,7 +44,12 @@ public:
     QFrame *line_2;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_ambilCucian;
+    QSpacerItem *horizontalSpacer;
+    QFrame *line_3;
+    QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_controlMesin;
+    QFrame *line_5;
+    QSpacerItem *verticalSpacer_3;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -57,6 +65,10 @@ public:
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
         label_menuUtama = new QLabel(centralWidget);
         label_menuUtama->setObjectName(QStringLiteral("label_menuUtama"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -65,7 +77,7 @@ public:
         sizePolicy.setHeightForWidth(label_menuUtama->sizePolicy().hasHeightForWidth());
         label_menuUtama->setSizePolicy(sizePolicy);
         QFont font;
-        font.setPointSize(11);
+        font.setPointSize(20);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
@@ -73,6 +85,10 @@ public:
         label_menuUtama->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_menuUtama);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer_2);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
@@ -92,6 +108,9 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(pushButton_cuciSetrika->sizePolicy().hasHeightForWidth());
         pushButton_cuciSetrika->setSizePolicy(sizePolicy1);
+        QFont font1;
+        font1.setPointSize(13);
+        pushButton_cuciSetrika->setFont(font1);
 
         verticalLayout->addWidget(pushButton_cuciSetrika);
 
@@ -99,6 +118,7 @@ public:
         pushButton_cuciLipat->setObjectName(QStringLiteral("pushButton_cuciLipat"));
         sizePolicy1.setHeightForWidth(pushButton_cuciLipat->sizePolicy().hasHeightForWidth());
         pushButton_cuciLipat->setSizePolicy(sizePolicy1);
+        pushButton_cuciLipat->setFont(font1);
 
         verticalLayout->addWidget(pushButton_cuciLipat);
 
@@ -106,6 +126,7 @@ public:
         pushButton_cuciKering->setObjectName(QStringLiteral("pushButton_cuciKering"));
         sizePolicy1.setHeightForWidth(pushButton_cuciKering->sizePolicy().hasHeightForWidth());
         pushButton_cuciKering->setSizePolicy(sizePolicy1);
+        pushButton_cuciKering->setFont(font1);
 
         verticalLayout->addWidget(pushButton_cuciKering);
 
@@ -114,10 +135,10 @@ public:
 
         line_2 = new QFrame(centralWidget);
         line_2->setObjectName(QStringLiteral("line_2"));
-        QFont font1;
-        font1.setBold(false);
-        font1.setWeight(50);
-        line_2->setFont(font1);
+        QFont font2;
+        font2.setBold(false);
+        font2.setWeight(50);
+        line_2->setFont(font2);
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
 
@@ -129,23 +150,51 @@ public:
         horizontalLayout->setContentsMargins(-1, 0, -1, -1);
         pushButton_ambilCucian = new QPushButton(centralWidget);
         pushButton_ambilCucian->setObjectName(QStringLiteral("pushButton_ambilCucian"));
-        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
-        pushButton_ambilCucian->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
+        pushButton_ambilCucian->setSizePolicy(sizePolicy1);
+        pushButton_ambilCucian->setFont(font1);
 
         horizontalLayout->addWidget(pushButton_ambilCucian);
 
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        line_3 = new QFrame(centralWidget);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout->addWidget(line_3);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
         pushButton_controlMesin = new QPushButton(centralWidget);
         pushButton_controlMesin->setObjectName(QStringLiteral("pushButton_controlMesin"));
-        sizePolicy1.setHeightForWidth(pushButton_controlMesin->sizePolicy().hasHeightForWidth());
-        pushButton_controlMesin->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(200);
+        sizePolicy2.setHeightForWidth(pushButton_controlMesin->sizePolicy().hasHeightForWidth());
+        pushButton_controlMesin->setSizePolicy(sizePolicy2);
+        pushButton_controlMesin->setFont(font1);
 
         horizontalLayout->addWidget(pushButton_controlMesin);
 
 
         verticalLayout_2->addLayout(horizontalLayout);
+
+        line_5 = new QFrame(centralWidget);
+        line_5->setObjectName(QStringLiteral("line_5"));
+        line_5->setFrameShape(QFrame::HLine);
+        line_5->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_5);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer_3);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);

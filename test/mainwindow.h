@@ -18,6 +18,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     void connectingToElm(char *paket);
     void onServerReply(QString);
+    void onStatusConnect();
     QString getTitle();
     ~MainWindow();
 

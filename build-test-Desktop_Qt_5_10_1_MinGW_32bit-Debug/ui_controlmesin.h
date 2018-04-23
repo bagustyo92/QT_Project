@@ -20,6 +20,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -42,6 +43,7 @@ public:
     QPushButton *pushButton_kering;
     QFrame *line;
     QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_3;
 
     void setupUi(QDialog *ControlMesin)
@@ -84,8 +86,11 @@ public:
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         label = new QLabel(ControlMesin);
         label->setObjectName(QStringLiteral("label"));
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy1);
         QFont font1;
         font1.setBold(true);
         font1.setWeight(75);
@@ -108,8 +113,8 @@ public:
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         label_2 = new QLabel(ControlMesin);
         label_2->setObjectName(QStringLiteral("label_2"));
-        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy1);
         label_2->setFont(font1);
         label_2->setAlignment(Qt::AlignCenter);
 
@@ -130,21 +135,18 @@ public:
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         pushButton_cuci = new QPushButton(ControlMesin);
         pushButton_cuci->setObjectName(QStringLiteral("pushButton_cuci"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(30);
-        sizePolicy1.setHeightForWidth(pushButton_cuci->sizePolicy().hasHeightForWidth());
-        pushButton_cuci->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(30);
+        sizePolicy2.setHeightForWidth(pushButton_cuci->sizePolicy().hasHeightForWidth());
+        pushButton_cuci->setSizePolicy(sizePolicy2);
 
         horizontalLayout_2->addWidget(pushButton_cuci);
 
         pushButton_kering = new QPushButton(ControlMesin);
         pushButton_kering->setObjectName(QStringLiteral("pushButton_kering"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_kering->sizePolicy().hasHeightForWidth());
-        pushButton_kering->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_kering->sizePolicy().hasHeightForWidth());
+        pushButton_kering->setSizePolicy(sizePolicy1);
 
         horizontalLayout_2->addWidget(pushButton_kering);
 
@@ -161,11 +163,18 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(-1, 0, -1, -1);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer);
+
         pushButton_3 = new QPushButton(ControlMesin);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setEnabled(true);
-        sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy3);
 
         horizontalLayout_3->addWidget(pushButton_3);
 

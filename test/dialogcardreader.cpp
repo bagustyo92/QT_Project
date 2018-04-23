@@ -1,5 +1,6 @@
 #include "dialogcardreader.h"
 #include "ui_dialogcardreader.h"
+#include <QMessageBox>
 
 class MainWindow;
 
@@ -22,11 +23,14 @@ void DialogCardReader::onServerReply(QString message){
     //    SocketConnectELM socket;
     getConnection = new SocketConnectELM(this);
     if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
-        readerDialog = new ReaderDialog(this);
-//        mainWindow = new MainWindow(this);
-//        readerDialog->setLabelText(QString(mainWindow->getTitle()), 1);
-        readerDialog->setLabelText(getConnection->getMessage(), 2);
-        readerDialog->exec();
+        if (getConnection->getMessage() == "KARTU TIDAK DIKENAL"){
+            QMessageBox::warning(this, "PERINGATAN..!", "Kartu yang Anda TAP TIDAK DIKENAL!");
+            this->accept();
+        } else {
+            readerDialog = new ReaderDialog(this);
+            readerDialog->setLabelText(getConnection->getMessage(), 2);
+            readerDialog->exec();
+        }
     }
 }
 
