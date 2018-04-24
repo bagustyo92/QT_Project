@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>515</width>
     <height>300</height>
    </rect>
   </property>
@@ -172,7 +172,7 @@
     <widget class="QLabel" name="paymentStatusLabel">
      <property name="font">
       <font>
-       <pointsize>28</pointsize>
+       <pointsize>30</pointsize>
        <weight>75</weight>
        <bold>true</bold>
        <underline>true</underline>
@@ -199,7 +199,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>28</pointsize>
+       <pointsize>30</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -263,7 +263,9 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>25</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">

@@ -45,7 +45,7 @@ public:
     {
         if (ReaderDialog->objectName().isEmpty())
             ReaderDialog->setObjectName(QStringLiteral("ReaderDialog"));
-        ReaderDialog->resize(400, 300);
+        ReaderDialog->resize(515, 300);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -100,7 +100,7 @@ public:
         paymentStatusLabel = new QLabel(ReaderDialog);
         paymentStatusLabel->setObjectName(QStringLiteral("paymentStatusLabel"));
         QFont font1;
-        font1.setPointSize(28);
+        font1.setPointSize(30);
         font1.setBold(true);
         font1.setUnderline(true);
         font1.setWeight(75);
@@ -118,7 +118,7 @@ public:
         sizePolicy1.setHeightForWidth(labelCurrentBalance->sizePolicy().hasHeightForWidth());
         labelCurrentBalance->setSizePolicy(sizePolicy1);
         QFont font2;
-        font2.setPointSize(28);
+        font2.setPointSize(30);
         font2.setBold(true);
         font2.setWeight(75);
         labelCurrentBalance->setFont(font2);
@@ -149,7 +149,9 @@ public:
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
         QFont font3;
-        font3.setPointSize(15);
+        font3.setPointSize(25);
+        font3.setBold(true);
+        font3.setWeight(75);
         backButton->setFont(font3);
 
         horizontalLayout->addWidget(backButton);
