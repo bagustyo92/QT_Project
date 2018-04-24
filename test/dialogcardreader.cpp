@@ -23,7 +23,7 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
     ui->setupUi(this);
     ui->backButton->setStyleSheet(BUTTON_COLOR);
 
-    QPixmap pix(":/resources/img/Kain Wangi.png");
+    QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
 
     ui->labelPicture->setText("SILAHKAN TAP KARTU ANDA!");

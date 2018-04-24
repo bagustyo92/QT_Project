@@ -11,7 +11,7 @@ ControlMesin::ControlMesin(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPixmap pix(":/resources/img/Kain Wangi.png");
+    QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
 
     for (int i=1; i<=10; i++){

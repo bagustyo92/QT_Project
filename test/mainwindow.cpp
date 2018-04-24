@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPixmap pix(":/resources/img/Kain Wangi.png");
+    QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->label_menuUtama->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
 
     QPixmap mytag(":/resources/img/may_tag.png");
