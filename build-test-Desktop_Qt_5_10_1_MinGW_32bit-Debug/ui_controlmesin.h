@@ -30,20 +30,29 @@ class Ui_ControlMesin
 public:
     QVBoxLayout *verticalLayout_2;
     QSpacerItem *verticalSpacer_2;
-    QLabel *label_3;
+    QLabel *image_label;
     QSpacerItem *verticalSpacer;
     QFrame *line_2;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_3;
     QLabel *label;
+    QSpacerItem *verticalSpacer_5;
     QComboBox *listNomerMesin;
+    QSpacerItem *horizontalSpacer_4;
+    QFrame *line_3;
+    QSpacerItem *horizontalSpacer_3;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_2;
+    QSpacerItem *verticalSpacer_4;
     QComboBox *listResi;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_cuci;
+    QSpacerItem *horizontalSpacer_6;
+    QFrame *line_4;
+    QSpacerItem *horizontalSpacer_5;
     QPushButton *pushButton_kering;
     QFrame *line;
+    QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_3;
@@ -53,31 +62,29 @@ public:
     {
         if (ControlMesin->objectName().isEmpty())
             ControlMesin->setObjectName(QStringLiteral("ControlMesin"));
-        ControlMesin->resize(400, 300);
+        ControlMesin->resize(479, 381);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush1(QColor(0, 0, 0, 255));
+        QBrush brush1(QColor(108, 167, 191, 255));
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::ButtonText, brush1);
         palette.setBrush(QPalette::Active, QPalette::Base, brush);
-        QBrush brush2(QColor(12, 59, 151, 255));
-        brush2.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Window, brush2);
-        QBrush brush3(QColor(120, 120, 120, 255));
-        brush3.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush3);
-        palette.setBrush(QPalette::Disabled, QPalette::Base, brush2);
-        palette.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        QBrush brush2(QColor(120, 120, 120, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
         ControlMesin->setPalette(palette);
         verticalLayout_2 = new QVBoxLayout(ControlMesin);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
@@ -85,22 +92,22 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer_2);
 
-        label_3 = new QLabel(ControlMesin);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        image_label = new QLabel(ControlMesin);
+        image_label->setObjectName(QStringLiteral("image_label"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(image_label->sizePolicy().hasHeightForWidth());
+        image_label->setSizePolicy(sizePolicy);
         QFont font;
         font.setPointSize(20);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
-        label_3->setFont(font);
-        label_3->setAlignment(Qt::AlignCenter);
+        image_label->setFont(font);
+        image_label->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label_3);
+        verticalLayout_2->addWidget(image_label);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -122,26 +129,28 @@ public:
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         label = new QLabel(ControlMesin);
         label->setObjectName(QStringLiteral("label"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
         QFont font1;
-        font1.setPointSize(15);
+        font1.setPointSize(25);
         font1.setBold(true);
+        font1.setUnderline(true);
         font1.setWeight(75);
         label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
 
         verticalLayout_3->addWidget(label);
 
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout_3->addItem(verticalSpacer_5);
+
         listNomerMesin = new QComboBox(ControlMesin);
         listNomerMesin->setObjectName(QStringLiteral("listNomerMesin"));
         sizePolicy.setHeightForWidth(listNomerMesin->sizePolicy().hasHeightForWidth());
         listNomerMesin->setSizePolicy(sizePolicy);
         QFont font2;
-        font2.setPointSize(15);
+        font2.setPointSize(25);
         listNomerMesin->setFont(font2);
 
         verticalLayout_3->addWidget(listNomerMesin);
@@ -149,16 +158,35 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_3);
 
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+        line_3 = new QFrame(ControlMesin);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout->addWidget(line_3);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         label_2 = new QLabel(ControlMesin);
         label_2->setObjectName(QStringLiteral("label_2"));
-        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy);
         label_2->setFont(font1);
         label_2->setAlignment(Qt::AlignCenter);
 
         verticalLayout_4->addWidget(label_2);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout_4->addItem(verticalSpacer_4);
 
         listResi = new QComboBox(ControlMesin);
         listResi->setObjectName(QStringLiteral("listResi"));
@@ -176,20 +204,42 @@ public:
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         pushButton_cuci = new QPushButton(ControlMesin);
         pushButton_cuci->setObjectName(QStringLiteral("pushButton_cuci"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(30);
-        sizePolicy2.setHeightForWidth(pushButton_cuci->sizePolicy().hasHeightForWidth());
-        pushButton_cuci->setSizePolicy(sizePolicy2);
-        pushButton_cuci->setFont(font2);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(30);
+        sizePolicy1.setHeightForWidth(pushButton_cuci->sizePolicy().hasHeightForWidth());
+        pushButton_cuci->setSizePolicy(sizePolicy1);
+        QFont font3;
+        font3.setPointSize(25);
+        font3.setBold(true);
+        font3.setWeight(75);
+        pushButton_cuci->setFont(font3);
 
         horizontalLayout_2->addWidget(pushButton_cuci);
 
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_6);
+
+        line_4 = new QFrame(ControlMesin);
+        line_4->setObjectName(QStringLiteral("line_4"));
+        line_4->setFrameShape(QFrame::VLine);
+        line_4->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_2->addWidget(line_4);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_5);
+
         pushButton_kering = new QPushButton(ControlMesin);
         pushButton_kering->setObjectName(QStringLiteral("pushButton_kering"));
-        sizePolicy1.setHeightForWidth(pushButton_kering->sizePolicy().hasHeightForWidth());
-        pushButton_kering->setSizePolicy(sizePolicy1);
-        pushButton_kering->setFont(font2);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(pushButton_kering->sizePolicy().hasHeightForWidth());
+        pushButton_kering->setSizePolicy(sizePolicy2);
+        pushButton_kering->setFont(font3);
 
         horizontalLayout_2->addWidget(pushButton_kering);
 
@@ -202,6 +252,10 @@ public:
         line->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_2->addWidget(line);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer_3);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
@@ -218,7 +272,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
         pushButton_3->setSizePolicy(sizePolicy3);
-        pushButton_3->setFont(font2);
+        pushButton_3->setFont(font3);
 
         horizontalLayout_3->addWidget(pushButton_3);
 
@@ -239,7 +293,7 @@ public:
     void retranslateUi(QDialog *ControlMesin)
     {
         ControlMesin->setWindowTitle(QApplication::translate("ControlMesin", "Dialog", nullptr));
-        label_3->setText(QApplication::translate("ControlMesin", "CONTROL MESIN CUCI", nullptr));
+        image_label->setText(QApplication::translate("ControlMesin", "CONTROL MESIN CUCI", nullptr));
         label->setText(QApplication::translate("ControlMesin", "List Nomer Mesin", nullptr));
         label_2->setText(QApplication::translate("ControlMesin", "List Resi", nullptr));
         pushButton_cuci->setText(QApplication::translate("ControlMesin", "CUCI", nullptr));

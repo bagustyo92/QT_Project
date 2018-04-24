@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -35,16 +36,31 @@ public:
     QSpacerItem *verticalSpacer;
     QLabel *label_menuUtama;
     QSpacerItem *verticalSpacer_2;
+    QFrame *line;
+    QSpacerItem *verticalSpacer_4;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer_3;
     QPushButton *pushButton_cuciSetrika;
-    QPushButton *pushButton_cuciLipat;
+    QSpacerItem *horizontalSpacer_4;
+    QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer_7;
     QPushButton *pushButton_cuciKering;
+    QSpacerItem *horizontalSpacer_8;
+    QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer_5;
+    QPushButton *pushButton_cuciLipat;
+    QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *verticalSpacer_5;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_9;
     QPushButton *pushButton_ambilCucian;
     QSpacerItem *horizontalSpacer;
-    QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_controlMesin;
+    QSpacerItem *horizontalSpacer_10;
     QSpacerItem *verticalSpacer_3;
+    QFrame *line_2;
+    QLabel *maytag_label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -53,7 +69,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(472, 353);
+        MainWindow->resize(627, 452);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -67,7 +83,7 @@ public:
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
         palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
         palette.setBrush(QPalette::Active, QPalette::Base, brush);
-        QBrush brush3(QColor(12, 59, 151, 255));
+        QBrush brush3(QColor(108, 167, 191, 255));
         brush3.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::Window, brush3);
         palette.setBrush(QPalette::Active, QPalette::Shadow, brush2);
@@ -116,12 +132,6 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label_menuUtama->sizePolicy().hasHeightForWidth());
         label_menuUtama->setSizePolicy(sizePolicy);
-        QFont font;
-        font.setPointSize(20);
-        font.setBold(true);
-        font.setUnderline(true);
-        font.setWeight(75);
-        label_menuUtama->setFont(font);
         label_menuUtama->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_menuUtama);
@@ -130,10 +140,30 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer_2);
 
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        sizePolicy.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
+        line->setSizePolicy(sizePolicy);
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer_4);
+
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(-1, 0, -1, -1);
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
         pushButton_cuciSetrika = new QPushButton(centralWidget);
         pushButton_cuciSetrika->setObjectName(QStringLiteral("pushButton_cuciSetrika"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -159,19 +189,28 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::Base, brush1);
         palette1.setBrush(QPalette::Disabled, QPalette::Window, brush1);
         pushButton_cuciSetrika->setPalette(palette1);
-        QFont font1;
-        font1.setPointSize(15);
-        pushButton_cuciSetrika->setFont(font1);
+        QFont font;
+        font.setFamily(QStringLiteral("Roboto"));
+        font.setPointSize(25);
+        font.setBold(true);
+        font.setWeight(75);
+        pushButton_cuciSetrika->setFont(font);
 
-        verticalLayout->addWidget(pushButton_cuciSetrika);
+        horizontalLayout_3->addWidget(pushButton_cuciSetrika);
 
-        pushButton_cuciLipat = new QPushButton(centralWidget);
-        pushButton_cuciLipat->setObjectName(QStringLiteral("pushButton_cuciLipat"));
-        sizePolicy1.setHeightForWidth(pushButton_cuciLipat->sizePolicy().hasHeightForWidth());
-        pushButton_cuciLipat->setSizePolicy(sizePolicy1);
-        pushButton_cuciLipat->setFont(font1);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-        verticalLayout->addWidget(pushButton_cuciLipat);
+        horizontalLayout_3->addItem(horizontalSpacer_4);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_7);
 
         pushButton_cuciKering = new QPushButton(centralWidget);
         pushButton_cuciKering->setObjectName(QStringLiteral("pushButton_cuciKering"));
@@ -185,32 +224,65 @@ public:
         palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush7);
         palette2.setBrush(QPalette::Disabled, QPalette::Text, brush7);
         pushButton_cuciKering->setPalette(palette2);
-        pushButton_cuciKering->setFont(font1);
+        pushButton_cuciKering->setFont(font);
 
-        verticalLayout->addWidget(pushButton_cuciKering);
+        horizontalLayout_5->addWidget(pushButton_cuciKering);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_8);
+
+
+        verticalLayout->addLayout(horizontalLayout_5);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_5);
+
+        pushButton_cuciLipat = new QPushButton(centralWidget);
+        pushButton_cuciLipat->setObjectName(QStringLiteral("pushButton_cuciLipat"));
+        sizePolicy1.setHeightForWidth(pushButton_cuciLipat->sizePolicy().hasHeightForWidth());
+        pushButton_cuciLipat->setSizePolicy(sizePolicy1);
+        pushButton_cuciLipat->setFont(font);
+
+        horizontalLayout_4->addWidget(pushButton_cuciLipat);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_6);
+
+
+        verticalLayout->addLayout(horizontalLayout_4);
 
 
         verticalLayout_2->addLayout(verticalLayout);
+
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer_5);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(-1, 0, -1, -1);
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_9);
+
         pushButton_ambilCucian = new QPushButton(centralWidget);
         pushButton_ambilCucian->setObjectName(QStringLiteral("pushButton_ambilCucian"));
         sizePolicy1.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
         pushButton_ambilCucian->setSizePolicy(sizePolicy1);
-        pushButton_ambilCucian->setFont(font1);
+        pushButton_ambilCucian->setFont(font);
 
         horizontalLayout->addWidget(pushButton_ambilCucian);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Ignored, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_2);
 
         pushButton_controlMesin = new QPushButton(centralWidget);
         pushButton_controlMesin->setObjectName(QStringLiteral("pushButton_controlMesin"));
@@ -219,9 +291,13 @@ public:
         sizePolicy2.setVerticalStretch(200);
         sizePolicy2.setHeightForWidth(pushButton_controlMesin->sizePolicy().hasHeightForWidth());
         pushButton_controlMesin->setSizePolicy(sizePolicy2);
-        pushButton_controlMesin->setFont(font1);
+        pushButton_controlMesin->setFont(font);
 
         horizontalLayout->addWidget(pushButton_controlMesin);
+
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_10);
 
 
         verticalLayout_2->addLayout(horizontalLayout);
@@ -230,10 +306,25 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer_3);
 
+        line_2 = new QFrame(centralWidget);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setFrameShape(QFrame::HLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_2);
+
+        maytag_label = new QLabel(centralWidget);
+        maytag_label->setObjectName(QStringLiteral("maytag_label"));
+        sizePolicy.setHeightForWidth(maytag_label->sizePolicy().hasHeightForWidth());
+        maytag_label->setSizePolicy(sizePolicy);
+        maytag_label->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
+
+        verticalLayout_2->addWidget(maytag_label);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 472, 21));
+        menuBar->setGeometry(QRect(0, 0, 627, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -252,10 +343,11 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         label_menuUtama->setText(QApplication::translate("MainWindow", "MENU UTAMA", nullptr));
         pushButton_cuciSetrika->setText(QApplication::translate("MainWindow", "CUCI SETRIKA", nullptr));
-        pushButton_cuciLipat->setText(QApplication::translate("MainWindow", "CUCI LIPAT", nullptr));
         pushButton_cuciKering->setText(QApplication::translate("MainWindow", "CUCI KERING", nullptr));
+        pushButton_cuciLipat->setText(QApplication::translate("MainWindow", "CUCI LIPAT", nullptr));
         pushButton_ambilCucian->setText(QApplication::translate("MainWindow", "AMBIL CUCIAN", nullptr));
         pushButton_controlMesin->setText(QApplication::translate("MainWindow", "CONTROL MESIN", nullptr));
+        maytag_label->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

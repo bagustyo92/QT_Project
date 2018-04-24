@@ -2,14 +2,19 @@
 #include "ui_readerdialog.h"
 #include "mainwindow.h"
 
-#define BUTTON_BACK "background-color:rgb(246, 0, 107); color:white; font-weight: bold;"
+#define BUTTON_BACK "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
 ReaderDialog::ReaderDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ReaderDialog)
 {
     ui->setupUi(this);
+
     ui->backButton->setStyleSheet(BUTTON_BACK);
+
+    QPixmap pix(":/resources/img/Kain Wangi.png");
+    ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
+
     getConnection = new SocketConnectELM(this);
     qDebug() << "read : " << getConnection->getMessage();
     if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
@@ -32,7 +37,7 @@ void ReaderDialog::setLabelText(QString val, int label)
     }
     switch (label) {
     case 1:
-        ui->labelTitle->setText(val);
+        ui->paymentStatusLabel->setText("TRANSAKSI PAKET " + val + " BERHASIL!");
         break;
     case 2:
         ui->labelCurrentBalance->setText(val);

@@ -21,6 +21,9 @@ public:
     void onServerReply(QString);
     ~DialogCardReader();
 
+private slots:
+    void on_backButton_clicked();
+
 private:
     Ui::DialogCardReader *ui;
     SocketConnectELM *getConnection;

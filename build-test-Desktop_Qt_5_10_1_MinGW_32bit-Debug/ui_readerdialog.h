@@ -29,10 +29,10 @@ class Ui_ReaderDialog
 public:
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer_2;
-    QLabel *labelTitle;
+    QLabel *image_label;
     QSpacerItem *verticalSpacer;
     QFrame *line_2;
-    QLabel *label;
+    QLabel *paymentStatusLabel;
     QLabel *labelCurrentBalance;
     QFrame *line;
     QSpacerItem *verticalSpacer_3;
@@ -51,7 +51,7 @@ public:
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Active, QPalette::Base, brush);
-        QBrush brush1(QColor(12, 59, 151, 255));
+        QBrush brush1(QColor(108, 167, 195, 255));
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::Window, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
@@ -69,22 +69,22 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        labelTitle = new QLabel(ReaderDialog);
-        labelTitle->setObjectName(QStringLiteral("labelTitle"));
+        image_label = new QLabel(ReaderDialog);
+        image_label->setObjectName(QStringLiteral("image_label"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(labelTitle->sizePolicy().hasHeightForWidth());
-        labelTitle->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(image_label->sizePolicy().hasHeightForWidth());
+        image_label->setSizePolicy(sizePolicy);
         QFont font;
         font.setPointSize(20);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
-        labelTitle->setFont(font);
-        labelTitle->setAlignment(Qt::AlignCenter);
+        image_label->setFont(font);
+        image_label->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(labelTitle);
+        verticalLayout->addWidget(image_label);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
@@ -97,16 +97,18 @@ public:
 
         verticalLayout->addWidget(line_2);
 
-        label = new QLabel(ReaderDialog);
-        label->setObjectName(QStringLiteral("label"));
+        paymentStatusLabel = new QLabel(ReaderDialog);
+        paymentStatusLabel->setObjectName(QStringLiteral("paymentStatusLabel"));
         QFont font1;
-        font1.setPointSize(15);
+        font1.setPointSize(28);
         font1.setBold(true);
+        font1.setUnderline(true);
         font1.setWeight(75);
-        label->setFont(font1);
-        label->setAlignment(Qt::AlignCenter);
+        paymentStatusLabel->setFont(font1);
+        paymentStatusLabel->setAlignment(Qt::AlignCenter);
+        paymentStatusLabel->setWordWrap(false);
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(paymentStatusLabel);
 
         labelCurrentBalance = new QLabel(ReaderDialog);
         labelCurrentBalance->setObjectName(QStringLiteral("labelCurrentBalance"));
@@ -115,8 +117,12 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(labelCurrentBalance->sizePolicy().hasHeightForWidth());
         labelCurrentBalance->setSizePolicy(sizePolicy1);
-        labelCurrentBalance->setFont(font1);
-        labelCurrentBalance->setAlignment(Qt::AlignCenter);
+        QFont font2;
+        font2.setPointSize(28);
+        font2.setBold(true);
+        font2.setWeight(75);
+        labelCurrentBalance->setFont(font2);
+        labelCurrentBalance->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         verticalLayout->addWidget(labelCurrentBalance);
 
@@ -142,9 +148,9 @@ public:
         backButton->setObjectName(QStringLiteral("backButton"));
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
-        QFont font2;
-        font2.setPointSize(15);
-        backButton->setFont(font2);
+        QFont font3;
+        font3.setPointSize(15);
+        backButton->setFont(font3);
 
         horizontalLayout->addWidget(backButton);
 
@@ -165,8 +171,8 @@ public:
     void retranslateUi(QDialog *ReaderDialog)
     {
         ReaderDialog->setWindowTitle(QApplication::translate("ReaderDialog", "Dialog", nullptr));
-        labelTitle->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
-        label->setText(QApplication::translate("ReaderDialog", "Transaksi Anda BERHASIL!", nullptr));
+        image_label->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", nullptr));
+        paymentStatusLabel->setText(QApplication::translate("ReaderDialog", "Transaksi Anda BERHASIL!", nullptr));
         labelCurrentBalance->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", nullptr));
         backButton->setText(QApplication::translate("ReaderDialog", "<    KEMBALI", nullptr));
     } // retranslateUi

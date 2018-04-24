@@ -2,8 +2,17 @@
 #include "ui_dialogcardreader.h"
 #include <QMessageBox>
 #include <QPushButton>
+#include <QPixmap>
 
-#define BUTTON_COLOR "background-color:rgb(246, 0, 107); color:white; font-weight: bold;"
+#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+
+// TODO : Back Button sent "cancel"                     << DONE
+//        Close CardDialogReader
+//        Button Home Diperkecil                        << DONE
+//        Logo Semua Window
+//        Size Font Menyesuaikan                        << DONE
+//        Kasih margin kiri kanan home                  << DONE
+//        Current Balance dll Rata tengah dipercantik
 
 class MainWindow;
 
@@ -14,10 +23,11 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
     ui->setupUi(this);
     ui->backButton->setStyleSheet(BUTTON_COLOR);
 
-    QPixmap pix(":/resources/img/payment-method.png");
-    int w = ui->labelPicture->width();
-    int h = ui->labelPicture->height();
-    ui->labelPicture->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio));
+    QPixmap pix(":/resources/img/Kain Wangi.png");
+    ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
+
+    ui->labelPicture->setText("SILAHKAN TAP KARTU ANDA!");
+
     ui->nextButton->setEnabled(false);
 }
 
@@ -39,4 +49,12 @@ void DialogCardReader::onServerReply(QString message){
 DialogCardReader::~DialogCardReader()
 {
     delete ui;
+}
+
+void DialogCardReader::on_backButton_clicked()
+{
+    char *val = "cancel";
+    getConnection = new SocketConnectELM(this);
+    getConnection->StartConnection(val);
+    qDebug() << "cancel choosing packet";
 }

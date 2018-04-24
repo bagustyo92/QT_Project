@@ -4,14 +4,21 @@
 #include <QtNetwork/QAbstractSocket>
 #include <QDebug>
 #include <QMessageBox>
+#include <QPixmap>
 
-#define BUTTON_COLOR "background-color:rgb(1, 180, 246); color:white; font-weight: bold;"
+#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QPixmap pix(":/resources/img/Kain Wangi.png");
+    ui->label_menuUtama->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
+
+    QPixmap mytag(":/resources/img/may_tag.png");
+    ui->maytag_label->setPixmap(mytag.scaled(100, 100, Qt::KeepAspectRatio));
 
     ui->pushButton_ambilCucian->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_controlMesin->setStyleSheet(BUTTON_COLOR);

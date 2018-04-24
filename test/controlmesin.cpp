@@ -3,25 +3,27 @@
 #include <QMessageBox>
 #include <QDebug>
 
-#define BUTTON_COLOR "background-color:rgb(1, 180, 246); color:white; font-weight: bold;"
-#define BUTTON_BACK "background-color:rgb(246, 0, 107); color:white; font-weight: bold;"
+#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
 ControlMesin::ControlMesin(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ControlMesin)
 {
     ui->setupUi(this);
-//    this->setFixedSize(500, 500);
+
+    QPixmap pix(":/resources/img/Kain Wangi.png");
+    ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
+
     for (int i=1; i<=10; i++){
         ui->listNomerMesin->addItem("Mesin " + QString::number(i));
         ui->listResi->addItem("Mesin " + QString::number(i));
-        ui->listNomerMesin->setStyleSheet(BUTTON_COLOR);
-        ui->listResi->setStyleSheet(BUTTON_COLOR);
     }
     ui->pushButton_cuci->setDisabled(true);
     ui->pushButton_kering->setDisabled(true);
 
-    ui->pushButton_3->setStyleSheet(BUTTON_BACK);
+    ui->listNomerMesin->setStyleSheet(BUTTON_COLOR);
+    ui->listResi->setStyleSheet(BUTTON_COLOR);
+    ui->pushButton_3->setStyleSheet(BUTTON_COLOR);
 }
 
 

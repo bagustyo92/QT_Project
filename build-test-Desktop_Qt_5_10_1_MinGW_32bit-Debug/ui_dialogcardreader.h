@@ -29,10 +29,12 @@ class Ui_DialogCardReader
 public:
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
-    QLabel *label;
+    QLabel *image_label;
+    QSpacerItem *verticalSpacer_2;
     QFrame *line;
     QLabel *labelPicture;
     QFrame *line_2;
+    QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout;
     QPushButton *backButton;
     QSpacerItem *horizontalSpacer;
@@ -52,7 +54,7 @@ public:
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
         palette.setBrush(QPalette::Active, QPalette::Base, brush);
-        QBrush brush1(QColor(12, 59, 151, 255));
+        QBrush brush1(QColor(108, 167, 191, 255));
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::Window, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
@@ -72,22 +74,26 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        label = new QLabel(DialogCardReader);
-        label->setObjectName(QStringLiteral("label"));
+        image_label = new QLabel(DialogCardReader);
+        image_label->setObjectName(QStringLiteral("image_label"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(image_label->sizePolicy().hasHeightForWidth());
+        image_label->setSizePolicy(sizePolicy);
         QFont font;
         font.setPointSize(20);
         font.setBold(true);
         font.setUnderline(true);
         font.setWeight(75);
-        label->setFont(font);
-        label->setAlignment(Qt::AlignCenter);
+        image_label->setFont(font);
+        image_label->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(image_label);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout->addItem(verticalSpacer_2);
 
         line = new QFrame(DialogCardReader);
         line->setObjectName(QStringLiteral("line"));
@@ -99,7 +105,10 @@ public:
         labelPicture = new QLabel(DialogCardReader);
         labelPicture->setObjectName(QStringLiteral("labelPicture"));
         QFont font1;
-        font1.setPointSize(15);
+        font1.setPointSize(25);
+        font1.setBold(true);
+        font1.setUnderline(true);
+        font1.setWeight(75);
         labelPicture->setFont(font1);
         labelPicture->setAlignment(Qt::AlignCenter);
 
@@ -112,6 +121,10 @@ public:
 
         verticalLayout->addWidget(line_2);
 
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout->addItem(verticalSpacer_4);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
@@ -119,7 +132,9 @@ public:
         backButton->setObjectName(QStringLiteral("backButton"));
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
-        backButton->setFont(font1);
+        QFont font2;
+        font2.setPointSize(25);
+        backButton->setFont(font2);
         backButton->setLayoutDirection(Qt::LeftToRight);
         backButton->setAutoRepeatInterval(100);
         backButton->setAutoDefault(true);
@@ -145,7 +160,7 @@ public:
         nextButton->setObjectName(QStringLiteral("nextButton"));
         sizePolicy.setHeightForWidth(nextButton->sizePolicy().hasHeightForWidth());
         nextButton->setSizePolicy(sizePolicy);
-        nextButton->setFont(font1);
+        nextButton->setFont(font2);
 
         horizontalLayout->addWidget(nextButton);
 
@@ -166,7 +181,7 @@ public:
     void retranslateUi(QDialog *DialogCardReader)
     {
         DialogCardReader->setWindowTitle(QApplication::translate("DialogCardReader", "Dialog", nullptr));
-        label->setText(QApplication::translate("DialogCardReader", "SILAHKAN TAP KARTU", nullptr));
+        image_label->setText(QApplication::translate("DialogCardReader", "SILAHKAN TAP KARTU", nullptr));
         labelPicture->setText(QApplication::translate("DialogCardReader", "TextLabel", nullptr));
         backButton->setText(QApplication::translate("DialogCardReader", "<   KEMBALI", nullptr));
         nextButton->setText(QApplication::translate("DialogCardReader", "SELANJUTNYA", nullptr));

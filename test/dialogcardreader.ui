@@ -43,9 +43,9 @@
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>12</red>
-        <green>59</green>
-        <blue>151</blue>
+        <red>108</red>
+        <green>167</green>
+        <blue>191</blue>
        </color>
       </brush>
      </colorrole>
@@ -81,9 +81,9 @@
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>12</red>
-        <green>59</green>
-        <blue>151</blue>
+        <red>108</red>
+        <green>167</green>
+        <blue>191</blue>
        </color>
       </brush>
      </colorrole>
@@ -110,18 +110,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>12</red>
-        <green>59</green>
-        <blue>151</blue>
+        <red>108</red>
+        <green>167</green>
+        <blue>191</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>12</red>
-        <green>59</green>
-        <blue>151</blue>
+        <red>108</red>
+        <green>167</green>
+        <blue>191</blue>
        </color>
       </brush>
      </colorrole>
@@ -149,7 +149,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="image_label">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -173,6 +173,22 @@
     </widget>
    </item>
    <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Maximum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -183,7 +199,10 @@
     <widget class="QLabel" name="labelPicture">
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>25</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -202,6 +221,22 @@
     </widget>
    </item>
    <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Maximum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
@@ -216,7 +251,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>25</pointsize>
         </font>
        </property>
        <property name="layoutDirection">
@@ -282,7 +317,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>25</pointsize>
         </font>
        </property>
        <property name="text">
