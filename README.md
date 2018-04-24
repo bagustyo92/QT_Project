@@ -9,28 +9,28 @@ TEST Project will be running LAUNDRY CASHIER GUI
 
 ### Screenshot
 
-*Home Screen
+* Home Screen
 ![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20Wangi.png)
 
-*Control Machine
-![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20Wangi%202.png)
+* Control Machine
+![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20Wangi%202.PNG)
 
-*Current Balance
-![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20wangi%203.png)
+* Current Balance
+![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20wangi%203.PNG)
 
-*Reader Card
-![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20wangi%204.png)
+* Reader Card
+![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20wangi%204.PNG)
 
 ### Description
 
-*Home Screen
+* Home Screen
 All the menus is here
 
-*Control Machine
+* Control Machine
 To controlling all the machine by resi and listed machine
 
-*Current Balance
+* Current Balance
 To give the information about the choosen package and current balance the card
 
-*Reader Card
+* Reader Card
 To wait and response from the card reader ELM
