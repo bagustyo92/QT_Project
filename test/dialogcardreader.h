@@ -27,7 +27,7 @@ private slots:
 
 private:
     Ui::DialogCardReader *ui;
-//    SocketConnectELM *getConnection;
+    SocketConnectELM *getConnection;
     ReaderDialog *readerDialog;
 };
 

@@ -32,11 +32,10 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
     ui->nextButton->setEnabled(false);
 }
 
-SocketConnectELM *getConnection = new SocketConnectELM;
+//SocketConnectELM *getConnection = new SocketConnectELM;
 
 bool status_close = false;
 void DialogCardReader::onServerReply(){
-    //    SocketConnectELM socket;
     getConnection = new SocketConnectELM(this);
     if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
         if (getConnection->getMessage() == "KARTU TIDAK DIKENAL"){
@@ -48,8 +47,6 @@ void DialogCardReader::onServerReply(){
                 message = "UNKNOWN CARD";
                 getConnection->StartConnection(message);
                 qDebug() << message;
-                MainWindow *mainWindow = new MainWindow(this);
-                mainWindow->showFullScreen();
             }
         } else {
             status_close = true;
@@ -74,6 +71,7 @@ DialogCardReader::~DialogCardReader()
 void DialogCardReader::on_backButton_clicked()
 {
     char *val = "cancel";
+    getConnection = new SocketConnectELM(this);
     getConnection->StartConnection(val);
     qDebug() << "cancel choosing packet";
 }

@@ -32,24 +32,24 @@ ControlMesin::ControlMesin(QWidget *parent) :
 }
 
 void ControlMesin::database_connect(){
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("172.16.2.200");
-    db.setPort(5432);
-    db.setUserName("enco");
-    db.setPassword("encolaundry14");
-    db.setDatabaseName("dbenco");
-    bool ok = db.open();
-    if (ok){
-        qDebug() << "connected to database";
-        QSqlQuery query;
-        query.exec("SELECT get_list_mesin()");
-        while(query.next()){
-            QString mesin = query.value(0).toString();
-            QString mesin1 = query.value(1).toString();
-            qDebug() << mesin << " " << mesin1;
-        }
-    }
-    db.close();
+//    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+//    db.setHostName("172.16.2.200");
+//    db.setPort(5432);
+//    db.setUserName("enco");
+//    db.setPassword("encolaundry14");
+//    db.setDatabaseName("dbenco");
+//    bool ok = db.open();
+//    if (ok){
+//        qDebug() << "connected to database";
+//        QSqlQuery query;
+//        query.exec("SELECT get_list_mesin()");
+//        while(query.next()){
+//            QString mesin = query.value(0).toString();
+//            QString mesin1 = query.value(1).toString();
+//            qDebug() << mesin << " " << mesin1;
+//        }
+//    }
+//    db.close();
 }
 
 ControlMesin::~ControlMesin()
@@ -58,7 +58,7 @@ ControlMesin::~ControlMesin()
 }
 
 
-void ControlMesin::on_listNomerMesin_activated()
+void ControlMesin::on_listNomerMesin_activated(const QString &arg1)
 {
     ui->pushButton_cuci->setDisabled(false);
     ui->pushButton_kering->setDisabled(false);

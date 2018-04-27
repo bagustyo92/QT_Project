@@ -19,7 +19,7 @@ public:
 private slots:
 
 
-    void on_listNomerMesin_activated();
+    void on_listNomerMesin_activated(const QString &arg1);
 
     void on_pushButton_3_clicked();
 
