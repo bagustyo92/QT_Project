@@ -41,22 +41,30 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_3;
+    QSpacerItem *horizontalSpacer_11;
     QPushButton *pushButton_cuciSetrika;
+    QSpacerItem *horizontalSpacer_2;
     QSpacerItem *horizontalSpacer_4;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_7;
+    QSpacerItem *horizontalSpacer_12;
     QPushButton *pushButton_cuciKering;
+    QSpacerItem *horizontalSpacer_13;
     QSpacerItem *horizontalSpacer_8;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_5;
+    QSpacerItem *horizontalSpacer_14;
     QPushButton *pushButton_cuciLipat;
+    QSpacerItem *horizontalSpacer_15;
     QSpacerItem *horizontalSpacer_6;
     QSpacerItem *verticalSpacer_5;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_9;
+    QSpacerItem *horizontalSpacer_17;
     QPushButton *pushButton_ambilCucian;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_controlMesin;
+    QSpacerItem *horizontalSpacer_16;
     QSpacerItem *horizontalSpacer_10;
     QSpacerItem *verticalSpacer_3;
     QFrame *line_2;
@@ -164,6 +172,10 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_11);
+
         pushButton_cuciSetrika = new QPushButton(centralWidget);
         pushButton_cuciSetrika->setObjectName(QStringLiteral("pushButton_cuciSetrika"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -198,6 +210,10 @@ public:
 
         horizontalLayout_3->addWidget(pushButton_cuciSetrika);
 
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
+
         horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer_4);
@@ -211,6 +227,10 @@ public:
         horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout_5->addItem(horizontalSpacer_7);
+
+        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_12);
 
         pushButton_cuciKering = new QPushButton(centralWidget);
         pushButton_cuciKering->setObjectName(QStringLiteral("pushButton_cuciKering"));
@@ -228,6 +248,10 @@ public:
 
         horizontalLayout_5->addWidget(pushButton_cuciKering);
 
+        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_13);
+
         horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout_5->addItem(horizontalSpacer_8);
@@ -242,6 +266,10 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_5);
 
+        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_14);
+
         pushButton_cuciLipat = new QPushButton(centralWidget);
         pushButton_cuciLipat->setObjectName(QStringLiteral("pushButton_cuciLipat"));
         sizePolicy1.setHeightForWidth(pushButton_cuciLipat->sizePolicy().hasHeightForWidth());
@@ -249,6 +277,10 @@ public:
         pushButton_cuciLipat->setFont(font);
 
         horizontalLayout_4->addWidget(pushButton_cuciLipat);
+
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_15);
 
         horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -272,6 +304,10 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_9);
 
+        horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_17);
+
         pushButton_ambilCucian = new QPushButton(centralWidget);
         pushButton_ambilCucian->setObjectName(QStringLiteral("pushButton_ambilCucian"));
         sizePolicy1.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
@@ -294,6 +330,10 @@ public:
         pushButton_controlMesin->setFont(font);
 
         horizontalLayout->addWidget(pushButton_controlMesin);
+
+        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_16);
 
         horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 

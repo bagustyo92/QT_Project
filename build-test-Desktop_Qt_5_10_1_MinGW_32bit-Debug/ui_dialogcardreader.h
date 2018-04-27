@@ -36,18 +36,22 @@ public:
     QFrame *line_2;
     QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_4;
+    QSpacerItem *horizontalSpacer_5;
     QPushButton *backButton;
     QSpacerItem *horizontalSpacer;
     QFrame *line_3;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *nextButton;
+    QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *horizontalSpacer_3;
     QSpacerItem *verticalSpacer_3;
 
     void setupUi(QDialog *DialogCardReader)
     {
         if (DialogCardReader->objectName().isEmpty())
             DialogCardReader->setObjectName(QStringLiteral("DialogCardReader"));
-        DialogCardReader->resize(400, 300);
+        DialogCardReader->resize(538, 300);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -128,6 +132,14 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_5);
+
         backButton = new QPushButton(DialogCardReader);
         backButton->setObjectName(QStringLiteral("backButton"));
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
@@ -163,6 +175,14 @@ public:
         nextButton->setFont(font2);
 
         horizontalLayout->addWidget(nextButton);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_6);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
 
 
         verticalLayout->addLayout(horizontalLayout);

@@ -40,12 +40,13 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QPushButton *backButton;
     QSpacerItem *horizontalSpacer;
+    QSpacerItem *verticalSpacer_4;
 
     void setupUi(QDialog *ReaderDialog)
     {
         if (ReaderDialog->objectName().isEmpty())
             ReaderDialog->setObjectName(QStringLiteral("ReaderDialog"));
-        ReaderDialog->resize(515, 300);
+        ReaderDialog->resize(558, 300);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -140,7 +141,7 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
@@ -156,12 +157,16 @@ public:
 
         horizontalLayout->addWidget(backButton);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
 
         verticalLayout->addLayout(horizontalLayout);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        verticalLayout->addItem(verticalSpacer_4);
 
 
         retranslateUi(ReaderDialog);

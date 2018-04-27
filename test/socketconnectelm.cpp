@@ -24,6 +24,7 @@ void SocketConnectELM::StartConnection(const char *paket){
 
     if (socket->waitForConnected(3000)){
         socket->write(paket);
+        qDebug() << "client said : " << paket;
     } else {
         qDebug() << "Error: " << socket->errorString();
     }

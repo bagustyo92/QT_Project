@@ -55,14 +55,19 @@ public:
     QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_7;
+    QSpacerItem *horizontalSpacer_9;
     QPushButton *pushButton_3;
+    QSpacerItem *horizontalSpacer_10;
+    QSpacerItem *horizontalSpacer_8;
     QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *verticalSpacer_6;
 
     void setupUi(QDialog *ControlMesin)
     {
         if (ControlMesin->objectName().isEmpty())
             ControlMesin->setObjectName(QStringLiteral("ControlMesin"));
-        ControlMesin->resize(479, 381);
+        ControlMesin->resize(479, 387);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -260,28 +265,45 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(-1, 0, -1, -1);
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_7);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_9);
 
         pushButton_3 = new QPushButton(ControlMesin);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setEnabled(true);
-        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy3);
+        sizePolicy.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy);
         pushButton_3->setFont(font3);
 
         horizontalLayout_3->addWidget(pushButton_3);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_10);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_8);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
+
+        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        verticalLayout_2->addItem(verticalSpacer_6);
 
 
         retranslateUi(ControlMesin);
