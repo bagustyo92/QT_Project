@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ReaderDialog_t {
-    QByteArrayData data[5];
-    char stringdata0[37];
+    QByteArrayData data[6];
+    char stringdata0[59];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,10 +35,12 @@ QT_MOC_LITERAL(0, 0, 12), // "ReaderDialog"
 QT_MOC_LITERAL(1, 13, 12), // "setLabelText"
 QT_MOC_LITERAL(2, 26, 0), // ""
 QT_MOC_LITERAL(3, 27, 3), // "val"
-QT_MOC_LITERAL(4, 31, 5) // "label"
+QT_MOC_LITERAL(4, 31, 5), // "label"
+QT_MOC_LITERAL(5, 37, 21) // "on_backButton_clicked"
 
     },
-    "ReaderDialog\0setLabelText\0\0val\0label"
+    "ReaderDialog\0setLabelText\0\0val\0label\0"
+    "on_backButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,7 +50,7 @@ static const uint qt_meta_data_ReaderDialog[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -56,10 +58,12 @@ static const uint qt_meta_data_ReaderDialog[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   19,    2, 0x0a /* Public */,
+       1,    2,   24,    2, 0x0a /* Public */,
+       5,    0,   29,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,    4,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -71,6 +75,7 @@ void ReaderDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setLabelText((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 1: _t->on_backButton_clicked(); break;
         default: ;
         }
     }
@@ -101,13 +106,13 @@ int ReaderDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

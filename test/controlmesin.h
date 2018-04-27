@@ -19,7 +19,7 @@ public:
 private slots:
 
 
-    void on_listNomerMesin_activated(const QString &arg1);
+    void on_listNomerMesin_activated();
 
     void on_pushButton_3_clicked();
 
@@ -28,6 +28,7 @@ private slots:
     void on_pushButton_cuci_clicked();
 
 private:
+    void database_connect();
     Ui::ControlMesin *ui;
 };
 

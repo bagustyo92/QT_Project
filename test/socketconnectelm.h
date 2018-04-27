@@ -9,6 +9,7 @@
 class SocketConnectELM : public QObject
 {
     Q_OBJECT
+
 public:
     explicit SocketConnectELM(QObject *parent = nullptr);
     void StartConnection(const char *paket);

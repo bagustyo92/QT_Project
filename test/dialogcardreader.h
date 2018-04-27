@@ -17,8 +17,9 @@ class DialogCardReader : public QDialog
     Q_OBJECT
 
 public:
+    void closeDialog();
     explicit DialogCardReader(QWidget *parent = 0);
-    void onServerReply(QString);
+    void onServerReply();
     ~DialogCardReader();
 
 private slots:
@@ -26,7 +27,7 @@ private slots:
 
 private:
     Ui::DialogCardReader *ui;
-    SocketConnectELM *getConnection;
+//    SocketConnectELM *getConnection;
     ReaderDialog *readerDialog;
 };
 

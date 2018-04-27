@@ -1,5 +1,6 @@
 #include "dialogcardreader.h"
 #include "ui_dialogcardreader.h"
+#include "mainwindow.h"
 #include <QMessageBox>
 #include <QPushButton>
 #include <QPixmap>
@@ -9,10 +10,10 @@
 // TODO : Back Button sent "cancel"                     << DONE
 //        Close CardDialogReader
 //        Button Home Diperkecil                        << DONE
-//        Logo Semua Window
+//        Logo Semua Window                             << DONE
 //        Size Font Menyesuaikan                        << DONE
 //        Kasih margin kiri kanan home                  << DONE
-//        Current Balance dll Rata tengah dipercantik
+//        Current Balance dll Rata tengah dipercantik   << DONE
 
 class MainWindow;
 
@@ -31,13 +32,27 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
     ui->nextButton->setEnabled(false);
 }
 
-void DialogCardReader::onServerReply(QString message){
+SocketConnectELM *getConnection = new SocketConnectELM;
+
+bool status_close = false;
+void DialogCardReader::onServerReply(){
     //    SocketConnectELM socket;
     getConnection = new SocketConnectELM(this);
     if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
         if (getConnection->getMessage() == "KARTU TIDAK DIKENAL"){
-            QMessageBox::warning(this, "PERINGATAN..!","Kartu yang Anda TAP TIDAK DIKENAL!");
+            QMessageBox::StandardButton reply = QMessageBox::warning(this, "PERINGATAN..!",
+                                                                     "Kartu yang Anda TAP TIDAK DIKENAL!",
+                                                                     QMessageBox::Yes);
+            if (reply==QMessageBox::Yes){
+                char *message;
+                message = "UNKNOWN CARD";
+                getConnection->StartConnection(message);
+                qDebug() << message;
+                MainWindow *mainWindow = new MainWindow(this);
+                mainWindow->showFullScreen();
+            }
         } else {
+            status_close = true;
             readerDialog = new ReaderDialog(this);
             readerDialog->setLabelText(getConnection->getMessage(), 2);
             readerDialog->exec();
@@ -45,6 +60,11 @@ void DialogCardReader::onServerReply(QString message){
     }
 }
 
+void DialogCardReader::closeDialog(){
+    if (status_close){
+        this->close();
+    }
+}
 
 DialogCardReader::~DialogCardReader()
 {
@@ -54,7 +74,6 @@ DialogCardReader::~DialogCardReader()
 void DialogCardReader::on_backButton_clicked()
 {
     char *val = "cancel";
-    getConnection = new SocketConnectELM(this);
     getConnection->StartConnection(val);
     qDebug() << "cancel choosing packet";
 }

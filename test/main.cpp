@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include "socketconnectelm.h"
+#include "dialogcardreader.h"
 
 int main(int argc, char *argv[])
 {

@@ -57,7 +57,7 @@ void SocketConnectELM::readyRead(){
 
     //sent to cardDialog
     DialogCardReader cardReader;
-    cardReader.onServerReply(val);
+    cardReader.onServerReply();
 }
 
 QString SocketConnectELM::getMessage(){

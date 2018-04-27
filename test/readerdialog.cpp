@@ -51,3 +51,9 @@ ReaderDialog::~ReaderDialog()
 {
     delete ui;
 }
+
+void ReaderDialog::on_backButton_clicked()
+{
+    MainWindow *mainWindow = new MainWindow(this);
+    mainWindow->showFullScreen();
+}

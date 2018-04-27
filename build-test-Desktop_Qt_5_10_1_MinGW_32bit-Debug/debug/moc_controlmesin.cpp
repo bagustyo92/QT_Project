@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ControlMesin_t {
-    QByteArrayData data[7];
-    char stringdata0[127];
+    QByteArrayData data[6];
+    char stringdata0[122];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,14 +34,13 @@ static const qt_meta_stringdata_ControlMesin_t qt_meta_stringdata_ControlMesin =
 QT_MOC_LITERAL(0, 0, 12), // "ControlMesin"
 QT_MOC_LITERAL(1, 13, 27), // "on_listNomerMesin_activated"
 QT_MOC_LITERAL(2, 41, 0), // ""
-QT_MOC_LITERAL(3, 42, 4), // "arg1"
-QT_MOC_LITERAL(4, 47, 23), // "on_pushButton_3_clicked"
-QT_MOC_LITERAL(5, 71, 28), // "on_pushButton_kering_clicked"
-QT_MOC_LITERAL(6, 100, 26) // "on_pushButton_cuci_clicked"
+QT_MOC_LITERAL(3, 42, 23), // "on_pushButton_3_clicked"
+QT_MOC_LITERAL(4, 66, 28), // "on_pushButton_kering_clicked"
+QT_MOC_LITERAL(5, 95, 26) // "on_pushButton_cuci_clicked"
 
     },
     "ControlMesin\0on_listNomerMesin_activated\0"
-    "\0arg1\0on_pushButton_3_clicked\0"
+    "\0on_pushButton_3_clicked\0"
     "on_pushButton_kering_clicked\0"
     "on_pushButton_cuci_clicked"
 };
@@ -61,13 +60,13 @@ static const uint qt_meta_data_ControlMesin[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   34,    2, 0x08 /* Private */,
-       4,    0,   37,    2, 0x08 /* Private */,
-       5,    0,   38,    2, 0x08 /* Private */,
-       6,    0,   39,    2, 0x08 /* Private */,
+       1,    0,   34,    2, 0x08 /* Private */,
+       3,    0,   35,    2, 0x08 /* Private */,
+       4,    0,   36,    2, 0x08 /* Private */,
+       5,    0,   37,    2, 0x08 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -81,13 +80,14 @@ void ControlMesin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         ControlMesin *_t = static_cast<ControlMesin *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_listNomerMesin_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 0: _t->on_listNomerMesin_activated(); break;
         case 1: _t->on_pushButton_3_clicked(); break;
         case 2: _t->on_pushButton_kering_clicked(); break;
         case 3: _t->on_pushButton_cuci_clicked(); break;
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject ControlMesin::staticMetaObject = {

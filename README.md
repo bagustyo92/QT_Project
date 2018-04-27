@@ -7,7 +7,7 @@ This project handle tcp socket connection for communication to the ELM (backend 
 
 TEST Project will be running LAUNDRY CASHIER GUI
 
-### Screenshot
+## Screenshot
 
 * Home Screen
 ![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20Wangi.png)
@@ -21,7 +21,7 @@ TEST Project will be running LAUNDRY CASHIER GUI
 * Reader Card
 ![alt text](https://github.com/bagustyo92/QT_Project/blob/master/test/img/Kain%20wangi%204.PNG)
 
-### Description
+## Description
 
 * Home Screen
 All the menus is here
