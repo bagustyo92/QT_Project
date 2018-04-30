@@ -60,7 +60,7 @@ void ControlMesin::database_get_list_mesin(){
         total += 1;
         QString nomesin = query.value("nomesin").toString();
         QString ipmesin = query.value("ipmesin").toString();
-        qDebug() << "No: " << nomesin <<  " | Ip: " << ipmesin;
+        qDebug() << "GET LIST MESIN";
         ui->listNomerMesin->addItem(nomesin);
     }
     qDebug() << "total mesin: " << total;
@@ -94,7 +94,7 @@ void ControlMesin::database_get_list_pending_transaksi(){
         QString noresi = query.value("resi").toString();
         int cuci_stat = query.value("cuci").toInt();
         int kering_stat = query.value("kering").toInt();
-        qDebug() << "No Resi: " << noresi <<  " | cuci_status: " << cuci_stat << " | kering_status: " << kering_stat;
+        qDebug() << "GET LIST RESI";
         ui->listResi->addItem(noresi);
     }
     qDebug() << "total resi: " << total;
@@ -129,6 +129,8 @@ void ControlMesin::on_pushButton_kering_clicked()
     if (reply==QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(2);
+        database_get_list_mesin();
+        database_get_list_pending_transaksi();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button kering";
@@ -147,6 +149,8 @@ void ControlMesin::on_pushButton_cuci_clicked()
     if (reply == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(1);
+        database_get_list_mesin();
+        database_get_list_pending_transaksi();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button cuci";
