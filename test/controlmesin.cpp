@@ -160,7 +160,7 @@ void ControlMesin::on_pushButton_cuci_clicked()
     }
 }
 
-void ControlMesin::on_listResi_currentIndexChanged(const QString &arg1)
+void ControlMesin::on_listResi_activated(const QString &arg1)
 {
     if (list_cuci_stat[ui->listResi->currentIndex()] == 1){
         ui->pushButton_cuci->setEnabled(true);

@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ControlMesin_t {
     QByteArrayData data[7];
-    char stringdata0[131];
+    char stringdata0[121];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,14 +36,14 @@ QT_MOC_LITERAL(1, 13, 23), // "on_pushButton_3_clicked"
 QT_MOC_LITERAL(2, 37, 0), // ""
 QT_MOC_LITERAL(3, 38, 28), // "on_pushButton_kering_clicked"
 QT_MOC_LITERAL(4, 67, 26), // "on_pushButton_cuci_clicked"
-QT_MOC_LITERAL(5, 94, 31), // "on_listResi_currentIndexChanged"
-QT_MOC_LITERAL(6, 126, 4) // "arg1"
+QT_MOC_LITERAL(5, 94, 21), // "on_listResi_activated"
+QT_MOC_LITERAL(6, 116, 4) // "arg1"
 
     },
     "ControlMesin\0on_pushButton_3_clicked\0"
     "\0on_pushButton_kering_clicked\0"
     "on_pushButton_cuci_clicked\0"
-    "on_listResi_currentIndexChanged\0arg1"
+    "on_listResi_activated\0arg1"
 };
 #undef QT_MOC_LITERAL
 
@@ -84,7 +84,7 @@ void ControlMesin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 0: _t->on_pushButton_3_clicked(); break;
         case 1: _t->on_pushButton_kering_clicked(); break;
         case 2: _t->on_pushButton_cuci_clicked(); break;
-        case 3: _t->on_listResi_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 3: _t->on_listResi_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
