@@ -7,6 +7,7 @@
 #include <QtSql/QSqlError>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+
 #define GET_LIST_MESIN "SELECT * FROM get_list_mesin()"
 #define GET_LIST_RESI "SELECT * FROM get_list_pending_transaksi()"
 
@@ -28,16 +29,9 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui->listNomerMesin->setStyleSheet(BUTTON_COLOR);
     ui->listResi->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_3->setStyleSheet(BUTTON_COLOR);
-
-    database_connect();
-
-//    for (int i=1; i<=10; i++){
-//        ui->listNomerMesin->addItem("Mesin " + QString::number(i));
-//        ui->listResi->addItem("Mesin " + QString::number(i));
-//    }
 }
 
-void ControlMesin::database_connect(){
+QSqlDatabase* ControlMesin::database_connect(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName("172.16.2.200");
     db.setPort(5432);
@@ -47,12 +41,11 @@ void ControlMesin::database_connect(){
     bool ok = db.open();
     if (ok){
         qDebug() << "connected to database";
-        database_get_list_mesin();
-        database_get_list_pending_transaksi();
+        return &db;
     }else{
         qDebug() << "Failed connect to database";
+        db.close();
     }
-    db.close();
 }
 
 void ControlMesin::database_get_list_mesin(){
@@ -72,6 +65,14 @@ void ControlMesin::database_get_list_mesin(){
     qDebug() << "total mesin: " << total;
 }
 
+void ControlMesin::database_control_mesin_action(int action){
+    QSqlQuery query;
+    query.prepare("SELECT control_mesin(:nomesin, :resi, :action)");
+    query.bindValue(":nomesin", ui->listNomerMesin->currentText());
+    query.bindValue(":resi", ui->listResi->currentText());
+    query.bindValue(":action", action);
+}
+
 void ControlMesin::database_get_list_pending_transaksi(){
     QSqlQuery query;
     int total = 0;
@@ -85,7 +86,7 @@ void ControlMesin::database_get_list_pending_transaksi(){
         int cuci_stat = query.value("cuci").toInt();
         int kering_stat = query.value("kering").toInt();
         qDebug() << "No Resi: " << noresi <<  " | cuci_status: " << cuci_stat << " | kering_status: " << kering_stat;
-        ui->listNomerMesin->addItem(noresi);
+        ui->listResi->addItem(noresi);
     }
     qDebug() << "total resi: " << total;
 }

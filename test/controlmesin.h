@@ -2,6 +2,7 @@
 #define CONTROLMESIN_H
 
 #include <QDialog>
+#include <QtSql/QSqlDatabase>
 
 namespace Ui {
 class ControlMesin;
@@ -13,6 +14,9 @@ class ControlMesin : public QDialog
 
 public:
     explicit ControlMesin(QWidget *parent = 0);
+    QSqlDatabase * database_connect();
+    void database_get_list_mesin();
+    void database_get_list_pending_transaksi();
     ~ControlMesin();
 
 
@@ -28,9 +32,7 @@ private slots:
     void on_pushButton_cuci_clicked();
 
 private:
-    void database_get_list_mesin();
-    void database_connect();
-    void database_get_list_pending_transaksi();
+    void database_control_mesin_action(int);
     Ui::ControlMesin *ui;
 };
 

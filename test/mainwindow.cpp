@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QPixmap>
+#include <QtSql/QSqlDatabase>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -86,5 +87,10 @@ QString MainWindow::getTitle(){
 
 void MainWindow::on_pushButton_controlMesin_clicked()
 {
+    QSqlDatabase *db;
+    db = controlMesin->database_connect();
+    controlMesin->database_get_list_mesin();
+    controlMesin->database_get_list_pending_transaksi();
+
     controlMesin->showFullScreen();
 }
