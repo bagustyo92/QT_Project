@@ -25,6 +25,8 @@ private slots:
     void on_pushButton_kering_clicked();
     void on_pushButton_cuci_clicked();
 
+    void on_listResi_currentIndexChanged(const QString &arg1);
+
 private:
     void database_control_mesin_action(int);
     Ui::ControlMesin *ui;

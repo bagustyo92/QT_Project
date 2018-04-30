@@ -30,6 +30,9 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui->listNomerMesin->setStyleSheet(BUTTON_COLOR);
     ui->listResi->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_3->setStyleSheet(BUTTON_COLOR);
+
+    ui->pushButton_cuci->setEnabled(false);
+    ui->pushButton_kering->setEnabled(false);
 }
 
 bool ControlMesin::database_connect(){
@@ -134,7 +137,6 @@ void ControlMesin::on_pushButton_kering_clicked()
     } else {
         //Some Action Here
         qDebug() << "Cancel on button kering";
-        qDebug() << "Current Index: " << ui->listResi->currentIndex();
     }
 }
 
@@ -155,6 +157,19 @@ void ControlMesin::on_pushButton_cuci_clicked()
     } else {
         //Some Action Here
         qDebug() << "Cancel on button cuci";
-        qDebug() << "Current Index: " << ui->listResi->currentIndex();
+    }
+}
+
+void ControlMesin::on_listResi_currentIndexChanged(const QString &arg1)
+{
+    if (list_cuci_stat[ui->listResi->currentIndex()] == 1){
+        ui->pushButton_cuci->setEnabled(true);
+    } else {
+        ui->pushButton_cuci->setEnabled(false);
+    }
+    if (list_kering_stat[ui->listResi->currentIndex()] == 1){
+        ui->pushButton_kering->setEnabled(true);
+    } else {
+        ui->pushButton_kering->setEnabled(false);
     }
 }
