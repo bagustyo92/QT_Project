@@ -29,7 +29,7 @@ private slots:
 
 private:
     void database_get_list_mesin();
-    bool database_connect();
+    void database_connect();
     Ui::ControlMesin *ui;
 };
 

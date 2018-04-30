@@ -27,10 +27,7 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui->listResi->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_3->setStyleSheet(BUTTON_COLOR);
 
-    if (database_connect()){
-        database_get_list_mesin();
-    }
-
+    database_connect();
 
 //    for (int i=1; i<=10; i++){
 //        ui->listNomerMesin->addItem("Mesin " + QString::number(i));
@@ -38,7 +35,7 @@ ControlMesin::ControlMesin(QWidget *parent) :
 //    }
 }
 
-bool ControlMesin::database_connect(){
+void ControlMesin::database_connect(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName("172.16.2.200");
     db.setPort(5432);
@@ -48,11 +45,11 @@ bool ControlMesin::database_connect(){
     bool ok = db.open();
     if (ok){
         qDebug() << "connected to database";
-        return true;
+        database_get_list_mesin();
     }else{
         qDebug() << "Failed connect to database";
-        return false;
     }
+    db.close();
 }
 
 void ControlMesin::database_get_list_mesin(){
