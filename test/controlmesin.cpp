@@ -85,6 +85,8 @@ void ControlMesin::database_control_mesin_action(int action){
 }
 
 void ControlMesin::database_get_list_pending_transaksi(){
+    list_cuci_stat.clear();
+    list_kering_stat.clear();
     ui->listResi->clear();
     QSqlQuery query;
     int total = 0;
@@ -101,8 +103,6 @@ void ControlMesin::database_get_list_pending_transaksi(){
         list_kering_stat.append(kering_stat);
         ui->listResi->addItem(noresi);
     }
-    qDebug() << list_cuci_stat.length();
-    qDebug() << list_kering_stat.length();
     qDebug() << "GET LIST RESI";
     qDebug() << "total resi: " << total;
 }
@@ -134,6 +134,7 @@ void ControlMesin::on_pushButton_kering_clicked()
     } else {
         //Some Action Here
         qDebug() << "Cancel on button kering";
+        qDebug() << "Current Index: " << ui->listResi->currentIndex();
     }
 }
 
@@ -154,5 +155,6 @@ void ControlMesin::on_pushButton_cuci_clicked()
     } else {
         //Some Action Here
         qDebug() << "Cancel on button cuci";
+        qDebug() << "Current Index: " << ui->listResi->currentIndex();
     }
 }
