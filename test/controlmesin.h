@@ -28,7 +28,8 @@ private slots:
     void on_pushButton_cuci_clicked();
 
 private:
-    void database_connect();
+    void database_get_list_mesin();
+    bool database_connect();
     Ui::ControlMesin *ui;
 };
 

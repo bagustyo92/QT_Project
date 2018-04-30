@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -12,6 +13,9 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui(new Ui::ControlMesin)
 {
     ui->setupUi(this);
+
+    QString dir = QCoreApplication::applicationDirPath();
+    qDebug() << dir;
 
     QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
@@ -23,15 +27,18 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui->listResi->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_3->setStyleSheet(BUTTON_COLOR);
 
-    database_connect();
-
-    for (int i=1; i<=10; i++){
-        ui->listNomerMesin->addItem("Mesin " + QString::number(i));
-        ui->listResi->addItem("Mesin " + QString::number(i));
+    if (database_connect()){
+        database_get_list_mesin();
     }
+
+
+//    for (int i=1; i<=10; i++){
+//        ui->listNomerMesin->addItem("Mesin " + QString::number(i));
+//        ui->listResi->addItem("Mesin " + QString::number(i));
+//    }
 }
 
-void ControlMesin::database_connect(){
+bool ControlMesin::database_connect(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName("172.16.2.200");
     db.setPort(5432);
@@ -41,15 +48,28 @@ void ControlMesin::database_connect(){
     bool ok = db.open();
     if (ok){
         qDebug() << "connected to database";
-        QSqlQuery query;
-        query.exec("SELECT get_list_mesin()");
-        while(query.next()){
-            QString mesin = query.value(0).toString();
-            QString mesin1 = query.value(1).toString();
-            qDebug() << mesin << " " << mesin1;
-        }
+        return true;
+    }else{
+        qDebug() << "Failed connect to database";
+        return false;
     }
-    db.close();
+}
+
+void ControlMesin::database_get_list_mesin(){
+    QSqlQuery query;
+    int total = 0;
+    query.exec("SELECT get_list_mesin()");
+    if (!query.exec()){
+        qDebug() << "Query Statement get_list_mesin() error: " << query.lastError();
+    }
+    while(query.next()){
+        total += 1;
+        QString nomesin = query.value("nomesin").toString();
+        QString ipmesin = query.value("ipmesin").toString();
+        qDebug() << nomesin << " | " << ipmesin;
+        ui->listNomerMesin->addItem(nomesin);
+    }
+    qDebug() << "total: " << total;
 }
 
 ControlMesin::~ControlMesin()
