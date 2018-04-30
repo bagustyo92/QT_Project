@@ -88,10 +88,10 @@ QString MainWindow::getTitle(){
 void MainWindow::on_pushButton_controlMesin_clicked()
 {
     if (!controlMesin->database_connect()){
+        qDebug() << "SHOW WARNING FAILED CONNECT DATABASE";
+    } else {
         controlMesin->database_get_list_mesin();
         controlMesin->database_get_list_pending_transaksi();
         controlMesin->showFullScreen();
-    } else {
-        qDebug() << "SHOW WARNING FAILED CONNECT DATABASE";
     }
 }
