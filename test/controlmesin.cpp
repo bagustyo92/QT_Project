@@ -66,6 +66,7 @@ void ControlMesin::database_get_list_mesin(){
         total += 1;
         QString nomesin = query.value("nomesin").toString();
         QString ipmesin = query.value("ipmesin").toString();
+        qDebug() << "No: " << nomesin <<  " | Ip: " << ipmesin;
         ui->listNomerMesin->addItem(nomesin);
     }
     qDebug() << "total mesin: " << total;
@@ -81,8 +82,9 @@ void ControlMesin::database_get_list_pending_transaksi(){
     while(query.next()){
         total += 1;
         QString noresi = query.value("resi").toString();
-        int cuci_stat = query.value("resi").toInt();
-        int kering_stat = query.value("resi").toInt();
+        int cuci_stat = query.value("cuci").toInt();
+        int kering_stat = query.value("kering").toInt();
+        qDebug() << "No Resi: " << noresi <<  " | cuci_status: " << cuci_stat << " | kering_status: " << kering_stat;
         ui->listNomerMesin->addItem(noresi);
     }
     qDebug() << "total resi: " << total;
