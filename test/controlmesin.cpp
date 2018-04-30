@@ -71,6 +71,14 @@ void ControlMesin::database_control_mesin_action(int action){
     query.bindValue(":nomesin", ui->listNomerMesin->currentText());
     query.bindValue(":resi", ui->listResi->currentText());
     query.bindValue(":action", action);
+    query.exec();
+    if (!query.exec()){
+        qDebug() << "Query Statement control_mesin() error: " << query.lastError();
+    }
+    while(query.next()){
+        QString status = query.value(0).toString();
+        qDebug() << "Status: " << status;
+    }
 }
 
 void ControlMesin::database_get_list_pending_transaksi(){
@@ -119,6 +127,10 @@ void ControlMesin::on_pushButton_kering_clicked()
                                                               QMessageBox::Yes | QMessageBox::No);
     if (reply==QMessageBox::Yes){
         //Some Action Here
+        QSqlDatabase *db;
+        db = database_connect();
+        database_control_mesin_action(2);
+        db->close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button kering";
@@ -136,6 +148,10 @@ void ControlMesin::on_pushButton_cuci_clicked()
 
     if (reply == QMessageBox::Yes){
         //Some Action Here
+        QSqlDatabase *db;
+        db = database_connect();
+        database_control_mesin_action(1);
+        db->close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button cuci";

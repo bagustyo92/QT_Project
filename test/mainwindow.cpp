@@ -91,6 +91,6 @@ void MainWindow::on_pushButton_controlMesin_clicked()
     db = controlMesin->database_connect();
     controlMesin->database_get_list_mesin();
     controlMesin->database_get_list_pending_transaksi();
-
+    db->close();
     controlMesin->showFullScreen();
 }
