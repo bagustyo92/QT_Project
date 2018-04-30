@@ -31,7 +31,7 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui->pushButton_3->setStyleSheet(BUTTON_COLOR);
 }
 
-QSqlDatabase* ControlMesin::database_connect(){
+bool ControlMesin::database_connect(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName("172.16.2.200");
     db.setPort(5432);
@@ -41,10 +41,11 @@ QSqlDatabase* ControlMesin::database_connect(){
     bool ok = db.open();
     if (ok){
         qDebug() << "connected to database";
-        return &db;
+        return true;
     }else{
         qDebug() << "Failed connect to database";
         db.close();
+        return false;
     }
 }
 
@@ -127,10 +128,7 @@ void ControlMesin::on_pushButton_kering_clicked()
                                                               QMessageBox::Yes | QMessageBox::No);
     if (reply==QMessageBox::Yes){
         //Some Action Here
-        QSqlDatabase *db;
-        db = database_connect();
         database_control_mesin_action(2);
-        db->close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button kering";
@@ -148,10 +146,7 @@ void ControlMesin::on_pushButton_cuci_clicked()
 
     if (reply == QMessageBox::Yes){
         //Some Action Here
-        QSqlDatabase *db;
-        db = database_connect();
         database_control_mesin_action(1);
-        db->close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button cuci";
