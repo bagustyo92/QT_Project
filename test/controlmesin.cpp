@@ -46,6 +46,7 @@ void ControlMesin::database_connect(){
     if (ok){
         qDebug() << "connected to database";
         database_get_list_mesin();
+        database_get_list_pending_transaksi();
     }else{
         qDebug() << "Failed connect to database";
     }
