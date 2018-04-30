@@ -43,7 +43,7 @@ bool ControlMesin::database_connect(){
     db.setHostName("172.16.2.200");
     db.setPort(5432);
     db.setUserName("enco");
-    db.setPassword("encolaundry14");
+    db.setPassword("encoreader14");
     db.setDatabaseName("dbenco");
     bool ok = db.open();
     if (ok){
