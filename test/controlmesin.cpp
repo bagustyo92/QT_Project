@@ -50,6 +50,7 @@ bool ControlMesin::database_connect(){
 }
 
 void ControlMesin::database_get_list_mesin(){
+    ui->listNomerMesin->clear();
     QSqlQuery query;
     int total = 0;
     query.exec(GET_LIST_MESIN);
@@ -83,6 +84,7 @@ void ControlMesin::database_control_mesin_action(int action){
 }
 
 void ControlMesin::database_get_list_pending_transaksi(){
+    ui->listResi->clear();
     QSqlQuery query;
     int total = 0;
     query.exec(GET_LIST_RESI);
