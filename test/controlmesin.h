@@ -30,6 +30,7 @@ private slots:
 private:
     void database_get_list_mesin();
     void database_connect();
+    void database_get_list_pending_transaksi();
     Ui::ControlMesin *ui;
 };
 

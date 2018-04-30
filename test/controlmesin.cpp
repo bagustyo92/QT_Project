@@ -68,6 +68,22 @@ void ControlMesin::database_get_list_mesin(){
     qDebug() << "total: " << total;
 }
 
+void ControlMesin::database_get_list_pending_transaksi(){
+    QSqlQuery query;
+    int total = 0;
+    query.exec("SELECT get_list_pending_transaksi()");
+    if (!query.exec("SELECT get_list_pending_transaksi()")){
+        qDebug() << "Query Statement get_list_pending_transaksi() error: " << query.lastError();
+    }
+    while(query.next()){
+        total += 1;
+        QString noresi = query.value(0).toString();
+        qDebug() << noresi;
+        ui->listNomerMesin->addItem(noresi);
+    }
+    qDebug() << "total: " << total;
+}
+
 ControlMesin::~ControlMesin()
 {
     delete ui;
