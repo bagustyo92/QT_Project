@@ -89,7 +89,6 @@ QString MainWindow::getTitle(){
 void MainWindow::on_pushButton_controlMesin_clicked()
 {
     if (!controlMesin->database_connect()){
-        qDebug() << "SHOW WARNING FAILED CONNECT DATABASE";
         QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
     } else {
         controlMesin->database_get_list_mesin();

@@ -132,8 +132,8 @@ void ControlMesin::on_pushButton_kering_clicked()
     if (reply==QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(2);
-        database_get_list_mesin();
-        database_get_list_pending_transaksi();
+        QMessageBox::information(this, "SUKSES!", "Berhasil Melakukan KERING!");
+        close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button kering";
@@ -152,8 +152,8 @@ void ControlMesin::on_pushButton_cuci_clicked()
     if (reply == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(1);
-        database_get_list_mesin();
-        database_get_list_pending_transaksi();
+        QMessageBox::information(this, "SUKSES!", "Berhasil Melakukan CUCI!");
+        close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button cuci";
