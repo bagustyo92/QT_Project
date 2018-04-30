@@ -7,6 +7,8 @@
 #include <QtSql/QSqlError>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+#define GET_LIST_MESIN "SELECT * FROM get_list_mesin()"
+#define GET_LIST_RESI "SELECT * FROM get_list_pending_transaksi()"
 
 ControlMesin::ControlMesin(QWidget *parent) :
     QDialog(parent),
@@ -56,33 +58,34 @@ void ControlMesin::database_connect(){
 void ControlMesin::database_get_list_mesin(){
     QSqlQuery query;
     int total = 0;
-    query.exec("SELECT get_list_mesin()");
-    if (!query.exec("SELECT get_list_mesin()")){
+    query.exec(GET_LIST_MESIN);
+    if (!query.exec(GET_LIST_MESIN)){
         qDebug() << "Query Statement get_list_mesin() error: " << query.lastError();
     }
     while(query.next()){
         total += 1;
-        QString nomesin = query.value(0).toString();
-        qDebug() << nomesin;
+        QString nomesin = query.value("nomesin").toString();
+        QString ipmesin = query.value("ipmesin").toString();
         ui->listNomerMesin->addItem(nomesin);
     }
-    qDebug() << "total: " << total;
+    qDebug() << "total mesin: " << total;
 }
 
 void ControlMesin::database_get_list_pending_transaksi(){
     QSqlQuery query;
     int total = 0;
-    query.exec("SELECT get_list_pending_transaksi()");
-    if (!query.exec("SELECT get_list_pending_transaksi()")){
+    query.exec(GET_LIST_RESI);
+    if (!query.exec(GET_LIST_RESI)){
         qDebug() << "Query Statement get_list_pending_transaksi() error: " << query.lastError();
     }
     while(query.next()){
         total += 1;
-        QString noresi = query.value(0).toString();
-        qDebug() << noresi;
+        QString noresi = query.value("resi").toString();
+        int cuci_stat = query.value("resi").toInt();
+        int kering_stat = query.value("resi").toInt();
         ui->listNomerMesin->addItem(noresi);
     }
-    qDebug() << "total: " << total;
+    qDebug() << "total resi: " << total;
 }
 
 ControlMesin::~ControlMesin()
