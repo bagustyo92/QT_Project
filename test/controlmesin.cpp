@@ -5,11 +5,15 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
+#include <QVector>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
 #define GET_LIST_MESIN "SELECT * FROM get_list_mesin()"
 #define GET_LIST_RESI "SELECT * FROM get_list_pending_transaksi()"
+
+QVector <int> list_cuci_stat;
+QVector <int> list_kering_stat;
 
 ControlMesin::ControlMesin(QWidget *parent) :
     QDialog(parent),
@@ -22,9 +26,6 @@ ControlMesin::ControlMesin(QWidget *parent) :
 
     QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
-
-    ui->pushButton_cuci->setDisabled(true);
-    ui->pushButton_kering->setDisabled(true);
 
     ui->listNomerMesin->setStyleSheet(BUTTON_COLOR);
     ui->listResi->setStyleSheet(BUTTON_COLOR);
@@ -96,8 +97,12 @@ void ControlMesin::database_get_list_pending_transaksi(){
         QString noresi = query.value("resi").toString();
         int cuci_stat = query.value("cuci").toInt();
         int kering_stat = query.value("kering").toInt();
+        list_cuci_stat.append(cuci_stat);
+        list_kering_stat.append(kering_stat);
         ui->listResi->addItem(noresi);
     }
+    qDebug() << list_cuci_stat.length();
+    qDebug() << list_kering_stat.length();
     qDebug() << "GET LIST RESI";
     qDebug() << "total resi: " << total;
 }
@@ -105,13 +110,6 @@ void ControlMesin::database_get_list_pending_transaksi(){
 ControlMesin::~ControlMesin()
 {
     delete ui;
-}
-
-
-void ControlMesin::on_listNomerMesin_activated(const QString &arg1)
-{
-    ui->pushButton_cuci->setDisabled(false);
-    ui->pushButton_kering->setDisabled(false);
 }
 
 void ControlMesin::on_pushButton_3_clicked()
