@@ -46,7 +46,8 @@ char *paket;
 
 void MainWindow::onStatusConnect(){
     if (!connectingElm.getStatus()){
-        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke Server ELM!");
+        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke SERVER ELM!");
+        qDebug() << "Failed Connect to Server";
     } else {
         cardReader->showFullScreen();
     }
@@ -89,6 +90,7 @@ void MainWindow::on_pushButton_controlMesin_clicked()
 {
     if (!controlMesin->database_connect()){
         qDebug() << "SHOW WARNING FAILED CONNECT DATABASE";
+        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
     } else {
         controlMesin->database_get_list_mesin();
         controlMesin->database_get_list_pending_transaksi();
