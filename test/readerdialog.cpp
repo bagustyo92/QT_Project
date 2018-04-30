@@ -54,6 +54,6 @@ ReaderDialog::~ReaderDialog()
 
 void ReaderDialog::on_backButton_clicked()
 {
-    MainWindow *mainWindow = new MainWindow(this);
-    mainWindow->showFullScreen();
+//    MainWindow *mainWindow = new MainWindow(this);
+//    mainWindow->showFullScreen();
 }

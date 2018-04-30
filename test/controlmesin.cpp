@@ -56,14 +56,13 @@ void ControlMesin::database_get_list_mesin(){
     QSqlQuery query;
     int total = 0;
     query.exec("SELECT get_list_mesin()");
-    if (!query.exec()){
+    if (!query.exec("SELECT get_list_mesin()")){
         qDebug() << "Query Statement get_list_mesin() error: " << query.lastError();
     }
     while(query.next()){
         total += 1;
-        QString nomesin = query.value("nomesin").toString();
-        QString ipmesin = query.value("ipmesin").toString();
-        qDebug() << nomesin << " | " << ipmesin;
+        QString nomesin = query.value(0).toString();
+        qDebug() << nomesin;
         ui->listNomerMesin->addItem(nomesin);
     }
     qDebug() << "total: " << total;
