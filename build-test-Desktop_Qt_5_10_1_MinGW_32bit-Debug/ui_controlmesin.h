@@ -34,6 +34,8 @@ public:
     QSpacerItem *verticalSpacer;
     QFrame *line_2;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_15;
+    QSpacerItem *horizontalSpacer_11;
     QVBoxLayout *verticalLayout_3;
     QLabel *label;
     QSpacerItem *verticalSpacer_5;
@@ -45,12 +47,16 @@ public:
     QLabel *label_2;
     QSpacerItem *verticalSpacer_4;
     QComboBox *listResi;
+    QSpacerItem *horizontalSpacer_12;
+    QSpacerItem *horizontalSpacer_16;
     QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_13;
     QPushButton *pushButton_cuci;
     QSpacerItem *horizontalSpacer_6;
     QFrame *line_4;
     QSpacerItem *horizontalSpacer_5;
     QPushButton *pushButton_kering;
+    QSpacerItem *horizontalSpacer_14;
     QFrame *line;
     QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout_3;
@@ -67,7 +73,7 @@ public:
     {
         if (ControlMesin->objectName().isEmpty())
             ControlMesin->setObjectName(QStringLiteral("ControlMesin"));
-        ControlMesin->resize(479, 387);
+        ControlMesin->resize(571, 433);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -130,6 +136,14 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         horizontalLayout->setContentsMargins(-1, -1, -1, 0);
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_15);
+
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_11);
+
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         label = new QLabel(ControlMesin);
@@ -202,11 +216,23 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_4);
 
+        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_12);
+
+        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_16);
+
 
         verticalLayout_2->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_13);
+
         pushButton_cuci = new QPushButton(ControlMesin);
         pushButton_cuci->setObjectName(QStringLiteral("pushButton_cuci"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -247,6 +273,10 @@ public:
         pushButton_kering->setFont(font3);
 
         horizontalLayout_2->addWidget(pushButton_kering);
+
+        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_14);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
