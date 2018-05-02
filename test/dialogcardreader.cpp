@@ -44,7 +44,7 @@ void DialogCardReader::onServerReply(){
                                                                      QMessageBox::Yes);
             if (reply==QMessageBox::Yes){
                 char *message;
-                message = "unknown";
+                message = "cancel";
                 getConnection->StartConnection(message);
             }
         } else {

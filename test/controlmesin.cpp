@@ -5,7 +5,6 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
-#include <QVector>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -35,13 +34,14 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui->pushButton_kering->setEnabled(false);
 }
 
-bool ControlMesin::database_connect(){
+
+bool ControlMesin::database_connect(QString hostName, QString port, QString userName, QString password,QString dbName){
     QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
-    db.setHostName("172.16.2.200");
-    db.setPort(5432);
-    db.setUserName("enco");
-    db.setPassword("encoreader14");
-    db.setDatabaseName("dbenco");
+    db.setHostName(hostName);
+    db.setPort(port.toInt());
+    db.setUserName(userName);
+    db.setPassword(password);
+    db.setDatabaseName(dbName);
     bool ok = db.open();
     if (ok){
         qDebug() << "connected to database";
@@ -57,7 +57,7 @@ void ControlMesin::database_get_list_mesin(){
     ui->listNomerMesin->clear();
     QSqlQuery query;
     int total = 0;
-    query.exec(GET_LIST_MESIN);
+//    query.exec(GET_LIST_MESIN);
     if (!query.exec(GET_LIST_MESIN)){
         qDebug() << "Query Statement get_list_mesin() error: " << query.lastError();
     }
@@ -77,7 +77,7 @@ void ControlMesin::database_control_mesin_action(int action){
     query.bindValue(":nomesin", ui->listNomerMesin->currentText());
     query.bindValue(":resi", ui->listResi->currentText());
     query.bindValue(":action", action);
-    query.exec();
+//    query.exec();
     if (!query.exec()){
         qDebug() << "Query Statement control_mesin() error: " << query.lastError();
     }
@@ -93,7 +93,7 @@ void ControlMesin::database_get_list_pending_transaksi(){
     ui->listResi->clear();
     QSqlQuery query;
     int total = 0;
-    query.exec(GET_LIST_RESI);
+//    query.exec(GET_LIST_RESI);
     if (!query.exec(GET_LIST_RESI)){
         qDebug() << "Query Statement get_list_pending_transaksi() error: " << query.lastError();
     }

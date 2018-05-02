@@ -1,0 +1,117 @@
+    /*
+        C socket server example
+    */
+#include<time.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>    //strlen
+#include<sys/socket.h>
+#include<arpa/inet.h> //inet_addr
+#include<unistd.h>    //write
+    // #include <json.h>   //import JSON
+
+void delay(int number_of_seconds)
+{
+    // Converting time into milli_seconds
+    int milli_seconds = 1000 * number_of_seconds;
+ 
+    // Stroing start time
+    clock_t start_time = clock();
+ 
+    // looping till required time is not acheived
+    while (clock() < start_time + milli_seconds)
+        ;
+}
+
+int main(int argc , char *argv[])
+{
+    int socket_desc , client_sock , c , read_size;
+    struct sockaddr_in server , client;
+    char client_message[2000];
+    char server_message[2000] = "OK";
+    char server_sent[2000] = "NO";
+
+
+            //Create socket
+    socket_desc = socket(AF_INET , SOCK_STREAM , 0);
+    if (socket_desc == -1)
+    {
+        printf("Could not create socket");
+    }
+    puts("Socket created");
+
+        //Prepare the sockaddr_in structure
+    server.sin_family = AF_INET;
+    server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_port = htons( 8888 );
+
+        //Bind
+            // setsockopt(mysocket, SOL_SOCKET, SO_REUSEADDR, &value, sizeof(value)
+    if( bind(socket_desc,(struct sockaddr *)&server, sizeof(struct sockaddr)) < 0)
+    {
+            //print the error message
+        perror("bind failed. Error");
+        return 1;
+    }
+    puts("bind done");
+
+        //Listen
+
+    listen(socket_desc , 3);
+
+        //Accept and incoming connection
+    puts("Waiting for incoming connections...");
+    c = sizeof(struct sockaddr_in);
+
+        //accept connection from an incoming client
+    for(;;){
+        client_sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t*)&c);
+        if (client_sock < 0)
+        {
+            perror("accept failed");
+            return 1;
+        }
+        puts("Connection accepted");
+
+        //Receive a message from client
+        read_size = read(client_sock , client_message , sizeof(client_message));
+        while( read_size > 0 )
+        {
+            //Send the message back to client
+            printf("Client Said : ");
+            puts(client_message);
+            for (int i=0; i<2; i++){
+                write(client_sock , server_message , strlen(server_message));
+                memset( &client_message, 0, sizeof(client_message));
+                read_size = 0;
+                printf("Server Said : ");
+                puts(server_message);
+                delay(5000);
+            }
+	    printf("Server Said : ");
+	    puts(server_sent);
+            write(client_sock , server_sent , strlen(server_sent));
+            memset( &client_message, 0, sizeof(client_message));
+            read_size = 0;
+        }
+
+        if(read_size == 0)
+        {
+            puts("Client disconnected");
+            fflush(stdout);
+            shutdown(socket_desc, 1);
+            // close(socket_desc);
+        }
+        else if(read_size == -1)
+        {
+            perror("recv failed");
+        }
+    }
+
+    return 0;
+}
+
+// char * jsonFormatting(char * paket){
+//     struct json_object *jobj;
+//     char *val = "{tarif : }"
+// }

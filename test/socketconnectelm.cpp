@@ -20,7 +20,7 @@ void SocketConnectELM::StartConnection(const char *paket){
 
 
     qDebug() << "Connecting to the ELM ...";
-    socket->connectToHost("172.16.2.123", 8888);
+    socket->connectToHost("localhost", 8888);
 
     if (socket->waitForConnected(3000)){
         socket->write(paket);

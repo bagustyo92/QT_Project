@@ -14,7 +14,7 @@ class ControlMesin : public QDialog
 
 public:
     explicit ControlMesin(QWidget *parent = 0);
-    bool database_connect();
+    bool database_connect(QString hostName, QString port, QString userName, QString password,QString dbName);
     void database_get_list_mesin();
     void database_get_list_pending_transaksi();
     ~ControlMesin();

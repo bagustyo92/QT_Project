@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include <QtSql/QSqlDatabase>
+#include <QFile>
+#include <QTextStream>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -88,7 +90,42 @@ QString MainWindow::getTitle(){
 
 void MainWindow::on_pushButton_controlMesin_clicked()
 {
-    if (!controlMesin->database_connect()){
+    //read file for database config
+    QFile database_config("/var/elm/elm.conf");
+    if (!database_config.exists()){
+        QMessageBox::warning(this, "PERINGATAN!", "Failed read databaseconfig file(var/elm/elm.conf). error: " + database_config.errorString());
+    } else {
+        qDebug() << "Reading database ...";
+    }
+
+    QString line, hostName, port, userName, password, dbName;
+
+    if (database_config.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QTextStream stream(&database_config);
+        while(!stream.atEnd()){
+            line = stream.readLine();
+            if(line.split('=').first() == "PCDS_ADDRESS"){
+                hostName = line.split('=').last();
+            }
+            if(line.split('=').first() == "PCDS_PORT"){
+                port = line.split('=').last();
+            }
+            if(line.split('=').first() == "PCDS_DB"){
+                dbName = line.split('=').last();
+            }
+            if(line.split('=').first() == "PCDS_USER"){
+                userName = line.split('=').last();
+            }
+            if(line.split('=').first() == "PCDS_PASSWD"){
+                password = line.split('=').last();
+            }
+        }
+    }
+    database_config.close();
+
+
+    //connect to database and get list mesin + list resi
+    if (!controlMesin->database_connect(hostName, port, userName, password, dbName)){
         QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
     } else {
         controlMesin->database_get_list_mesin();
