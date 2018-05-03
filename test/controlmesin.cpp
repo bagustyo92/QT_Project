@@ -124,10 +124,11 @@ void ControlMesin::on_pushButton_3_clicked()
 void ControlMesin::on_pushButton_kering_clicked()
 {
 //    some Action Here
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Konfirmasi Pengeringan " +
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Konfirmasi PENGERINGAN Mesin " +
                                                               ui->listNomerMesin->currentText(),
-                                                              "Apakah anda yakin ingin melakukan \nPENGERINGAN pada "
-                                                              + ui->listNomerMesin->currentText() + "?",
+                                                              "Apakah anda yakin ingin melakukan \nPENGERINGAN pada MESIN-"
+                                                              + ui->listNomerMesin->currentText() + "\nUntuk no. RESI-"
+                                                              + ui->listResi->currentText() + " ?",
                                                               QMessageBox::Yes | QMessageBox::No);
     if (reply==QMessageBox::Yes){
         //Some Action Here
@@ -143,10 +144,11 @@ void ControlMesin::on_pushButton_kering_clicked()
 void ControlMesin::on_pushButton_cuci_clicked()
 {
 //    some action here
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Konfirmasi Pencucian " +
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Konfirmasi PENCUCIAN Mesin " +
                                                               ui->listNomerMesin->currentText(),
-                                                              "Apakah anda yakin ingin melakukan \nPENCUCIAN pada "
-                                                              + ui->listNomerMesin->currentText() + "?",
+                                                              "Apakah anda yakin ingin melakukan \nPENCUCIAN pada MESIN-"
+                                                              + ui->listNomerMesin->currentText() + "\nUntuk no. RESI-"
+                                                              + ui->listResi->currentText() + " ?",
                                                               QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes){

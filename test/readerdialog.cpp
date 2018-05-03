@@ -11,6 +11,7 @@ ReaderDialog::ReaderDialog(QWidget *parent) :
     ui->setupUi(this);
 
     ui->backButton->setStyleSheet(BUTTON_BACK);
+    ui->reprint_button->setStyleSheet(BUTTON_BACK);
 
     QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
@@ -37,7 +38,7 @@ void ReaderDialog::setLabelText(QString val, int label)
     }
     switch (label) {
     case 1:
-        ui->paymentStatusLabel->setText("TRANSAKSI PAKET " + val + " BERHASIL!");
+        ui->paymentStatusLabel->setText("STATUS TRANSAKSI PAKET " + val + " : ");
         break;
     case 2:
         ui->labelCurrentBalance->setText(val);
@@ -56,4 +57,11 @@ void ReaderDialog::on_backButton_clicked()
 {
 //    MainWindow *mainWindow = new MainWindow(this);
 //    mainWindow->showFullScreen();
+}
+
+void ReaderDialog::on_reprint_button_clicked()
+{
+    char * text = "REPRINT";
+    getConnection = new SocketConnectELM;
+    getConnection->StartConnection(text);
 }
