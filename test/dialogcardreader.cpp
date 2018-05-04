@@ -39,14 +39,14 @@ void DialogCardReader::onServerReply(){
     getConnection = new SocketConnectELM(this);
     if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
         if (getConnection->getMessage() == "KARTU TIDAK DIKENAL"){
-            QMessageBox::StandardButton reply = QMessageBox::warning(this, "PERINGATAN..!",
-                                                                     "Kartu yang Anda TAP TIDAK DIKENAL!",
-                                                                     QMessageBox::Yes);
-            if (reply==QMessageBox::Yes){
-                char *message;
-                message = "cancel";
-                getConnection->StartConnection(message);
-            }
+            QMessageBox reply (QMessageBox::Warning, "PERINGATAN..!", "Kartu yang Anda TAP TIDAK DIKENAL!",
+                               QMessageBox::Ok, this, Qt::FramelessWindowHint);
+            reply.exec();
+//            if (QMessageBox::Ok){
+//                char *message;
+//                message = "cancel";
+//                getConnection->StartConnection(message);
+//            }
         } else {
             status_close = true;
             readerDialog = new ReaderDialog(this);

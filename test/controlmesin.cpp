@@ -129,16 +129,17 @@ void ControlMesin::on_pushButton_3_clicked()
 void ControlMesin::on_pushButton_kering_clicked()
 {
 //    some Action Here
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Konfirmasi PENGERINGAN Mesin " +
-                                                              ui->listNomerMesin->currentText(),
-                                                              "Apakah anda yakin ingin melakukan \nPENGERINGAN pada MESIN-"
-                                                              + ui->listNomerMesin->currentText() + "\nUntuk no. RESI-"
-                                                              + ui->listResi->currentText() + " ?",
-                                                              QMessageBox::Yes | QMessageBox::No);
-    if (reply==QMessageBox::Yes){
+    QMessageBox *msgBox = new QMessageBox (QMessageBox::Question, "Konfirmasi PENGERINGAN Mesin " + ui->listNomerMesin->currentText(),
+                       "Apakah anda yakin ingin melakukan \nPENGERINGAN pada MESIN-" + ui->listNomerMesin->currentText() +
+                       "\nUntuk no. RESI-" + ui->listResi->currentText() + " ?", QMessageBox::Yes | QMessageBox::No,
+                       this, Qt::FramelessWindowHint);
+//    reply.exec();
+    if (msgBox->exec() == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(2);
-        QMessageBox::information(this, "SUKSES!", "Berhasil Melakukan KERING!");
+        QMessageBox info (QMessageBox::Information, "SUKSES!", "Berhasil Melakukan KERING!", QMessageBox::Ok,
+                          this, Qt::FramelessWindowHint);
+        info.exec();
         ui->pushButton_cuci->setEnabled(false);
         ui->pushButton_kering->setEnabled(false);
         close();
@@ -151,17 +152,19 @@ void ControlMesin::on_pushButton_kering_clicked()
 void ControlMesin::on_pushButton_cuci_clicked()
 {
 //    some action here
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Konfirmasi PENCUCIAN Mesin " +
-                                                              ui->listNomerMesin->currentText(),
-                                                              "Apakah anda yakin ingin melakukan \nPENCUCIAN pada MESIN-"
-                                                              + ui->listNomerMesin->currentText() + "\nUntuk no. RESI-"
-                                                              + ui->listResi->currentText() + " ?",
-                                                              QMessageBox::Yes | QMessageBox::No);
-
-    if (reply == QMessageBox::Yes){
+//    QMessageBox::StandardButton reply = QMessageBox::Yes;
+    QMessageBox *msgBox = new QMessageBox(QMessageBox::Question, "Konfirmasi PENCUCIAN Mesin " +
+                       ui->listNomerMesin->currentText(), "Apakah anda yakin ingin melakukan \nPENCUCIAN pada MESIN-"
+                       + ui->listNomerMesin->currentText() + "\nUntuk no. RESI-" + ui->listResi->currentText() + " ?",
+                       QMessageBox::Yes | QMessageBox::No, this, Qt::FramelessWindowHint);
+//    msgBox.exec();
+//    reply = msgBox;
+    if (msgBox->exec() == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(1);
-        QMessageBox::information(this, "SUKSES!", "Berhasil Melakukan CUCI!");
+        QMessageBox info (QMessageBox::Information, "SUKSES!", "Berhasil Melakukan CUCI!",
+                          QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        info.exec();
         ui->pushButton_cuci->setEnabled(false);
         ui->pushButton_kering->setEnabled(false);
         close();
