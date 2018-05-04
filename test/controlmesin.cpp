@@ -20,6 +20,9 @@ ControlMesin::ControlMesin(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->pushButton_cuci->setEnabled(false);
+    ui->pushButton_kering->setEnabled(false);
+
     QString dir = QCoreApplication::applicationDirPath();
     qDebug() << dir;
 
@@ -30,8 +33,8 @@ ControlMesin::ControlMesin(QWidget *parent) :
     ui->listResi->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_3->setStyleSheet(BUTTON_COLOR);
 
-    ui->pushButton_cuci->setEnabled(false);
-    ui->pushButton_kering->setEnabled(false);
+    ui->listNomerMesin->addItem("SILAHKAN PILIH NOMER MESIN :");
+    ui->listResi->addItem("SILAHKAN PILIH NOMER RESI :");
 }
 
 
@@ -61,6 +64,7 @@ void ControlMesin::database_get_list_mesin(){
     if (!query.exec(GET_LIST_MESIN)){
         qDebug() << "Query Statement get_list_mesin() error: " << query.lastError();
     }
+//    ui->listNomerMesin->addItem("SILAHKAN PILIH MESIN :");
     while(query.next()){
         total += 1;
         QString nomesin = query.value("nomesin").toString();
@@ -97,6 +101,7 @@ void ControlMesin::database_get_list_pending_transaksi(){
     if (!query.exec(GET_LIST_RESI)){
         qDebug() << "Query Statement get_list_pending_transaksi() error: " << query.lastError();
     }
+//    ui->listResi->addItem("SILAHKAN PILIH RESI: ");
     while(query.next()){
         total += 1;
         QString noresi = query.value("resi").toString();
@@ -134,6 +139,8 @@ void ControlMesin::on_pushButton_kering_clicked()
         //Some Action Here
         database_control_mesin_action(2);
         QMessageBox::information(this, "SUKSES!", "Berhasil Melakukan KERING!");
+        ui->pushButton_cuci->setEnabled(false);
+        ui->pushButton_kering->setEnabled(false);
         close();
     } else {
         //Some Action Here
@@ -155,6 +162,8 @@ void ControlMesin::on_pushButton_cuci_clicked()
         //Some Action Here
         database_control_mesin_action(1);
         QMessageBox::information(this, "SUKSES!", "Berhasil Melakukan CUCI!");
+        ui->pushButton_cuci->setEnabled(false);
+        ui->pushButton_kering->setEnabled(false);
         close();
     } else {
         //Some Action Here

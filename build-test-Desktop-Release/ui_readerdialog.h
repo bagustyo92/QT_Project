@@ -36,12 +36,6 @@ public:
     QLabel *labelCurrentBalance;
     QFrame *line;
     QSpacerItem *verticalSpacer_3;
-    QHBoxLayout *horizontalLayout_8;
-    QSpacerItem *horizontalSpacer_3;
-    QSpacerItem *horizontalSpacer_7;
-    QPushButton *reprint_button;
-    QSpacerItem *horizontalSpacer_8;
-    QSpacerItem *horizontalSpacer_4;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QSpacerItem *horizontalSpacer_5;
@@ -147,39 +141,6 @@ public:
 
         verticalLayout->addItem(verticalSpacer_3);
 
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer_3);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer_7);
-
-        reprint_button = new QPushButton(ReaderDialog);
-        reprint_button->setObjectName(QStringLiteral("reprint_button"));
-        sizePolicy.setHeightForWidth(reprint_button->sizePolicy().hasHeightForWidth());
-        reprint_button->setSizePolicy(sizePolicy);
-        QFont font3;
-        font3.setPointSize(25);
-        font3.setBold(true);
-        font3.setWeight(75);
-        reprint_button->setFont(font3);
-
-        horizontalLayout_8->addWidget(reprint_button);
-
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer_8);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer_4);
-
-
-        verticalLayout->addLayout(horizontalLayout_8);
-
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
@@ -195,6 +156,10 @@ public:
         backButton->setObjectName(QStringLiteral("backButton"));
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
+        QFont font3;
+        font3.setPointSize(25);
+        font3.setBold(true);
+        font3.setWeight(75);
         backButton->setFont(font3);
 
         horizontalLayout->addWidget(backButton);
@@ -227,7 +192,6 @@ public:
         image_label->setText(QApplication::translate("ReaderDialog", "TAMPILAN PAKET PILIHAN", Q_NULLPTR));
         paymentStatusLabel->setText(QApplication::translate("ReaderDialog", "STATUS TRANSAKSI :", Q_NULLPTR));
         labelCurrentBalance->setText(QApplication::translate("ReaderDialog", "- Informasi Saldo", Q_NULLPTR));
-        reprint_button->setText(QApplication::translate("ReaderDialog", "CETAK KEMBALI", Q_NULLPTR));
         backButton->setText(QApplication::translate("ReaderDialog", "<    KEMBALI", Q_NULLPTR));
     } // retranslateUi
 

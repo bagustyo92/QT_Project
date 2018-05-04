@@ -21,12 +21,6 @@ public:
 public slots :
     void setLabelText(QString val, int label);
 
-
-private slots:
-    void on_backButton_clicked();
-
-    void on_reprint_button_clicked();
-
 private:
     Ui::ReaderDialog *ui;
     SocketConnectELM *getConnection;

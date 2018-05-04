@@ -11,7 +11,6 @@ ReaderDialog::ReaderDialog(QWidget *parent) :
     ui->setupUi(this);
 
     ui->backButton->setStyleSheet(BUTTON_BACK);
-    ui->reprint_button->setStyleSheet(BUTTON_BACK);
 
     QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
@@ -51,17 +50,4 @@ void ReaderDialog::setLabelText(QString val, int label)
 ReaderDialog::~ReaderDialog()
 {
     delete ui;
-}
-
-void ReaderDialog::on_backButton_clicked()
-{
-//    MainWindow *mainWindow = new MainWindow(this);
-//    mainWindow->showFullScreen();
-}
-
-void ReaderDialog::on_reprint_button_clicked()
-{
-    char * text = "REPRINT";
-    getConnection = new SocketConnectELM;
-    getConnection->StartConnection(text);
 }
