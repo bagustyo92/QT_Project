@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\readerdialog.o
+./debug\controlmesin.o
+./debug\socketconnectelm.o
+./debug\dialogcardreader.o
+./debug\pendaftaranwindow.o
+./debug\qrc_resouces.o
+./debug\moc_mainwindow.o
+./debug\moc_readerdialog.o
+./debug\moc_controlmesin.o
+./debug\moc_socketconnectelm.o
+./debug\moc_dialogcardreader.o
+./debug\moc_pendaftaranwindow.o
+);

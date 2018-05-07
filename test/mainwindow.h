@@ -5,6 +5,7 @@
 #include "controlmesin.h"
 #include "socketconnectelm.h"
 #include "dialogcardreader.h"
+#include "pendaftaranwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,11 +29,14 @@ private slots:
     void on_pushButton_cuciKering_clicked();
     void on_pushButton_controlMesin_clicked();
 
+    void on_pushButton_addMemberCard_clicked();
+
 private:
     Ui::MainWindow *ui;
     SocketConnectELM *socketConnect;
     ControlMesin *controlMesin;
     DialogCardReader *cardReader;
+    PendaftaranWindow *daftarWindow;
 };
 
 #endif // MAINWINDOW_H

@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_cuciKering->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_cuciLipat->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_cuciSetrika->setStyleSheet(BUTTON_COLOR);
+    ui->pushButton_addMemberCard->setStyleSheet(BUTTON_COLOR);
 
     controlMesin = new ControlMesin(this);
     cardReader = new DialogCardReader(this);
@@ -142,4 +143,10 @@ void MainWindow::on_pushButton_controlMesin_clicked()
         controlMesin->database_get_list_pending_transaksi();
         controlMesin->showFullScreen();
     }
+}
+
+void MainWindow::on_pushButton_addMemberCard_clicked()
+{
+    daftarWindow = new PendaftaranWindow(this);
+    daftarWindow->showFullScreen();
 }
