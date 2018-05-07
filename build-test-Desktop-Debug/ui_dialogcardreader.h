@@ -51,7 +51,7 @@ public:
     {
         if (DialogCardReader->objectName().isEmpty())
             DialogCardReader->setObjectName(QStringLiteral("DialogCardReader"));
-        DialogCardReader->resize(538, 300);
+        DialogCardReader->resize(726, 300);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);

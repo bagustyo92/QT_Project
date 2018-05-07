@@ -8,6 +8,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QFile>
 #include <QTextStream>
+#include <QThread>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -60,6 +61,7 @@ void MainWindow::onStatusConnect(){
 
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
+    QThread::sleep(2);
     paket = "1";
     connectingElm.StartConnection(paket);
     onStatusConnect();
@@ -67,6 +69,7 @@ void MainWindow::on_pushButton_cuciSetrika_clicked()
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
+    QThread::sleep(2);
     paket = "2";
     connectingElm.StartConnection(paket);
     onStatusConnect();
@@ -74,6 +77,7 @@ void MainWindow::on_pushButton_cuciLipat_clicked()
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
+    QThread::sleep(2);
     paket = "3";
     connectingElm.StartConnection(paket);
     onStatusConnect();

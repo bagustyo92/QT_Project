@@ -4,6 +4,8 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QPixmap>
+#include <QMovie>
+#include <QThread>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -27,7 +29,7 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
     QPixmap pix(":/resources/img/Kain Wangi logo.png");
     ui->image_label->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
 
-    ui->labelPicture->setText("SILAHKAN TAP KARTU ANDA!");
+    ui->labelPicture->setText("SILAHKAN TEMPELKAN KARTU ANDA!");
 
     ui->nextButton->setEnabled(false);
 }
@@ -69,6 +71,11 @@ DialogCardReader::~DialogCardReader()
 
 void DialogCardReader::on_backButton_clicked()
 {
+//    QMovie *movie = new QMovie(":/resources/img/Spinner-black.gif");
+//    ui->loadingGIF->setMovie(movie);
+//    movie->start();
+//    qApp->processEvents();
+//    QThread::sleep(2);
     char *val = "cancel";
     getConnection = new SocketConnectELM(this);
     getConnection->StartConnection(val);
