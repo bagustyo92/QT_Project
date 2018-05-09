@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QThread>
+#include <QDateTime>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -22,7 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_menuUtama->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
 
     QPixmap mytag(":/resources/img/may_tag.png");
-    ui->maytag_label->setPixmap(mytag.scaled(100, 100, Qt::KeepAspectRatio));
+    ui->maytag_label->setPixmap(mytag.scaled(110, 110, Qt::KeepAspectRatio));
+    ui->mytag_label2->setPixmap(mytag.scaled(110,110, Qt::KeepAspectRatio));
 
     ui->pushButton_ambilCucian->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_controlMesin->setStyleSheet(BUTTON_COLOR);
@@ -30,6 +32,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_cuciLipat->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_cuciSetrika->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_addMemberCard->setStyleSheet(BUTTON_COLOR);
+
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimeChanged()));
+    timer->start(1000);
 
     controlMesin = new ControlMesin(this);
     cardReader = new DialogCardReader(this);
@@ -48,6 +54,15 @@ void MainWindow::onServerReply(QString message){
 SocketConnectELM connectingElm;
 char *paket;
 
+void MainWindow::onTimeChanged(){
+    QTime time = QTime::currentTime();
+    QString time_text = time.toString("hh:mm");
+    if ((time.second() % 2) == 0){
+        time_text[2] = ' ';
+    }
+    ui->timeLabel->setText(time_text);
+}
+
 void MainWindow::onStatusConnect(){
     if (!connectingElm.getStatus()){
 //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke SERVER ELM!");
@@ -62,7 +77,7 @@ void MainWindow::onStatusConnect(){
 
 void MainWindow::on_pushButton_cuciSetrika_clicked()
 {
-    QThread::sleep(2);
+    QThread::sleep(1);
     paket = "1";
     connectingElm.StartConnection(paket);
     onStatusConnect();
@@ -70,7 +85,7 @@ void MainWindow::on_pushButton_cuciSetrika_clicked()
 
 void MainWindow::on_pushButton_cuciLipat_clicked()
 {
-    QThread::sleep(2);
+    QThread::sleep(1);
     paket = "2";
     connectingElm.StartConnection(paket);
     onStatusConnect();
@@ -78,7 +93,7 @@ void MainWindow::on_pushButton_cuciLipat_clicked()
 
 void MainWindow::on_pushButton_cuciKering_clicked()
 {
-    QThread::sleep(2);
+    QThread::sleep(1);
     paket = "3";
     connectingElm.StartConnection(paket);
     onStatusConnect();

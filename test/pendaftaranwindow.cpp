@@ -1,5 +1,7 @@
 #include "pendaftaranwindow.h"
 #include "ui_pendaftaranwindow.h"
+#include <QDateEdit>
+#include <QProcess>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -20,4 +22,11 @@ PendaftaranWindow::PendaftaranWindow(QWidget *parent) :
 PendaftaranWindow::~PendaftaranWindow()
 {
     delete ui;
+}
+void PendaftaranWindow::on_lineEdit_Name_returnPressed()
+{
+    QProcess *process = new QProcess();
+    process->start("/var/kainwangi/start_keyboard.sh");
+    process->waitForFinished();
+    delete process;
 }

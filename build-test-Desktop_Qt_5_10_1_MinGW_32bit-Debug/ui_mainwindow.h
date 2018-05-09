@@ -75,7 +75,14 @@ public:
     QSpacerItem *horizontalSpacer_19;
     QSpacerItem *verticalSpacer_6;
     QFrame *line_2;
+    QHBoxLayout *horizontalLayout_6;
+    QSpacerItem *horizontalSpacer_22;
     QLabel *maytag_label;
+    QSpacerItem *horizontalSpacer_24;
+    QLabel *timeLabel;
+    QSpacerItem *horizontalSpacer_25;
+    QLabel *mytag_label2;
+    QSpacerItem *horizontalSpacer_23;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -84,7 +91,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(727, 630);
+        MainWindow->resize(779, 926);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -392,18 +399,72 @@ public:
 
         verticalLayout_2->addWidget(line_2);
 
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(2);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        horizontalSpacer_22 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_22);
+
         maytag_label = new QLabel(centralWidget);
         maytag_label->setObjectName(QStringLiteral("maytag_label"));
         sizePolicy.setHeightForWidth(maytag_label->sizePolicy().hasHeightForWidth());
         maytag_label->setSizePolicy(sizePolicy);
         maytag_label->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
 
-        verticalLayout_2->addWidget(maytag_label);
+        horizontalLayout_6->addWidget(maytag_label);
+
+        horizontalSpacer_24 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_24);
+
+        timeLabel = new QLabel(centralWidget);
+        timeLabel->setObjectName(QStringLiteral("timeLabel"));
+        sizePolicy.setHeightForWidth(timeLabel->sizePolicy().hasHeightForWidth());
+        timeLabel->setSizePolicy(sizePolicy);
+        QFont font1;
+        font1.setFamily(QStringLiteral("Consolas"));
+        font1.setPointSize(16);
+        font1.setBold(true);
+        font1.setUnderline(false);
+        font1.setWeight(75);
+        font1.setStrikeOut(false);
+        font1.setKerning(false);
+        timeLabel->setFont(font1);
+        timeLabel->setFrameShape(QFrame::Box);
+        timeLabel->setFrameShadow(QFrame::Plain);
+        timeLabel->setLineWidth(2);
+        timeLabel->setMidLineWidth(0);
+        timeLabel->setAlignment(Qt::AlignCenter);
+        timeLabel->setMargin(10);
+
+        horizontalLayout_6->addWidget(timeLabel);
+
+        horizontalSpacer_25 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_25);
+
+        mytag_label2 = new QLabel(centralWidget);
+        mytag_label2->setObjectName(QStringLiteral("mytag_label2"));
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(mytag_label2->sizePolicy().hasHeightForWidth());
+        mytag_label2->setSizePolicy(sizePolicy3);
+
+        horizontalLayout_6->addWidget(mytag_label2);
+
+        horizontalSpacer_23 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_23);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_6);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 727, 21));
+        menuBar->setGeometry(QRect(0, 0, 779, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -428,6 +489,8 @@ public:
         pushButton_controlMesin->setText(QApplication::translate("MainWindow", "CONTROL MESIN", nullptr));
         pushButton_addMemberCard->setText(QApplication::translate("MainWindow", "TAMBAH MEMBER CARD", nullptr));
         maytag_label->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        timeLabel->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        mytag_label2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

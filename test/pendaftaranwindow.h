@@ -15,6 +15,9 @@ public:
     explicit PendaftaranWindow(QWidget *parent = 0);
     ~PendaftaranWindow();
 
+private slots:
+    void on_lineEdit_Name_returnPressed();
+
 private:
     Ui::PendaftaranWindow *ui;
 };

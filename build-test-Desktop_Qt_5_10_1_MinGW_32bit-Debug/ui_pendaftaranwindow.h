@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -63,7 +64,7 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_11;
     QSpacerItem *horizontalSpacer_6;
-    QLineEdit *lineEdit_alamat;
+    QDateEdit *dateEdit;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_13;
     QSpacerItem *horizontalSpacer_7;
@@ -313,24 +314,26 @@ public:
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName(QStringLiteral("label_11"));
+        sizePolicy1.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
+        label_11->setSizePolicy(sizePolicy1);
         label_11->setFont(font1);
 
         horizontalLayout_6->addWidget(label_11);
 
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_6->addItem(horizontalSpacer_6);
 
-        lineEdit_alamat = new QLineEdit(centralwidget);
-        lineEdit_alamat->setObjectName(QStringLiteral("lineEdit_alamat"));
+        dateEdit = new QDateEdit(centralwidget);
+        dateEdit->setObjectName(QStringLiteral("dateEdit"));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::Text, brush1);
         palette3.setBrush(QPalette::Inactive, QPalette::Text, brush1);
         palette3.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-        lineEdit_alamat->setPalette(palette3);
-        lineEdit_alamat->setFont(font1);
+        dateEdit->setPalette(palette3);
+        dateEdit->setFont(font1);
 
-        horizontalLayout_6->addWidget(lineEdit_alamat);
+        horizontalLayout_6->addWidget(dateEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_6);
