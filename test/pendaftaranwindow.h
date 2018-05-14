@@ -2,6 +2,7 @@
 #define PENDAFTARANWINDOW_H
 
 #include <QMainWindow>
+#include <dialogcardreader.h>
 
 namespace Ui {
 class PendaftaranWindow;
@@ -16,10 +17,11 @@ public:
     ~PendaftaranWindow();
 
 private slots:
-    void on_lineEdit_Name_returnPressed();
+    void on_nextButton_clicked();
 
 private:
     Ui::PendaftaranWindow *ui;
+    DialogCardReader *tapCardDialog;
 };
 
 #endif // PENDAFTARANWINDOW_H

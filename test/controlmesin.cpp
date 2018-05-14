@@ -85,9 +85,29 @@ void ControlMesin::database_control_mesin_action(int action){
     if (!query.exec()){
         qDebug() << "Query Statement control_mesin() error: " << query.lastError();
     }
+    QString status_action;
     while(query.next()){
-        QString status = query.value(0).toString();
-        qDebug() << "Status: " << status;
+        status_action = query.value(0).toString();
+        qDebug() << "Status: " << status_action;
+    }
+
+    QString control_action;
+    if (action == 1){
+        control_action = "BERHASIL melakukan action CUCI!";
+    } else if (action == 2){
+        control_action = "BERHASIL melakukan action KERING!";
+    }
+
+    if (status_action == "OK_Cuci" || status_action == "OK_Kering"){ // <<==== What's the Reply Exactly?!
+        QMessageBox info (QMessageBox::Information, "SUKSES!", control_action,
+                          QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        info.exec();
+        qDebug() << control_action;
+    } else {
+        QMessageBox info (QMessageBox::Information, "FAILED!", "Control action has been FAILED!, check your Database Connection!",
+                          QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        info.exec();
+        qDebug() << "FAILED to Action Control!";
     }
 }
 
@@ -137,9 +157,7 @@ void ControlMesin::on_pushButton_kering_clicked()
     if (msgBox->exec() == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(2);
-        QMessageBox info (QMessageBox::Information, "SUKSES!", "Berhasil Melakukan KERING!", QMessageBox::Ok,
-                          this, Qt::FramelessWindowHint);
-        info.exec();
+
         ui->pushButton_cuci->setEnabled(false);
         ui->pushButton_kering->setEnabled(false);
         close();
@@ -162,9 +180,7 @@ void ControlMesin::on_pushButton_cuci_clicked()
     if (msgBox->exec() == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(1);
-        QMessageBox info (QMessageBox::Information, "SUKSES!", "Berhasil Melakukan CUCI!",
-                          QMessageBox::Ok, this, Qt::FramelessWindowHint);
-        info.exec();
+
         ui->pushButton_cuci->setEnabled(false);
         ui->pushButton_kering->setEnabled(false);
         close();

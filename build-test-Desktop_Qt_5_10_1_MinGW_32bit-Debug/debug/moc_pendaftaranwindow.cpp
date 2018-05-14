@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PendaftaranWindow_t {
     QByteArrayData data[3];
-    char stringdata0[50];
+    char stringdata0[41];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,11 +32,11 @@ struct qt_meta_stringdata_PendaftaranWindow_t {
 static const qt_meta_stringdata_PendaftaranWindow_t qt_meta_stringdata_PendaftaranWindow = {
     {
 QT_MOC_LITERAL(0, 0, 17), // "PendaftaranWindow"
-QT_MOC_LITERAL(1, 18, 30), // "on_lineEdit_Name_returnPressed"
-QT_MOC_LITERAL(2, 49, 0) // ""
+QT_MOC_LITERAL(1, 18, 21), // "on_nextButton_clicked"
+QT_MOC_LITERAL(2, 40, 0) // ""
 
     },
-    "PendaftaranWindow\0on_lineEdit_Name_returnPressed\0"
+    "PendaftaranWindow\0on_nextButton_clicked\0"
     ""
 };
 #undef QT_MOC_LITERAL
@@ -69,7 +69,7 @@ void PendaftaranWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         PendaftaranWindow *_t = static_cast<PendaftaranWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_lineEdit_Name_returnPressed(); break;
+        case 0: _t->on_nextButton_clicked(); break;
         default: ;
         }
     }

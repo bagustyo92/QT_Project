@@ -37,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(onTimeChanged()));
     timer->start(1000);
 
+    ui->timeLabel->setText("00:00");
+
     controlMesin = new ControlMesin(this);
     cardReader = new DialogCardReader(this);
 }

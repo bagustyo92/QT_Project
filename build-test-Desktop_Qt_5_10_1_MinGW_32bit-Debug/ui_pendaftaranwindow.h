@@ -45,8 +45,8 @@ public:
     QSpacerItem *horizontalSpacer_12;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_2;
-    QLabel *label_5;
     QLabel *label_3;
+    QLabel *label_5;
     QLabel *label_6;
     QLabel *label_7;
     QLabel *label_8;
@@ -60,11 +60,11 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_10;
     QSpacerItem *horizontalSpacer_3;
-    QLineEdit *lineEdit_TanggalLahir;
+    QDateEdit *dateEdit;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_11;
     QSpacerItem *horizontalSpacer_6;
-    QDateEdit *dateEdit;
+    QLineEdit *lineEdit_Alamat;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_13;
     QSpacerItem *horizontalSpacer_7;
@@ -194,14 +194,6 @@ public:
 
         verticalLayout_4->addWidget(label_2);
 
-        label_5 = new QLabel(centralwidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        sizePolicy1.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy1);
-        label_5->setFont(font1);
-
-        verticalLayout_4->addWidget(label_5);
-
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
@@ -209,6 +201,14 @@ public:
         label_3->setFont(font1);
 
         verticalLayout_4->addWidget(label_3);
+
+        label_5 = new QLabel(centralwidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        sizePolicy1.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy1);
+        label_5->setFont(font1);
+
+        verticalLayout_4->addWidget(label_5);
 
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName(QStringLiteral("label_6"));
@@ -288,6 +288,8 @@ public:
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         label_10 = new QLabel(centralwidget);
         label_10->setObjectName(QStringLiteral("label_10"));
+        sizePolicy1.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
+        label_10->setSizePolicy(sizePolicy1);
         label_10->setFont(font1);
 
         horizontalLayout_4->addWidget(label_10);
@@ -296,16 +298,16 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_3);
 
-        lineEdit_TanggalLahir = new QLineEdit(centralwidget);
-        lineEdit_TanggalLahir->setObjectName(QStringLiteral("lineEdit_TanggalLahir"));
+        dateEdit = new QDateEdit(centralwidget);
+        dateEdit->setObjectName(QStringLiteral("dateEdit"));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::Text, brush1);
         palette2.setBrush(QPalette::Inactive, QPalette::Text, brush1);
         palette2.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-        lineEdit_TanggalLahir->setPalette(palette2);
-        lineEdit_TanggalLahir->setFont(font1);
+        dateEdit->setPalette(palette2);
+        dateEdit->setFont(font1);
 
-        horizontalLayout_4->addWidget(lineEdit_TanggalLahir);
+        horizontalLayout_4->addWidget(dateEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
@@ -324,16 +326,16 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_6);
 
-        dateEdit = new QDateEdit(centralwidget);
-        dateEdit->setObjectName(QStringLiteral("dateEdit"));
+        lineEdit_Alamat = new QLineEdit(centralwidget);
+        lineEdit_Alamat->setObjectName(QStringLiteral("lineEdit_Alamat"));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::Text, brush1);
         palette3.setBrush(QPalette::Inactive, QPalette::Text, brush1);
         palette3.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-        dateEdit->setPalette(palette3);
-        dateEdit->setFont(font1);
+        lineEdit_Alamat->setPalette(palette3);
+        lineEdit_Alamat->setFont(font1);
 
-        horizontalLayout_6->addWidget(dateEdit);
+        horizontalLayout_6->addWidget(lineEdit_Alamat);
 
 
         verticalLayout->addLayout(horizontalLayout_6);
@@ -533,8 +535,8 @@ public:
         pictureLabel->setText(QApplication::translate("PendaftaranWindow", "TextLabel", nullptr));
         label->setText(QApplication::translate("PendaftaranWindow", "FORMULIR PENDAFTARAN :", nullptr));
         label_2->setText(QApplication::translate("PendaftaranWindow", "Nama", nullptr));
-        label_5->setText(QApplication::translate("PendaftaranWindow", "Alamat", nullptr));
         label_3->setText(QApplication::translate("PendaftaranWindow", "Tgl Lahir", nullptr));
+        label_5->setText(QApplication::translate("PendaftaranWindow", "Alamat", nullptr));
         label_6->setText(QApplication::translate("PendaftaranWindow", "Kelurahan", nullptr));
         label_7->setText(QApplication::translate("PendaftaranWindow", "Kecamatan", nullptr));
         label_8->setText(QApplication::translate("PendaftaranWindow", "E-mail", nullptr));

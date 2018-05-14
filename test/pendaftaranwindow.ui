@@ -279,26 +279,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_5">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>20</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Alamat</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLabel" name="label_3">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -315,6 +295,26 @@
           </property>
           <property name="text">
            <string>Tgl Lahir</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Alamat</string>
           </property>
          </widget>
         </item>
@@ -516,6 +516,12 @@
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QLabel" name="label_10">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>20</pointsize>
@@ -545,7 +551,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_TanggalLahir">
+           <widget class="QDateEdit" name="dateEdit">
             <property name="palette">
              <palette>
               <active>
@@ -633,7 +639,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEdit">
+           <widget class="QLineEdit" name="lineEdit_Alamat">
             <property name="palette">
              <palette>
               <active>
