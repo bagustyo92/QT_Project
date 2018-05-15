@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <dialogcardreader.h>
+#include <socketconnectelm.h>
 
 namespace Ui {
 class PendaftaranWindow;
@@ -14,6 +15,7 @@ class PendaftaranWindow : public QMainWindow
 
 public:
     explicit PendaftaranWindow(QWidget *parent = 0);
+    QVector <QString> get_member_data();
     ~PendaftaranWindow();
 
 private slots:
@@ -22,6 +24,7 @@ private slots:
 private:
     Ui::PendaftaranWindow *ui;
     DialogCardReader *tapCardDialog;
+    SocketConnectELM *connectingElm;
 };
 
 #endif // PENDAFTARANWINDOW_H

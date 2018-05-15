@@ -10,6 +10,7 @@
 #include <QTextStream>
 #include <QThread>
 #include <QDateTime>
+#include <QVector>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -113,8 +114,8 @@ QString MainWindow::getTitle(){
     return title1;
 }
 
-void MainWindow::on_pushButton_controlMesin_clicked()
-{
+
+QVector <QString> MainWindow::read_database_file(){
     //read file for database config
     QFile database_config("/var/elm/elm.conf");
     if (!database_config.exists()){
@@ -123,7 +124,9 @@ void MainWindow::on_pushButton_controlMesin_clicked()
         qDebug() << "Reading database ...";
     }
 
-    QString line, hostName, port, userName, password, dbName;
+    QString line;
+    QString hostName, port, userName, password, dbName;
+    QVector <QString> db_setup;
 
     if (database_config.open(QIODevice::ReadOnly | QIODevice::Text)){
         QTextStream stream(&database_config);
@@ -131,26 +134,41 @@ void MainWindow::on_pushButton_controlMesin_clicked()
             line = stream.readLine();
             if(line.split('=').first() == "PCDS_ADDRESS"){
                 hostName = line.split('=').last();
+                db_setup.append(hostName);
             }
             if(line.split('=').first() == "PCDS_PORT"){
                 port = line.split('=').last();
+                db_setup.append(port);
             }
             if(line.split('=').first() == "PCDS_DB"){
                 dbName = line.split('=').last();
+                db_setup.append(dbName);
             }
             if(line.split('=').first() == "PCDS_USER"){
                 userName = line.split('=').last();
+                db_setup.append(userName);
             }
             if(line.split('=').first() == "PCDS_PASSWD"){
                 password = line.split('=').last();
+                db_setup.append(password);
             }
         }
     }
     database_config.close();
+    return db_setup;
+}
 
-
+void MainWindow::on_pushButton_controlMesin_clicked()
+{
     //connect to database and get list mesin + list resi
-    if (!controlMesin->database_connect(hostName, port, userName, password, dbName)){
+    QVector <QString> db_setup;
+    db_setup = read_database_file();
+    qDebug() << db_setup[0];
+    qDebug() << db_setup[1];
+    qDebug() << db_setup[2];
+    qDebug() << db_setup[3];
+    qDebug() << db_setup[4];
+    if (!controlMesin->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
 //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
         QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);

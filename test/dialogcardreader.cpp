@@ -1,11 +1,14 @@
 #include "dialogcardreader.h"
 #include "ui_dialogcardreader.h"
 #include "mainwindow.h"
+#include "controlmesin.h"
+#include <pendaftaranwindow.h>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QPixmap>
 #include <QMovie>
 #include <QThread>
+#include <QVector>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
 
@@ -54,6 +57,40 @@ void DialogCardReader::onServerReply(){
             readerDialog = new ReaderDialog(this);
             readerDialog->setLabelText(getConnection->getMessage(), 2);
             readerDialog->exec();
+        }
+
+        if (getConnection->getMessage() == "ADD MEMBER SUKSES"){
+            ControlMesin *database = new ControlMesin(this);
+            MainWindow *mainWindow = new MainWindow(this);
+            PendaftaranWindow *memberData = new PendaftaranWindow(this);
+
+            QVector <QString> db_setup;
+            QVector <QString> new_member;
+            QString uid_card;
+//            QString nama,tglLahir, alamat, kelurahan, kecamatan, email, noHape;
+
+            new_member = memberData->get_member_data();
+            uid_card = getConnection->getMessage();
+            if (uid_card != ""){
+                new_member.append(uid_card);
+            } else {
+                qDebug() << "Failed get UID_CARD from the server";
+                QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Kartu GAGAL ditambahkan! Silahkan coba lagi!",
+                                   QMessageBox::Ok, this, Qt::FramelessWindowHint);
+                msgBox.exec();
+                this->close();
+            }
+
+            db_setup = mainWindow->read_database_file();
+            if (!database->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
+        //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
+                QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE!",
+                                   QMessageBox::Ok, this, Qt::FramelessWindowHint);
+                msgBox.exec();
+            } else {
+                database->database_set_new_member(new_member);
+//                controlMesin->showFullScreen();
+            }
         }
     }
 }

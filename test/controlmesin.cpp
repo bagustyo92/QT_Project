@@ -56,6 +56,10 @@ bool ControlMesin::database_connect(QString hostName, QString port, QString user
     }
 }
 
+void ControlMesin::database_set_new_member(QVector <QString> new_member_data){
+    qDebug() << "ADDING DATA TO DATABASE";
+}
+
 void ControlMesin::database_get_list_mesin(){
     ui->listNomerMesin->clear();
     QSqlQuery query;

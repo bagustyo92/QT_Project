@@ -7,6 +7,7 @@
 #include "dialogcardreader.h"
 #include "pendaftaranwindow.h"
 #include <QTimer>
+#include <QVector>
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +22,7 @@ public:
     void connectingToElm(char *paket);
     void onServerReply(QString);
     void onStatusConnect();
+    QVector <QString> read_database_file();
     QString getTitle();
     ~MainWindow();
 

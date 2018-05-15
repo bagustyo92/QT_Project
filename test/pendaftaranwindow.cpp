@@ -1,5 +1,6 @@
 #include "pendaftaranwindow.h"
 #include "ui_pendaftaranwindow.h"
+#include "mainwindow.h"
 #include <QDateEdit>
 #include <QDebug>
 #include <QMessageBox>
@@ -30,15 +31,26 @@ PendaftaranWindow::~PendaftaranWindow()
     delete ui;
 }
 
+QVector <QString> new_member;
+QString nama,tglLahir, alamat, kelurahan, kecamatan, email, noHape;
+
 void PendaftaranWindow::on_nextButton_clicked()
 {
-    QString nama = ui->lineEdit_Name->text();
-    QString tglLahir = ui->dateEdit->text();
-    QString alamat = ui->lineEdit_Alamat->text();
-    QString kelurahan = ui->lineEdit_kelurahan->text();
-    QString kecamatan = ui->lineEdit_kecamatan->text();
-    QString email = ui->lineEdit_email->text();
-    QString noHape = ui->lineEdit_nohape->text();
+    nama = ui->lineEdit_Name->text();
+    new_member.append(nama);
+    tglLahir = ui->dateEdit->text();
+    new_member.append(tglLahir);
+    alamat = ui->lineEdit_Alamat->text();
+    new_member.append(alamat);
+    kelurahan = ui->lineEdit_kelurahan->text();
+    new_member.append(kelurahan);
+    kecamatan = ui->lineEdit_kecamatan->text();
+    new_member.append(kecamatan);
+    email = ui->lineEdit_email->text();
+    new_member.append(email);
+    noHape = ui->lineEdit_nohape->text();
+    new_member.append(noHape);
+
     QRegExp regExp("\\d*");
     bool emailStat = false;
 
@@ -64,8 +76,17 @@ void PendaftaranWindow::on_nextButton_clicked()
         msgBox.exec();
         qDebug() << "number field is wrong";
     } else {
-        tapCardDialog = new DialogCardReader(this);
-        tapCardDialog->showFullScreen();
         qDebug() << "Data Correct!";
+
+        char *msg = "ADD_MEMBER";
+        connectingElm = new SocketConnectELM(this);
+        MainWindow *mainWindow = new MainWindow(this);
+
+        connectingElm->StartConnection(msg);
+        mainWindow->onStatusConnect();
     }
+}
+
+QVector <QString> PendaftaranWindow::get_member_data(){
+    return new_member;
 }
