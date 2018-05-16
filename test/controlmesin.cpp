@@ -6,7 +6,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 
-#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
 
 #define GET_LIST_MESIN "SELECT * FROM get_list_mesin()"
 #define GET_LIST_RESI "SELECT * FROM get_list_pending_transaksi()"

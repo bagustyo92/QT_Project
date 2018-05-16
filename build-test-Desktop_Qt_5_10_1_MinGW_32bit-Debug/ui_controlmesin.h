@@ -76,7 +76,7 @@ public:
     {
         if (ControlMesin->objectName().isEmpty())
             ControlMesin->setObjectName(QStringLiteral("ControlMesin"));
-        ControlMesin->resize(663, 453);
+        ControlMesin->resize(663, 479);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -171,6 +171,15 @@ public:
         listNomerMesin->setObjectName(QStringLiteral("listNomerMesin"));
         sizePolicy.setHeightForWidth(listNomerMesin->sizePolicy().hasHeightForWidth());
         listNomerMesin->setSizePolicy(sizePolicy);
+        QPalette palette1;
+        QBrush brush3(QColor(191, 210, 214, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush3);
+        QBrush brush4(QColor(240, 240, 240, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        listNomerMesin->setPalette(palette1);
         QFont font2;
         font2.setPointSize(25);
         listNomerMesin->setFont(font2);
@@ -212,6 +221,11 @@ public:
 
         listResi = new QComboBox(ControlMesin);
         listResi->setObjectName(QStringLiteral("listResi"));
+        QPalette palette2;
+        palette2.setBrush(QPalette::Active, QPalette::Button, brush3);
+        palette2.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        palette2.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        listResi->setPalette(palette2);
         listResi->setFont(font2);
 
         verticalLayout_4->addWidget(listResi);
