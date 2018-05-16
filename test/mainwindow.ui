@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>779</width>
+    <width>809</width>
     <height>926</height>
    </rect>
   </property>
@@ -1158,7 +1158,7 @@
         </property>
         <property name="font">
          <font>
-          <family>Consolas</family>
+          <family>Liberation Mono</family>
           <pointsize>16</pointsize>
           <weight>75</weight>
           <bold>true</bold>
@@ -1241,8 +1241,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>779</width>
-     <height>21</height>
+     <width>809</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>

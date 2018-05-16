@@ -102,13 +102,14 @@ void ControlMesin::database_control_mesin_action(int action){
         control_action = "BERHASIL melakukan action KERING!";
     }
 
-    if (status_action == "OK_Cuci" || status_action == "OK_Kering"){ // <<==== What's the Reply Exactly?!
+    if (status_action == "OK CUCI" || status_action == "OK KERING"){ // <<==== What's the Reply Exactly?!
         QMessageBox info (QMessageBox::Information, "SUKSES!", control_action,
                           QMessageBox::Ok, this, Qt::FramelessWindowHint);
         info.exec();
         qDebug() << control_action;
+        close();
     } else {
-        QMessageBox info (QMessageBox::Information, "FAILED!", "Control action has been FAILED!, check your Database Connection!",
+        QMessageBox info (QMessageBox::Information, "FAILED!", "Action Control GAGAL! Silahkan COBA LAGI!",
                           QMessageBox::Ok, this, Qt::FramelessWindowHint);
         info.exec();
         qDebug() << "FAILED to Action Control!";
@@ -164,7 +165,7 @@ void ControlMesin::on_pushButton_kering_clicked()
 
         ui->pushButton_cuci->setEnabled(false);
         ui->pushButton_kering->setEnabled(false);
-        close();
+//        close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button kering";
@@ -187,7 +188,7 @@ void ControlMesin::on_pushButton_cuci_clicked()
 
         ui->pushButton_cuci->setEnabled(false);
         ui->pushButton_kering->setEnabled(false);
-        close();
+//        close();
     } else {
         //Some Action Here
         qDebug() << "Cancel on button cuci";

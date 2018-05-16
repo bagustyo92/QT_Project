@@ -1,0 +1,83 @@
+INSTALLATION INSTRUCTIONS
+
+These instructions refer to the package you are installing as
+some-package.tar.gz or some-package.zip. The .zip file is intended for use
+on Windows.
+
+The directory you choose for the installation will be referred to as
+your-install-dir.
+
+Note to Qt Visual Studio Integration users: In the instructions below,
+instead of building from command line with nmake, you can use the menu
+command 'Qt->Open Solution from .pro file' on the .pro files in the
+example and plugin directories, and then build from within Visual
+Studio.
+
+Unpacking and installation
+--------------------------
+
+1.  Unpacking the archive (if you have not done so already).
+
+    On Unix and Mac OS X (in a terminal window):
+
+	cd your-install-dir
+	gunzip some-package.tar.gz
+	tar xvf some-package.tar
+
+    This creates the subdirectory some-package containing the files.
+
+    On Windows:
+
+    Unpack the .zip archive by right-clicking it in explorer and
+    choosing "Extract All...". If your version of Windows does not
+    have zip support, you can use the infozip tools available
+    from www.info-zip.org.
+
+    If you are using the infozip tools (in a command prompt window):
+	cd your-install-dir
+	unzip some-package.zip
+
+2.  Building the component and examples (when required).
+
+    If you would like to build the
+    examples, next give the commands
+
+        qmake
+        make          [or nmake if your are using Microsoft Visual C++]
+
+    The example program(s) can be found in the directory called
+    "examples" or "example".
+
+    Components that are Qt plugins, e.g. styles and image formats, are
+    ready to be used as soon as they are built, so the rest of this
+    installation instruction can be skipped.
+
+
+Solutions components are intended to be used directly from the package
+directory during development, so there is no 'make install' procedure.
+
+
+Using a component in your project
+---------------------------------
+
+To use this component in your project, add the following line to the
+project's .pro file (or do the equivalent in your IDE):
+
+    include(your-install-dir/some-package/src/some-package.pri)
+
+This adds the package's sources and headers to the SOURCES and HEADERS
+project variables respectively and
+updates INCLUDEPATH to contain the package's src
+directory. Additionally, the .pri file may include some dependencies
+needed by the package.
+
+To include a header file from the package in your sources, you can now
+simply use:
+
+    #include <SomeClass>
+
+or alternatively, in pre-Qt 4 style:
+
+    #include <some-class.h>
+
+!! The End !!

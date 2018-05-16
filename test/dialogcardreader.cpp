@@ -10,7 +10,7 @@
 #include <QThread>
 #include <QVector>
 
-#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
 
 // TODO : Back Button sent "cancel"                     << DONE
 //        Close CardDialogReader
@@ -78,7 +78,6 @@ void DialogCardReader::onServerReply(){
                 QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Kartu GAGAL ditambahkan! Silahkan coba lagi!",
                                    QMessageBox::Ok, this, Qt::FramelessWindowHint);
                 msgBox.exec();
-                this->close();
             }
 
             db_setup = mainWindow->read_database_file();
@@ -89,7 +88,6 @@ void DialogCardReader::onServerReply(){
                 msgBox.exec();
             } else {
                 database->database_set_new_member(new_member);
-//                controlMesin->showFullScreen();
             }
         }
     }

@@ -91,7 +91,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(779, 926);
+        MainWindow->resize(809, 926);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -423,7 +423,7 @@ public:
         sizePolicy.setHeightForWidth(timeLabel->sizePolicy().hasHeightForWidth());
         timeLabel->setSizePolicy(sizePolicy);
         QFont font1;
-        font1.setFamily(QStringLiteral("Consolas"));
+        font1.setFamily(QStringLiteral("Liberation Mono"));
         font1.setPointSize(16);
         font1.setBold(true);
         font1.setUnderline(false);
@@ -464,7 +464,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 779, 21));
+        menuBar->setGeometry(QRect(0, 0, 809, 26));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));

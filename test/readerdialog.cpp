@@ -2,7 +2,7 @@
 #include "ui_readerdialog.h"
 #include "mainwindow.h"
 
-#define BUTTON_BACK "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+#define BUTTON_BACK "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
 
 ReaderDialog::ReaderDialog(QWidget *parent) :
     QDialog(parent),

@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/myresources" >
+        <file alias="downIcon" >res/down.JPG</file>
+        <file alias="leftIcon" >res/left.JPG</file>
+        <file alias="rightIcon" >res/right.JPG</file>
+        <file alias="upIcon" >res/up.JPG</file>
+    </qresource>
+</RCC>

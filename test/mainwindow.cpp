@@ -12,7 +12,7 @@
 #include <QDateTime>
 #include <QVector>
 
-#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -69,7 +69,7 @@ void MainWindow::onTimeChanged(){
 void MainWindow::onStatusConnect(){
     if (!connectingElm.getStatus()){
 //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke SERVER ELM!");
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke SERVER ELM!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "READER TIDAK TERHUBUNG!\nSilahkan matikan dan nyalakan kembali CASHIER!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
         msgBox.exec();
         qDebug() << "Failed Connect to Server";
@@ -163,14 +163,9 @@ void MainWindow::on_pushButton_controlMesin_clicked()
     //connect to database and get list mesin + list resi
     QVector <QString> db_setup;
     db_setup = read_database_file();
-    qDebug() << db_setup[0];
-    qDebug() << db_setup[1];
-    qDebug() << db_setup[2];
-    qDebug() << db_setup[3];
-    qDebug() << db_setup[4];
     if (!controlMesin->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
 //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "DATABASE TIDAK TERHUBUNG!\nSilahkan matikan dan nyalakan kembali CASHIER!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
         msgBox.exec();
     } else {

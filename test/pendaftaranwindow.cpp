@@ -4,8 +4,9 @@
 #include <QDateEdit>
 #include <QDebug>
 #include <QMessageBox>
+#include <WidgetKeyboard.h>
 
-#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:white; font-weight: bold;"
+#define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
 
 PendaftaranWindow::PendaftaranWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,7 +15,7 @@ PendaftaranWindow::PendaftaranWindow(QWidget *parent) :
     ui->setupUi(this);
 
     QPixmap pix(":/resources/img/Kain Wangi logo.png");
-    ui->pictureLabel->setPixmap(pix.scaled(380, 380, Qt::KeepAspectRatio));
+    ui->pictureLabel->setPixmap(pix.scaled(250, 250, Qt::KeepAspectRatio));
 
     ui->backButton->setStyleSheet(BUTTON_COLOR);
     ui->nextButton->setStyleSheet(BUTTON_COLOR);
@@ -23,7 +24,6 @@ PendaftaranWindow::PendaftaranWindow(QWidget *parent) :
 
     ui->dateEdit->setDisplayFormat("yyyy/MM/dd");
     ui->dateEdit->setDateTime(dt);
-
 }
 
 PendaftaranWindow::~PendaftaranWindow()
@@ -55,23 +55,23 @@ void PendaftaranWindow::on_nextButton_clicked()
     bool emailStat = false;
 
     if (nama == "" || tglLahir == "" || alamat == "" || kelurahan == "" || kecamatan == "" || email == "" || noHape == ""){
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "All field must be NOT EMPTY!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Seluruh kolom TIDAK BOLEH KOSONG!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
         msgBox.exec();
         qDebug() << "All field must be NOT EMPTY!";
         emailStat = true;
     } else if (!email.contains("@") && emailStat == false){
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Email field format is WRONG!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format E-MAIL yang anda masukan SALAH!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
         msgBox.exec();
         qDebug() << "email field is wrong!";
     } else if (!email.contains(".") && emailStat == false){
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Email field format is WRONG!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format E-MAIL yang anda masukan SALAH!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
         msgBox.exec();
         qDebug() << "email field is wrong2!";
     } else if (!regExp.exactMatch(noHape) && emailStat == false){
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Number HP field is must be NUMBERS!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format NOMER HP yang anda masukan SALAH!\nFormat masukan HARUS ANGKA!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
         msgBox.exec();
         qDebug() << "number field is wrong";
@@ -90,3 +90,4 @@ void PendaftaranWindow::on_nextButton_clicked()
 QVector <QString> PendaftaranWindow::get_member_data(){
     return new_member;
 }
+

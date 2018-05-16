@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+include(/home/pi/QT_Project/Widgetkeyboard/src/WidgetKeyboard.pri)
+
 QT       += core gui network sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
