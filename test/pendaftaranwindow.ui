@@ -1139,9 +1139,48 @@
          </font>
         </property>
         <property name="text">
-         <string>&lt; Kembali</string>
+         <string>&lt;  KEMBALI</string>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_17">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_18">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <widget class="QPushButton" name="nextButton">
@@ -1157,7 +1196,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Selanjutnya &gt;</string>
+         <string>SELANJUTNYA  &gt;</string>
         </property>
        </widget>
       </item>
@@ -1203,7 +1242,7 @@
      <x>0</x>
      <y>0</y>
      <width>734</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

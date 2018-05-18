@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "tapcard_window.h"
+#include "loginwindow.h"
 #include <QtNetwork/QTcpSocket>
 #include <QtNetwork/QAbstractSocket>
 #include <QDebug>
@@ -29,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->maytag_label->setPixmap(mytag.scaled(110, 110, Qt::KeepAspectRatio));
     ui->mytag_label2->setPixmap(mytag.scaled(110,110, Qt::KeepAspectRatio));
 
-    ui->pushButton_ambilCucian->setStyleSheet(BUTTON_COLOR);
+    ui->pushButton_topUpSaldo->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_controlMesin->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_cuciKering->setStyleSheet(BUTTON_COLOR);
     ui->pushButton_cuciLipat->setStyleSheet(BUTTON_COLOR);
@@ -73,7 +74,7 @@ void MainWindow::onStatusConnect(){
     if (!connectingElm.getStatus()){
 //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke SERVER ELM!");
         QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "READER TIDAK TERHUBUNG!\n\nSilahkan matikan dan nyalakan kembali CASHIER!",
-                           QMessageBox::Ok, this, Qt::FramelessWindowHint);
+                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
         msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
         qDebug() << "Failed Connect to Server";
@@ -185,4 +186,10 @@ void MainWindow::on_pushButton_addMemberCard_clicked()
 {
     daftarWindow = new PendaftaranWindow(this);
     daftarWindow->showFullScreen();
+}
+
+void MainWindow::on_pushButton_topUpSaldo_clicked()
+{
+    LoginWindow *login = new LoginWindow(this);
+    login->showFullScreen();
 }

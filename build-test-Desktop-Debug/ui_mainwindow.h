@@ -60,7 +60,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_9;
     QSpacerItem *horizontalSpacer_17;
-    QPushButton *pushButton_ambilCucian;
+    QPushButton *pushButton_topUpSaldo;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_controlMesin;
     QSpacerItem *horizontalSpacer_16;
@@ -90,7 +90,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(809, 926);
+        MainWindow->resize(1100, 926);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -317,13 +317,13 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_17);
 
-        pushButton_ambilCucian = new QPushButton(centralWidget);
-        pushButton_ambilCucian->setObjectName(QStringLiteral("pushButton_ambilCucian"));
-        sizePolicy1.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
-        pushButton_ambilCucian->setSizePolicy(sizePolicy1);
-        pushButton_ambilCucian->setFont(font);
+        pushButton_topUpSaldo = new QPushButton(centralWidget);
+        pushButton_topUpSaldo->setObjectName(QStringLiteral("pushButton_topUpSaldo"));
+        sizePolicy1.setHeightForWidth(pushButton_topUpSaldo->sizePolicy().hasHeightForWidth());
+        pushButton_topUpSaldo->setSizePolicy(sizePolicy1);
+        pushButton_topUpSaldo->setFont(font);
 
-        horizontalLayout->addWidget(pushButton_ambilCucian);
+        horizontalLayout->addWidget(pushButton_topUpSaldo);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Ignored, QSizePolicy::Minimum);
 
@@ -459,7 +459,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 809, 26));
+        menuBar->setGeometry(QRect(0, 0, 1100, 26));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -480,7 +480,7 @@ public:
         pushButton_cuciSetrika->setText(QApplication::translate("MainWindow", "CUCI SETRIKA", Q_NULLPTR));
         pushButton_cuciKering->setText(QApplication::translate("MainWindow", "CUCI KERING", Q_NULLPTR));
         pushButton_cuciLipat->setText(QApplication::translate("MainWindow", "CUCI LIPAT", Q_NULLPTR));
-        pushButton_ambilCucian->setText(QApplication::translate("MainWindow", "AMBIL CUCIAN", Q_NULLPTR));
+        pushButton_topUpSaldo->setText(QApplication::translate("MainWindow", "TOP UP SALDO", Q_NULLPTR));
         pushButton_controlMesin->setText(QApplication::translate("MainWindow", "CONTROL MESIN", Q_NULLPTR));
         pushButton_addMemberCard->setText(QApplication::translate("MainWindow", "TAMBAH MEMBER CARD", Q_NULLPTR));
         maytag_label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));

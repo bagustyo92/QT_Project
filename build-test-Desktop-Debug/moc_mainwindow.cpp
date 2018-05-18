@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[8];
-    char stringdata0[196];
+    QByteArrayData data[9];
+    char stringdata0[229];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,7 +36,8 @@ QT_MOC_LITERAL(3, 46, 31), // "on_pushButton_cuciLipat_clicked"
 QT_MOC_LITERAL(4, 78, 32), // "on_pushButton_cuciKering_clicked"
 QT_MOC_LITERAL(5, 111, 34), // "on_pushButton_controlMesin_cl..."
 QT_MOC_LITERAL(6, 146, 35), // "on_pushButton_addMemberCard_c..."
-QT_MOC_LITERAL(7, 182, 13) // "onTimeChanged"
+QT_MOC_LITERAL(7, 182, 13), // "onTimeChanged"
+QT_MOC_LITERAL(8, 196, 32) // "on_pushButton_topUpSaldo_clicked"
 
     },
     "MainWindow\0on_pushButton_cuciSetrika_clicked\0"
@@ -44,7 +45,7 @@ QT_MOC_LITERAL(7, 182, 13) // "onTimeChanged"
     "on_pushButton_cuciKering_clicked\0"
     "on_pushButton_controlMesin_clicked\0"
     "on_pushButton_addMemberCard_clicked\0"
-    "onTimeChanged"
+    "onTimeChanged\0on_pushButton_topUpSaldo_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +55,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,14 +63,16 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x08 /* Private */,
-       3,    0,   45,    2, 0x08 /* Private */,
-       4,    0,   46,    2, 0x08 /* Private */,
-       5,    0,   47,    2, 0x08 /* Private */,
-       6,    0,   48,    2, 0x08 /* Private */,
-       7,    0,   49,    2, 0x08 /* Private */,
+       1,    0,   49,    2, 0x08 /* Private */,
+       3,    0,   50,    2, 0x08 /* Private */,
+       4,    0,   51,    2, 0x08 /* Private */,
+       5,    0,   52,    2, 0x08 /* Private */,
+       6,    0,   53,    2, 0x08 /* Private */,
+       7,    0,   54,    2, 0x08 /* Private */,
+       8,    0,   55,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -92,6 +95,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_pushButton_controlMesin_clicked(); break;
         case 4: _t->on_pushButton_addMemberCard_clicked(); break;
         case 5: _t->onTimeChanged(); break;
+        case 6: _t->on_pushButton_topUpSaldo_clicked(); break;
         default: ;
         }
     }
@@ -123,13 +127,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

@@ -90,6 +90,9 @@ public:
     QSpacerItem *horizontalSpacer_10;
     QSpacerItem *horizontalSpacer_14;
     QPushButton *backButton;
+    QSpacerItem *horizontalSpacer_17;
+    QFrame *line_3;
+    QSpacerItem *horizontalSpacer_18;
     QPushButton *nextButton;
     QSpacerItem *horizontalSpacer_15;
     QSpacerItem *horizontalSpacer_11;
@@ -495,6 +498,21 @@ public:
 
         horizontalLayout_10->addWidget(backButton);
 
+        horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_10->addItem(horizontalSpacer_17);
+
+        line_3 = new QFrame(centralwidget);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_10->addWidget(line_3);
+
+        horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_10->addItem(horizontalSpacer_18);
+
         nextButton = new QPushButton(centralwidget);
         nextButton->setObjectName(QStringLiteral("nextButton"));
         sizePolicy.setHeightForWidth(nextButton->sizePolicy().hasHeightForWidth());
@@ -517,7 +535,7 @@ public:
         PendaftaranWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(PendaftaranWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 734, 21));
+        menubar->setGeometry(QRect(0, 0, 734, 26));
         PendaftaranWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(PendaftaranWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -548,8 +566,8 @@ public:
         label_14->setText(QApplication::translate("PendaftaranWindow", ":", Q_NULLPTR));
         label_12->setText(QApplication::translate("PendaftaranWindow", ":", Q_NULLPTR));
         label_15->setText(QApplication::translate("PendaftaranWindow", ":", Q_NULLPTR));
-        backButton->setText(QApplication::translate("PendaftaranWindow", "< Kembali", Q_NULLPTR));
-        nextButton->setText(QApplication::translate("PendaftaranWindow", "Selanjutnya >", Q_NULLPTR));
+        backButton->setText(QApplication::translate("PendaftaranWindow", "<  KEMBALI", Q_NULLPTR));
+        nextButton->setText(QApplication::translate("PendaftaranWindow", "SELANJUTNYA  >", Q_NULLPTR));
     } // retranslateUi
 
 };

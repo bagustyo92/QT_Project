@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>809</width>
+    <width>1100</width>
     <height>926</height>
    </rect>
   </property>
@@ -869,7 +869,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_ambilCucian">
+       <widget class="QPushButton" name="pushButton_topUpSaldo">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -885,7 +885,7 @@
          </font>
         </property>
         <property name="text">
-         <string>AMBIL CUCIAN</string>
+         <string>TOP UP SALDO</string>
         </property>
        </widget>
       </item>
@@ -1225,7 +1225,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>809</width>
+     <width>1100</width>
      <height>26</height>
     </rect>
    </property>

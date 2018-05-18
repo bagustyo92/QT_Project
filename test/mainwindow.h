@@ -35,6 +35,8 @@ private slots:
     void on_pushButton_addMemberCard_clicked();
     void onTimeChanged();
 
+    void on_pushButton_topUpSaldo_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *timer;

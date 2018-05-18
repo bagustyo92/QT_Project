@@ -56,7 +56,8 @@ SOURCES       = ../Widgetkeyboard/src/WidgetKeyboard.cpp \
 		../test/socketconnectelm.cpp \
 		../test/dialogcardreader.cpp \
 		../test/pendaftaranwindow.cpp \
-		../test/tapcard_window.cpp qrc_WidgetKeyboard.cpp \
+		../test/tapcard_window.cpp \
+		../test/loginwindow.cpp qrc_WidgetKeyboard.cpp \
 		qrc_resouces.cpp \
 		moc_WidgetKeyboard.cpp \
 		moc_mainwindow.cpp \
@@ -65,7 +66,8 @@ SOURCES       = ../Widgetkeyboard/src/WidgetKeyboard.cpp \
 		moc_socketconnectelm.cpp \
 		moc_dialogcardreader.cpp \
 		moc_pendaftaranwindow.cpp \
-		moc_tapcard_window.cpp
+		moc_tapcard_window.cpp \
+		moc_loginwindow.cpp
 OBJECTS       = WidgetKeyboard.o \
 		main.o \
 		mainwindow.o \
@@ -75,6 +77,7 @@ OBJECTS       = WidgetKeyboard.o \
 		dialogcardreader.o \
 		pendaftaranwindow.o \
 		tapcard_window.o \
+		loginwindow.o \
 		qrc_WidgetKeyboard.o \
 		qrc_resouces.o \
 		moc_WidgetKeyboard.o \
@@ -84,7 +87,8 @@ OBJECTS       = WidgetKeyboard.o \
 		moc_socketconnectelm.o \
 		moc_dialogcardreader.o \
 		moc_pendaftaranwindow.o \
-		moc_tapcard_window.o
+		moc_tapcard_window.o \
+		moc_loginwindow.o
 DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/unix.conf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/linux.conf \
@@ -155,7 +159,8 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		../test/socketconnectelm.h \
 		../test/dialogcardreader.h \
 		../test/pendaftaranwindow.h \
-		../test/tapcard_window.h ../Widgetkeyboard/src/WidgetKeyboard.cpp \
+		../test/tapcard_window.h \
+		../test/loginwindow.h ../Widgetkeyboard/src/WidgetKeyboard.cpp \
 		../test/main.cpp \
 		../test/mainwindow.cpp \
 		../test/readerdialog.cpp \
@@ -163,7 +168,8 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		../test/socketconnectelm.cpp \
 		../test/dialogcardreader.cpp \
 		../test/pendaftaranwindow.cpp \
-		../test/tapcard_window.cpp
+		../test/tapcard_window.cpp \
+		../test/loginwindow.cpp
 QMAKE_TARGET  = test
 DESTDIR       = 
 TARGET        = test
@@ -172,7 +178,7 @@ TARGET        = test
 first: all
 ####### Build rules
 
-$(TARGET): ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h $(OBJECTS)  
+$(TARGET): ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h ui_loginwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../test/test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
@@ -333,9 +339,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.qrc ../test/resouces.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.h ../test/mainwindow.h ../test/readerdialog.h ../test/controlmesin.h ../test/socketconnectelm.h ../test/dialogcardreader.h ../test/pendaftaranwindow.h ../test/tapcard_window.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.cpp ../test/main.cpp ../test/mainwindow.cpp ../test/readerdialog.cpp ../test/controlmesin.cpp ../test/socketconnectelm.cpp ../test/dialogcardreader.cpp ../test/pendaftaranwindow.cpp ../test/tapcard_window.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.ui ../test/mainwindow.ui ../test/readerdialog.ui ../test/controlmesin.ui ../test/dialogcardreader.ui ../test/pendaftaranwindow.ui ../test/tapcard_window.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.h ../test/mainwindow.h ../test/readerdialog.h ../test/controlmesin.h ../test/socketconnectelm.h ../test/dialogcardreader.h ../test/pendaftaranwindow.h ../test/tapcard_window.h ../test/loginwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.cpp ../test/main.cpp ../test/mainwindow.cpp ../test/readerdialog.cpp ../test/controlmesin.cpp ../test/socketconnectelm.cpp ../test/dialogcardreader.cpp ../test/pendaftaranwindow.cpp ../test/tapcard_window.cpp ../test/loginwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.ui ../test/mainwindow.ui ../test/readerdialog.ui ../test/controlmesin.ui ../test/dialogcardreader.ui ../test/pendaftaranwindow.ui ../test/tapcard_window.ui ../test/loginwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -377,9 +383,9 @@ qrc_resouces.cpp: ../test/resouces.qrc \
 		../test/img/kain_wangi.png
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/rcc -name resouces ../test/resouces.qrc -o qrc_resouces.cpp
 
-compiler_moc_header_make_all: moc_WidgetKeyboard.cpp moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp moc_pendaftaranwindow.cpp moc_tapcard_window.cpp
+compiler_moc_header_make_all: moc_WidgetKeyboard.cpp moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp moc_pendaftaranwindow.cpp moc_tapcard_window.cpp moc_loginwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_WidgetKeyboard.cpp moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp moc_pendaftaranwindow.cpp moc_tapcard_window.cpp
+	-$(DEL_FILE) moc_WidgetKeyboard.cpp moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp moc_pendaftaranwindow.cpp moc_tapcard_window.cpp moc_loginwindow.cpp
 moc_WidgetKeyboard.cpp: ui_WidgetKeyboard.h \
 		../Widgetkeyboard/src/WidgetKeyboard.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
@@ -390,6 +396,7 @@ moc_mainwindow.cpp: ../test/controlmesin.h \
 		../test/dialogcardreader.h \
 		../test/readerdialog.h \
 		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h \
 		../test/mainwindow.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/mainwindow.h -o moc_mainwindow.cpp
@@ -420,15 +427,20 @@ moc_pendaftaranwindow.cpp: ../test/dialogcardreader.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/pendaftaranwindow.h -o moc_pendaftaranwindow.cpp
 
-moc_tapcard_window.cpp: ../test/tapcard_window.h \
+moc_tapcard_window.cpp: ../test/socketconnectelm.h \
+		../test/tapcard_window.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/tapcard_window.h -o moc_tapcard_window.cpp
 
+moc_loginwindow.cpp: ../test/loginwindow.h \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/loginwindow.h -o moc_loginwindow.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h
+compiler_uic_make_all: ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h ui_loginwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h
+	-$(DEL_FILE) ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h ui_loginwindow.h
 ui_WidgetKeyboard.h: ../Widgetkeyboard/src/WidgetKeyboard.ui \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../Widgetkeyboard/src/WidgetKeyboard.ui -o ui_WidgetKeyboard.h
@@ -457,6 +469,10 @@ ui_tapcard_window.h: ../test/tapcard_window.ui \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/tapcard_window.ui -o ui_tapcard_window.h
 
+ui_loginwindow.h: ../test/loginwindow.ui \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/loginwindow.ui -o ui_loginwindow.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -476,7 +492,8 @@ main.o: ../test/main.cpp ../test/mainwindow.h \
 		../test/socketconnectelm.h \
 		../test/dialogcardreader.h \
 		../test/readerdialog.h \
-		../test/pendaftaranwindow.h
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../test/main.cpp
 
 mainwindow.o: ../test/mainwindow.cpp ../test/mainwindow.h \
@@ -485,8 +502,8 @@ mainwindow.o: ../test/mainwindow.cpp ../test/mainwindow.h \
 		../test/dialogcardreader.h \
 		../test/readerdialog.h \
 		../test/pendaftaranwindow.h \
-		ui_mainwindow.h \
-		../test/tapcard_window.h
+		../test/tapcard_window.h \
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../test/mainwindow.cpp
 
 readerdialog.o: ../test/readerdialog.cpp ../test/readerdialog.h \
@@ -495,7 +512,8 @@ readerdialog.o: ../test/readerdialog.cpp ../test/readerdialog.h \
 		../test/mainwindow.h \
 		../test/controlmesin.h \
 		../test/dialogcardreader.h \
-		../test/pendaftaranwindow.h
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o readerdialog.o ../test/readerdialog.cpp
 
 controlmesin.o: ../test/controlmesin.cpp ../test/controlmesin.h \
@@ -507,7 +525,8 @@ socketconnectelm.o: ../test/socketconnectelm.cpp ../test/socketconnectelm.h \
 		../test/controlmesin.h \
 		../test/dialogcardreader.h \
 		../test/readerdialog.h \
-		../test/pendaftaranwindow.h
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o socketconnectelm.o ../test/socketconnectelm.cpp
 
 dialogcardreader.o: ../test/dialogcardreader.cpp ../test/dialogcardreader.h \
@@ -516,7 +535,8 @@ dialogcardreader.o: ../test/dialogcardreader.cpp ../test/dialogcardreader.h \
 		ui_dialogcardreader.h \
 		../test/mainwindow.h \
 		../test/controlmesin.h \
-		../test/pendaftaranwindow.h
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogcardreader.o ../test/dialogcardreader.cpp
 
 pendaftaranwindow.o: ../test/pendaftaranwindow.cpp ../test/pendaftaranwindow.h \
@@ -524,16 +544,19 @@ pendaftaranwindow.o: ../test/pendaftaranwindow.cpp ../test/pendaftaranwindow.h \
 		../test/socketconnectelm.h \
 		../test/readerdialog.h \
 		ui_pendaftaranwindow.h \
-		../test/mainwindow.h \
 		../test/controlmesin.h \
 		../Widgetkeyboard/src/WidgetKeyboard.h \
 		ui_WidgetKeyboard.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pendaftaranwindow.o ../test/pendaftaranwindow.cpp
 
 tapcard_window.o: ../test/tapcard_window.cpp ../test/tapcard_window.h \
-		ui_tapcard_window.h \
-		../test/socketconnectelm.h
+		../test/socketconnectelm.h \
+		ui_tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tapcard_window.o ../test/tapcard_window.cpp
+
+loginwindow.o: ../test/loginwindow.cpp ../test/loginwindow.h \
+		ui_loginwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o ../test/loginwindow.cpp
 
 qrc_WidgetKeyboard.o: qrc_WidgetKeyboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_WidgetKeyboard.o qrc_WidgetKeyboard.cpp
@@ -564,6 +587,9 @@ moc_pendaftaranwindow.o: moc_pendaftaranwindow.cpp
 
 moc_tapcard_window.o: moc_tapcard_window.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tapcard_window.o moc_tapcard_window.cpp
+
+moc_loginwindow.o: moc_loginwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_loginwindow.o moc_loginwindow.cpp
 
 ####### Install
 

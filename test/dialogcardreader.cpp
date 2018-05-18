@@ -59,6 +59,7 @@ void DialogCardReader::onServerReply(){
             if (getConnection->getMessage().split('=').first() == "SUKSES"){
                 //get UID CARD
                 uid_card = getConnection->getMessage().split('=').last();
+                uid_card.rightJustified(10, '0');
                 qDebug() << "UID_CARD: " << uid_card;
                 new_member_data.insert(0, uid_card);
 

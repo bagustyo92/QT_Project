@@ -27,6 +27,13 @@ PendaftaranWindow::PendaftaranWindow(QWidget *parent) :
 
     ui->dateEdit->setDisplayFormat("yyyy/MM/dd");
     ui->dateEdit->setDateTime(dt);
+
+    ui->lineEdit_Name->setPlaceholderText("Nama");
+    ui->lineEdit_Alamat->setPlaceholderText("Alamat");
+    ui->lineEdit_email->setPlaceholderText("email@email.com");
+    ui->lineEdit_kecamatan->setPlaceholderText("Kecamatan");
+    ui->lineEdit_kelurahan->setPlaceholderText("Kelurahan");
+    ui->lineEdit_nohape->setPlaceholderText("081234567890");
 }
 
 PendaftaranWindow::~PendaftaranWindow()
@@ -54,7 +61,8 @@ void PendaftaranWindow::on_nextButton_clicked()
     noHape = ui->lineEdit_nohape->text();
     new_member.append(noHape);
 
-    QRegExp regExp("\\d*");
+    QRegExp regExp("\\d*"); //only number is allowed
+    QRegExp noNumExp("\\D*"); //only word is allowed
     bool emailStat = false;
 
     if (nama == "" || tglLahir == "" || alamat == "" || kelurahan == "" || kecamatan == "" || email == "" || noHape == ""){
@@ -64,6 +72,12 @@ void PendaftaranWindow::on_nextButton_clicked()
         msgBox.exec();
         qDebug() << "All field must be NOT EMPTY!";
         emailStat = true;
+    } else if (!noNumExp.exactMatch(nama) && emailStat == false){
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format NAMA yang anda masukan SALAH!\nFormat masukan TIDAK BOLEH ANGKA atau SIMBOL!",
+                           QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+        msgBox.exec();
+        qDebug() << "email field is wrong!";
     } else if (!email.contains("@") && emailStat == false){
         QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format E-MAIL yang anda masukan SALAH!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
