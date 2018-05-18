@@ -34,7 +34,8 @@ SOURCES += \
     dialogcardreader.cpp \
     pendaftaranwindow.cpp \
     tapcard_window.cpp \
-    loginwindow.cpp
+    loginwindow.cpp \
+    nominaltopupwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +45,8 @@ HEADERS += \
     dialogcardreader.h \
     pendaftaranwindow.h \
     tapcard_window.h \
-    loginwindow.h
+    loginwindow.h \
+    nominaltopupwindow.h
 
 FORMS += \
         mainwindow.ui \
@@ -53,7 +55,8 @@ FORMS += \
     dialogcardreader.ui \
     pendaftaranwindow.ui \
     tapcard_window.ui \
-    loginwindow.ui
+    loginwindow.ui \
+    nominaltopupwindow.ui
 
 RESOURCES += \
     resouces.qrc

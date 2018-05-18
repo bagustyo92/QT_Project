@@ -885,7 +885,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TOP UP SALDO</string>
+         <string>TOP-UP SALDO</string>
         </property>
        </widget>
       </item>
@@ -1060,12 +1060,19 @@
      </layout>
     </item>
     <item>
-     <spacer name="verticalSpacer_6">
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_4">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="sizeType">
-       <enum>QSizePolicy::Minimum</enum>
+       <enum>QSizePolicy::Maximum</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
@@ -1074,13 +1081,6 @@
        </size>
       </property>
      </spacer>
-    </item>
-    <item>
-     <widget class="Line" name="line_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_6">

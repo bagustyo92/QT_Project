@@ -57,6 +57,24 @@ bool ControlMesin::database_connect(QString hostName, QString port, QString user
     }
 }
 
+QString ControlMesin::database_user_login(QVector <QString> user_pwd){
+    QSqlQuery query;
+    QString status_action;
+
+    query.prepare("SELECT login(:username, :password)");
+    query.bindValue(":username", user_pwd[0]);
+    query.bindValue(":password", user_pwd[1].toLocal8Bit().toHex());
+
+    if (!query.exec()){
+        qDebug() << "Query Statement login() error: " << query.lastError();
+    }
+    while(query.next()){
+        status_action = query.value(0).toString();
+        qDebug() << "Status: " << status_action;
+    }
+    return status_action;
+}
+
 QString ControlMesin::database_set_new_member(QVector <QString> new_member_data){
     qDebug() << "INSERTING DATA INTO insert_membercard_data() ...";
 

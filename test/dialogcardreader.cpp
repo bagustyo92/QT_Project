@@ -83,7 +83,7 @@ void DialogCardReader::onServerReply(){
                         msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox_newMember.exec();
                     } else {
-                        QMessageBox msgBox_newMember(QMessageBox::Warning, "PERINGATAN..!", "GAGAL MENAMBAHKAN MEMBER BARU\n\nSilahkan matikan dan nyalakan kembali CASHIER!\nAtau cek QUERY DATABASE!",
+                        QMessageBox msgBox_newMember(QMessageBox::Warning, "PERINGATAN..!", "GAGAL MENAMBAHKAN MEMBER BARU\n\nSilahkan matikan dan nyalakan kembali CASHIER!",
                                            QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox_newMember.exec();

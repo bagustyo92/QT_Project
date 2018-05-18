@@ -17,6 +17,7 @@ public:
     bool database_connect(QString hostName, QString port, QString userName, QString password,QString dbName);
     void database_get_list_mesin();
     void database_get_list_pending_transaksi();
+    QString database_user_login(QVector <QString> user_pwd);
     QString database_set_new_member(QVector <QString> new_member_data);
     ~ControlMesin();
 

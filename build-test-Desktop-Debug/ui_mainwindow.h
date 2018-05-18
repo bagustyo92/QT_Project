@@ -72,8 +72,8 @@ public:
     QPushButton *pushButton_addMemberCard;
     QSpacerItem *horizontalSpacer_21;
     QSpacerItem *horizontalSpacer_19;
-    QSpacerItem *verticalSpacer_6;
     QFrame *line_2;
+    QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_22;
     QLabel *maytag_label;
@@ -383,16 +383,16 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
-        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        verticalLayout_2->addItem(verticalSpacer_6);
-
         line_2 = new QFrame(centralWidget);
         line_2->setObjectName(QStringLiteral("line_2"));
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_2->addWidget(line_2);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer_4);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(2);
@@ -480,7 +480,7 @@ public:
         pushButton_cuciSetrika->setText(QApplication::translate("MainWindow", "CUCI SETRIKA", Q_NULLPTR));
         pushButton_cuciKering->setText(QApplication::translate("MainWindow", "CUCI KERING", Q_NULLPTR));
         pushButton_cuciLipat->setText(QApplication::translate("MainWindow", "CUCI LIPAT", Q_NULLPTR));
-        pushButton_topUpSaldo->setText(QApplication::translate("MainWindow", "TOP UP SALDO", Q_NULLPTR));
+        pushButton_topUpSaldo->setText(QApplication::translate("MainWindow", "TOP-UP SALDO", Q_NULLPTR));
         pushButton_controlMesin->setText(QApplication::translate("MainWindow", "CONTROL MESIN", Q_NULLPTR));
         pushButton_addMemberCard->setText(QApplication::translate("MainWindow", "TAMBAH MEMBER CARD", Q_NULLPTR));
         maytag_label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));

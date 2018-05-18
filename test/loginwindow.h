@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
+    QString encrypt_password();
 };
 
 #endif // LOGINWINDOW_H
