@@ -7,6 +7,7 @@
 #include <QtSql/QSqlError>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
+#define QMESSAGEBOX_STYLE "QLabel{color:rgb(108,167,191); font-weight:bold; font-size:20px; min-height:200px;} QPushButton{width:200 px; font-size:18px}"
 
 #define GET_LIST_MESIN "SELECT * FROM get_list_mesin()"
 #define GET_LIST_RESI "SELECT * FROM get_list_pending_transaksi()"
@@ -56,8 +57,29 @@ bool ControlMesin::database_connect(QString hostName, QString port, QString user
     }
 }
 
-void ControlMesin::database_set_new_member(QVector <QString> new_member_data){
-    qDebug() << "ADDING DATA TO DATABASE";
+QString ControlMesin::database_set_new_member(QVector <QString> new_member_data){
+    qDebug() << "INSERTING DATA INTO insert_membercard_data() ...";
+
+    QSqlQuery query;
+    query.prepare("SELECT insert_membercard_data(:uid, :nama, :tgl_lahir, :alamat, :kelurahan, :kecamatan, :email, :noHP)");
+    query.bindValue(":uid", new_member_data[0]);
+    query.bindValue(":nama", new_member_data[1]);
+    query.bindValue(":tgl_lahir", new_member_data[2]);
+    query.bindValue(":alamat", new_member_data[3]);
+    query.bindValue(":kelurahan", new_member_data[4]);
+    query.bindValue(":kecamatan", new_member_data[5]);
+    query.bindValue(":email", new_member_data[6]);
+    query.bindValue(":noHP", new_member_data[7]);
+
+    if (!query.exec()){
+        qDebug() << "Query Statement insert_membercard_data() error: " << query.lastError();
+    }
+    QString status_action;
+    while(query.next()){
+        status_action = query.value(0).toString();
+        qDebug() << "Status: " << status_action;
+    }
+    return status_action;
 }
 
 void ControlMesin::database_get_list_mesin(){
@@ -105,12 +127,14 @@ void ControlMesin::database_control_mesin_action(int action){
     if (status_action == "OK CUCI" || status_action == "OK KERING"){ // <<==== What's the Reply Exactly?!
         QMessageBox info (QMessageBox::Information, "SUKSES!", control_action,
                           QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        info.setStyleSheet(QMESSAGEBOX_STYLE);
         info.exec();
         qDebug() << control_action;
         close();
     } else {
         QMessageBox info (QMessageBox::Information, "FAILED!", "Action Control GAGAL! Silahkan COBA LAGI!",
                           QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        info.setStyleSheet(QMESSAGEBOX_STYLE);
         info.exec();
         qDebug() << "FAILED to Action Control!";
     }
@@ -158,7 +182,7 @@ void ControlMesin::on_pushButton_kering_clicked()
                        "Apakah anda yakin ingin melakukan \nPENGERINGAN pada MESIN-" + ui->listNomerMesin->currentText() +
                        "\nUntuk no. RESI-" + ui->listResi->currentText() + " ?", QMessageBox::Yes | QMessageBox::No,
                        this, Qt::FramelessWindowHint);
-//    reply.exec();
+    msgBox->setStyleSheet(QMESSAGEBOX_STYLE);
     if (msgBox->exec() == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(2);
@@ -180,8 +204,7 @@ void ControlMesin::on_pushButton_cuci_clicked()
                        ui->listNomerMesin->currentText(), "Apakah anda yakin ingin melakukan \nPENCUCIAN pada MESIN-"
                        + ui->listNomerMesin->currentText() + "\nUntuk no. RESI-" + ui->listResi->currentText() + " ?",
                        QMessageBox::Yes | QMessageBox::No, this, Qt::FramelessWindowHint);
-//    msgBox.exec();
-//    reply = msgBox;
+    msgBox->setStyleSheet(QMESSAGEBOX_STYLE);
     if (msgBox->exec() == QMessageBox::Yes){
         //Some Action Here
         database_control_mesin_action(1);

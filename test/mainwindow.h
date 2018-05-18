@@ -6,6 +6,7 @@
 #include "socketconnectelm.h"
 #include "dialogcardreader.h"
 #include "pendaftaranwindow.h"
+#include "tapcard_window.h"
 #include <QTimer>
 #include <QVector>
 
@@ -41,6 +42,7 @@ private:
     ControlMesin *controlMesin;
     DialogCardReader *cardReader;
     PendaftaranWindow *daftarWindow;
+    TapCard_Window *tap;
 };
 
 #endif // MAINWINDOW_H

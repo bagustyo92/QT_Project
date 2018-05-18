@@ -32,7 +32,8 @@ SOURCES += \
     controlmesin.cpp \
     socketconnectelm.cpp \
     dialogcardreader.cpp \
-    pendaftaranwindow.cpp
+    pendaftaranwindow.cpp \
+    tapcard_window.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,14 +41,16 @@ HEADERS += \
     controlmesin.h \
     socketconnectelm.h \
     dialogcardreader.h \
-    pendaftaranwindow.h
+    pendaftaranwindow.h \
+    tapcard_window.h
 
 FORMS += \
         mainwindow.ui \
     readerdialog.ui \
     controlmesin.ui \
     dialogcardreader.ui \
-    pendaftaranwindow.ui
+    pendaftaranwindow.ui \
+    tapcard_window.ui
 
 RESOURCES += \
     resouces.qrc

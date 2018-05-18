@@ -2,7 +2,7 @@
 #include "ui_dialogcardreader.h"
 #include "mainwindow.h"
 #include "controlmesin.h"
-#include <pendaftaranwindow.h>
+#include "pendaftaranwindow.h"
 #include <QMessageBox>
 #include <QPushButton>
 #include <QPixmap>
@@ -11,16 +11,8 @@
 #include <QVector>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
-
-// TODO : Back Button sent "cancel"                     << DONE
-//        Close CardDialogReader
-//        Button Home Diperkecil                        << DONE
-//        Logo Semua Window                             << DONE
-//        Size Font Menyesuaikan                        << DONE
-//        Kasih margin kiri kanan home                  << DONE
-//        Current Balance dll Rata tengah dipercantik   << DONE
-
-class MainWindow;
+#define QMESSAGEBOX_REPLY_SIZE "QLabel{color:rgb(108,167,191); font-weight:bold; font-size:22px; min-height:300px;} QPushButton{width:200 px; font-size:18px}"
+#define QMESSAGEBOX_STYLE "QLabel{color:rgb(108,167,191); font-weight:bold; font-size:20px; min-height:200px;} QPushButton{width:200 px; font-size:18px}"
 
 DialogCardReader::DialogCardReader(QWidget *parent) :
     QDialog(parent),
@@ -35,67 +27,71 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
     ui->labelPicture->setText("SILAHKAN TEMPELKAN KARTU ANDA!");
 
     ui->nextButton->setEnabled(false);
+    getConnection = new SocketConnectELM(this);
 }
 
-//SocketConnectELM *getConnection = new SocketConnectELM;
-
-bool status_close = false;
-void DialogCardReader::onServerReply(){
-    getConnection = new SocketConnectELM(this);
-    if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
-        if (getConnection->getMessage() == "KARTU TIDAK DIKENAL"){
-            QMessageBox reply (QMessageBox::Warning, "PERINGATAN..!", "Kartu yang Anda TAP TIDAK DIKENAL!",
-                               QMessageBox::Ok, this, Qt::FramelessWindowHint);
-            reply.exec();
-//            if (QMessageBox::Ok){
-//                char *message;
-//                message = "cancel";
-//                getConnection->StartConnection(message);
-//            }
-        } else {
-            status_close = true;
-            readerDialog = new ReaderDialog(this);
-            readerDialog->setLabelText(getConnection->getMessage(), 2);
-            readerDialog->exec();
-        }
-
-        if (getConnection->getMessage() == "ADD MEMBER SUKSES"){
-            ControlMesin *database = new ControlMesin(this);
-            MainWindow *mainWindow = new MainWindow(this);
-            PendaftaranWindow *memberData = new PendaftaranWindow(this);
-
-            QVector <QString> db_setup;
-            QVector <QString> new_member;
-            QString uid_card;
-//            QString nama,tglLahir, alamat, kelurahan, kecamatan, email, noHape;
-
-            new_member = memberData->get_member_data();
-            uid_card = getConnection->getMessage();
-            if (uid_card != ""){
-                new_member.append(uid_card);
-            } else {
-                qDebug() << "Failed get UID_CARD from the server";
-                QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Kartu GAGAL ditambahkan! Silahkan coba lagi!",
-                                   QMessageBox::Ok, this, Qt::FramelessWindowHint);
-                msgBox.exec();
-            }
-
-            db_setup = mainWindow->read_database_file();
-            if (!database->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
-        //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
-                QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE!",
-                                   QMessageBox::Ok, this, Qt::FramelessWindowHint);
-                msgBox.exec();
-            } else {
-                database->database_set_new_member(new_member);
-            }
-        }
+void DialogCardReader::show_server_reply(){
+    QMessageBox *msgBox = new QMessageBox(QMessageBox::Information, "title", "STATUS TRANSAKSI :\n" + getConnection->getMessage(),
+                                          QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+    msgBox->setStyleSheet(QMESSAGEBOX_REPLY_SIZE);
+    if (msgBox->exec() == QMessageBox::Ok){
+        this->close();
     }
 }
 
-void DialogCardReader::closeDialog(){
-    if (status_close){
-        this->close();
+void DialogCardReader::onServerReply(){
+    PendaftaranWindow *newMember = new PendaftaranWindow(this);
+    MainWindow *mainWindow = new MainWindow(this);
+    ControlMesin *database = new ControlMesin(this);
+    QString uid_card;
+    QVector <QString> db_setup;
+    QVector <QString> new_member_data;
+
+    new_member_data = newMember->get_member_data();
+
+    if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
+        if (getConnection->getMessage() == "KARTU TIDAK DIKENAL"){
+            QMessageBox reply (QMessageBox::Warning, "PERINGATAN..!", "Kartu yang Anda TAP TIDAK DIKENAL!\n\nSilahkan KEMBALI ke MENU UTAMA!",
+                               QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+            reply.setStyleSheet(QMESSAGEBOX_STYLE);
+            reply.exec();
+        } else {
+            if (getConnection->getMessage().split('=').first() == "SUKSES"){
+                //get UID CARD
+                uid_card = getConnection->getMessage().split('=').last();
+                qDebug() << "UID_CARD: " << uid_card;
+                new_member_data.insert(0, uid_card);
+
+                //try connect to database
+                db_setup = mainWindow->read_database_file();
+                if (!database->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
+                    QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "DATABASE TIDAK TERHUBUNG!\n\nSilahkan matikan dan nyalakan kembali CASHIER!",
+                                       QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                    msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+                    msgBox.exec();
+                } else {
+                    QString status_database = database->database_set_new_member(new_member_data);
+                    if (status_database == "OK INSERT"){
+                        QMessageBox msgBox_newMember(QMessageBox::Information, "PERINGATAN..!", "SELAMAT!\n\nanda telah BERHASIL menambahkan MEMBER dan KARTU BARU!",
+                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                        msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
+                        msgBox_newMember.exec();
+                    } else if(status_database == "GAGAL INSERT") {
+                        QMessageBox msgBox_newMember(QMessageBox::Warning, "PERINGATAN..!", "PERHATIAN!\n\nKARTU yang anda tap SUDAH TERDAFTAR atau DIKENAL!",
+                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                        msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
+                        msgBox_newMember.exec();
+                    } else {
+                        QMessageBox msgBox_newMember(QMessageBox::Warning, "PERINGATAN..!", "GAGAL MENAMBAHKAN MEMBER BARU\n\nSilahkan matikan dan nyalakan kembali CASHIER!\nAtau cek QUERY DATABASE!",
+                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                        msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
+                        msgBox_newMember.exec();
+                    }
+                }
+            } else {
+                show_server_reply();
+            }
+        }
     }
 }
 
@@ -106,11 +102,6 @@ DialogCardReader::~DialogCardReader()
 
 void DialogCardReader::on_backButton_clicked()
 {
-//    QMovie *movie = new QMovie(":/resources/img/Spinner-black.gif");
-//    ui->loadingGIF->setMovie(movie);
-//    movie->start();
-//    qApp->processEvents();
-//    QThread::sleep(2);
     char *val = "cancel";
     getConnection = new SocketConnectELM(this);
     getConnection->StartConnection(val);

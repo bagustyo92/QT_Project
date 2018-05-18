@@ -1,7 +1,8 @@
 #include "socketconnectelm.h"
 #include "mainwindow.h"
 #include "dialogcardreader.h"
-#include "QMessageBox"
+#include <QMessageBox>
+#include "tapcard_window.h"
 
 SocketConnectELM::SocketConnectELM(QObject *parent) : QObject(parent)
 {

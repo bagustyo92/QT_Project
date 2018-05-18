@@ -37,7 +37,6 @@ public:
     QLabel *label_menuUtama;
     QSpacerItem *verticalSpacer_2;
     QFrame *line;
-    QSpacerItem *verticalSpacer_4;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_3;
@@ -170,10 +169,6 @@ public:
         line->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_2->addWidget(line);
-
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
-
-        verticalLayout_2->addItem(verticalSpacer_4);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);

@@ -1,12 +1,15 @@
 #include "pendaftaranwindow.h"
 #include "ui_pendaftaranwindow.h"
-#include "mainwindow.h"
+#include "dialogcardreader.h"
+#include <controlmesin.h>
 #include <QDateEdit>
 #include <QDebug>
 #include <QMessageBox>
 #include <WidgetKeyboard.h>
+#include <QThread>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
+#define QMESSAGEBOX_STYLE "QLabel{color:rgb(108,167,191); font-weight:bold; font-size:20px; min-height:200px;} QPushButton{width:200 px; font-size:18px}"
 
 PendaftaranWindow::PendaftaranWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -57,22 +60,26 @@ void PendaftaranWindow::on_nextButton_clicked()
     if (nama == "" || tglLahir == "" || alamat == "" || kelurahan == "" || kecamatan == "" || email == "" || noHape == ""){
         QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Seluruh kolom TIDAK BOLEH KOSONG!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
         qDebug() << "All field must be NOT EMPTY!";
         emailStat = true;
     } else if (!email.contains("@") && emailStat == false){
         QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format E-MAIL yang anda masukan SALAH!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
         qDebug() << "email field is wrong!";
     } else if (!email.contains(".") && emailStat == false){
         QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format E-MAIL yang anda masukan SALAH!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
         qDebug() << "email field is wrong2!";
     } else if (!regExp.exactMatch(noHape) && emailStat == false){
         QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "Format NOMER HP yang anda masukan SALAH!\nFormat masukan HARUS ANGKA!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
         qDebug() << "number field is wrong";
     } else {
@@ -80,12 +87,31 @@ void PendaftaranWindow::on_nextButton_clicked()
 
         char *msg = "ADD_MEMBER";
         connectingElm = new SocketConnectELM(this);
-        MainWindow *mainWindow = new MainWindow(this);
+        DialogCardReader *reader = new DialogCardReader(this);
 
-        connectingElm->StartConnection(msg);
-        mainWindow->onStatusConnect();
+        //KONFIRMASI DATA MASUKAN
+        QMessageBox *msgBoxKonfirmasi = new QMessageBox (QMessageBox::Question, "Title", "Apakah data yang anda masukan telah VALID?",
+                                                         QMessageBox::Yes | QMessageBox::No, this, Qt::FramelessWindowHint);
+        msgBoxKonfirmasi->setStyleSheet(QMESSAGEBOX_STYLE);
+        if (msgBoxKonfirmasi->exec() == QMessageBox::Yes){
+            //sent MESSAGE TO SERVER
+            connectingElm->StartConnection(msg);
+            if (!connectingElm->getStatus()){
+                QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "READER TIDAK TERHUBUNG!\nSilahkan matikan dan nyalakan kembali CASHIER!",
+                                   QMessageBox::Ok, this, Qt::FramelessWindowHint);
+                msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+                msgBox.exec();
+                qDebug() << "Failed Connect to Server";
+            } else {
+                reader->showFullScreen();
+                close();
+            }
+        } else {
+            qDebug() << "No Confirmation Data New Memeber";
+        }
     }
 }
+
 
 QVector <QString> PendaftaranWindow::get_member_data(){
     return new_member;

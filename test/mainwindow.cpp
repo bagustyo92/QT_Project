@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "tapcard_window.h"
 #include <QtNetwork/QTcpSocket>
 #include <QtNetwork/QAbstractSocket>
 #include <QDebug>
@@ -13,6 +14,7 @@
 #include <QVector>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
+#define QMESSAGEBOX_STYLE "QLabel{color:rgb(108,167,191); font-weight:bold; font-size:20px; min-height:200px;} QPushButton{width:200 px; font-size:18px}"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -41,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->timeLabel->setText("00:00");
 
     controlMesin = new ControlMesin(this);
+//    tap = new TapCard_Window(this);
     cardReader = new DialogCardReader(this);
 }
 
@@ -69,11 +72,13 @@ void MainWindow::onTimeChanged(){
 void MainWindow::onStatusConnect(){
     if (!connectingElm.getStatus()){
 //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke SERVER ELM!");
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "READER TIDAK TERHUBUNG!\nSilahkan matikan dan nyalakan kembali CASHIER!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "READER TIDAK TERHUBUNG!\n\nSilahkan matikan dan nyalakan kembali CASHIER!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
         qDebug() << "Failed Connect to Server";
     } else {
+//        tap->showFullScreen();
         cardReader->showFullScreen();
     }
 }
@@ -165,8 +170,9 @@ void MainWindow::on_pushButton_controlMesin_clicked()
     db_setup = read_database_file();
     if (!controlMesin->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
 //        QMessageBox::warning(this, "PERINGATAN..!", "GAGAL Menghubungkan GUI ke DATABASE");
-        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "DATABASE TIDAK TERHUBUNG!\nSilahkan matikan dan nyalakan kembali CASHIER!",
+        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "DATABASE TIDAK TERHUBUNG!\n\nSilahkan matikan dan nyalakan kembali CASHIER!",
                            QMessageBox::Ok, this, Qt::FramelessWindowHint);
+        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
     } else {
         controlMesin->database_get_list_mesin();
