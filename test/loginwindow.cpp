@@ -30,19 +30,18 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+QString username, login_status;
+
 void LoginWindow::on_pushButton_login_clicked()
 {
-    encrypt_password();
 
     MainWindow *getMainWindow = new MainWindow(this);
     ControlMesin *getDatabase = new ControlMesin(this);
-    QString username, password;
     QVector <QString> username_pwd, db_setup;
 
     username = ui->lineEdit_username->text();
     username_pwd.append(username);
-    password = ui->lineEdit_password->text();
-    username_pwd.append(password);
+    username_pwd.append(encrypt_password());
 
     db_setup = getMainWindow->read_database_file();
     if (!getDatabase->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
@@ -51,12 +50,23 @@ void LoginWindow::on_pushButton_login_clicked()
         msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
         msgBox.exec();
     } else {
-        getDatabase->database_user_login(username_pwd);
+        login_status = getDatabase->database_user_login(username_pwd);
+        if (login_status == "OK LOGIN"){
+            NominalTopUpWindow *getNominalTopUpWindow = new NominalTopUpWindow(this);
+            getNominalTopUpWindow->showFullScreen();
+            close();
+        } else if (login_status == "GAGAL LOGIN"){
+            QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "USERNAME atau PASSWORD yang anda masukan SALAH!\nSilahkan cek kembali USERNAME atau PASSWORD anda!",
+                               QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+            msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+            msgBox.exec();
+        } else {
+            QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "GAGAL melakukan LOGIN!\nSilahkan COBA LAGI atau MATIKAN dan NYALAKAN KEMBALI CASHIER!",
+                               QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+            msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+            msgBox.exec();
+        }
     }
-
-    NominalTopUpWindow *getNominalTopUpWindow = new NominalTopUpWindow(this);
-    getNominalTopUpWindow->showFullScreen();
-    close();
 }
 
 QString LoginWindow::encrypt_password(){
@@ -65,4 +75,13 @@ QString LoginWindow::encrypt_password(){
     hasher.addData(password);
     QString result = hasher.result().toHex();
     return result;
+}
+
+QString LoginWindow::getUserName(){
+    return username;
+}
+
+void LoginWindow::on_lineEdit_password_returnPressed()
+{
+    on_pushButton_login_clicked();
 }

@@ -3,6 +3,8 @@
 #include "mainwindow.h"
 #include "controlmesin.h"
 #include "pendaftaranwindow.h"
+#include "nominaltopupwindow.h"
+#include "loginwindow.h"
 #include <QMessageBox>
 #include <QPushButton>
 #include <QPixmap>
@@ -56,12 +58,12 @@ void DialogCardReader::onServerReply(){
             reply.setStyleSheet(QMESSAGEBOX_STYLE);
             reply.exec();
         } else {
-            if (getConnection->getMessage().split('=').first() == "SUKSES"){
+            //ADD MEMBER HANDLER
+            if (getConnection->getMessage().split('=').first() == "ADD_MEMBER"){
                 //get UID CARD
                 uid_card = getConnection->getMessage().split('=').last();
-                uid_card.rightJustified(10, '0');
-                qDebug() << "UID_CARD: " << uid_card;
-                new_member_data.insert(0, uid_card);
+                qDebug() << "UID_CARD: " << uid_card.rightJustified(10, '0');
+                new_member_data.insert(0, uid_card.rightJustified(10, '0'));
 
                 //try connect to database
                 db_setup = mainWindow->read_database_file();
@@ -74,22 +76,62 @@ void DialogCardReader::onServerReply(){
                     QString status_database = database->database_set_new_member(new_member_data);
                     if (status_database == "OK INSERT"){
                         QMessageBox msgBox_newMember(QMessageBox::Information, "PERINGATAN..!", "SELAMAT!\n\nanda telah BERHASIL menambahkan MEMBER dan KARTU BARU!",
-                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                                                     QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox_newMember.exec();
                     } else if(status_database == "GAGAL INSERT") {
                         QMessageBox msgBox_newMember(QMessageBox::Warning, "PERINGATAN..!", "PERHATIAN!\n\nKARTU yang anda tap SUDAH TERDAFTAR atau DIKENAL!",
-                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                                                     QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox_newMember.exec();
                     } else {
                         QMessageBox msgBox_newMember(QMessageBox::Warning, "PERINGATAN..!", "GAGAL MENAMBAHKAN MEMBER BARU\n\nSilahkan matikan dan nyalakan kembali CASHIER!",
-                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                                                     QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox_newMember.exec();
                     }
                 }
-            } else {
+            }
+            //TOP_UP HANDLER
+            else if (getConnection->getMessage().split('=').first() == "TOP_UP"){
+                //get UID CARD
+                uid_card = getConnection->getMessage().split('=').last();
+                qDebug() << "UID_CARD: " << uid_card.rightJustified(10, '0');
+
+                //try connect to database
+                db_setup = mainWindow->read_database_file();
+                if (!database->database_connect(db_setup[0], db_setup[1], db_setup[3], db_setup[4], db_setup[2])){
+                    QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "DATABASE TIDAK TERHUBUNG!\n\nSilahkan matikan dan nyalakan kembali CASHIER!",
+                                       QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                    msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+                    msgBox.exec();
+                } else {
+                    LoginWindow *getLoginWindow = new LoginWindow(this);
+                    NominalTopUpWindow *getNominalWindow = new NominalTopUpWindow(this);
+                    QVector <QString> respond_database = database->database_top_up(uid_card.rightJustified(10, '0'), getLoginWindow->getUserName(), getNominalWindow->getNominalTopUp());
+                    QString status, nokartu, saldo;
+                    status = respond_database[0];
+                    nokartu = respond_database[1];
+                    saldo = respond_database[2];
+                    if (status == "OK TOPUP"){
+                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA BERHASIL!\n\nSALDO ANDA SAAT INI ADALAH :\nRp " + saldo + ",-",
+                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+                        msgBox.exec();
+                    } else if (status == "GAGAL TOPUP"){
+                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA GAGAL!\n\nSALDO ANDA SAAT INI ADALAH :\nRp " + saldo + ",-",
+                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+                        msgBox.exec();
+                    } else {
+                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA GAGAL!\n\nSilahkan MATIKAN dan NYALAKAN kembali CASHIER!",
+                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
+                        msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
+                        msgBox.exec();
+                    }
+                }
+            }
+            else {
                 show_server_reply();
             }
         }

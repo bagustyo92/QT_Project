@@ -57,13 +57,36 @@ bool ControlMesin::database_connect(QString hostName, QString port, QString user
     }
 }
 
+QVector <QString> ControlMesin::database_top_up(QString uid_card, QString user_login, int nominal){
+    QSqlQuery query;
+    QVector <QString> respond_topUp;
+
+    query.prepare("SELECT topup_membercard(:uid, :user_login, :nominal)");
+    query.bindValue(":uid", uid_card);
+    query.bindValue(":user_login", user_login);
+    query.bindValue(":nominal", nominal);
+
+    if (!query.exec()){
+        qDebug() << "Query Statement login() error: " << query.lastError();
+    }
+    while(query.next()){
+        QString status = query.value("status").toString();
+        respond_topUp.append(status);
+        QString nokartu = query.value("nokartu").toString();
+        respond_topUp.append(nokartu);
+        QString saldo = query.value("saldo").toString();
+        respond_topUp.append(saldo);
+    }
+    return respond_topUp;
+}
+
 QString ControlMesin::database_user_login(QVector <QString> user_pwd){
     QSqlQuery query;
     QString status_action;
 
     query.prepare("SELECT login(:username, :password)");
     query.bindValue(":username", user_pwd[0]);
-    query.bindValue(":password", user_pwd[1].toLocal8Bit().toHex());
+    query.bindValue(":password", user_pwd[1]);
 
     if (!query.exec()){
         qDebug() << "Query Statement login() error: " << query.lastError();

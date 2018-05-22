@@ -47,13 +47,20 @@ public:
     QPushButton *pushButton_20rb;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_50rb;
-    QSpacerItem *verticalSpacer_6;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *pushButton_100rb;
+    QSpacerItem *horizontalSpacer_19;
+    QPushButton *pushButton_150rb;
+    QHBoxLayout *horizontalLayout_6;
+    QPushButton *pushButton_200rb;
+    QSpacerItem *horizontalSpacer_20;
+    QPushButton *pushButton_300rb;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_11;
     QSpacerItem *horizontalSpacer_13;
     QSpacerItem *horizontalSpacer_15;
     QSpacerItem *horizontalSpacer_17;
-    QPushButton *pushButton_100rb;
+    QPushButton *pushButton_500rb;
     QSpacerItem *horizontalSpacer_18;
     QSpacerItem *horizontalSpacer_16;
     QSpacerItem *horizontalSpacer_14;
@@ -77,7 +84,7 @@ public:
     {
         if (NominalTopUpWindow->objectName().isEmpty())
             NominalTopUpWindow->setObjectName(QStringLiteral("NominalTopUpWindow"));
-        NominalTopUpWindow->resize(833, 614);
+        NominalTopUpWindow->resize(802, 860);
         QPalette palette;
         QBrush brush(QColor(238, 238, 236, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -194,9 +201,55 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        pushButton_100rb = new QPushButton(centralwidget);
+        pushButton_100rb->setObjectName(QStringLiteral("pushButton_100rb"));
+        sizePolicy1.setHeightForWidth(pushButton_100rb->sizePolicy().hasHeightForWidth());
+        pushButton_100rb->setSizePolicy(sizePolicy1);
+        pushButton_100rb->setFont(font1);
 
-        verticalLayout->addItem(verticalSpacer_6);
+        horizontalLayout_5->addWidget(pushButton_100rb);
+
+        horizontalSpacer_19 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_19);
+
+        pushButton_150rb = new QPushButton(centralwidget);
+        pushButton_150rb->setObjectName(QStringLiteral("pushButton_150rb"));
+        sizePolicy1.setHeightForWidth(pushButton_150rb->sizePolicy().hasHeightForWidth());
+        pushButton_150rb->setSizePolicy(sizePolicy1);
+        pushButton_150rb->setFont(font1);
+
+        horizontalLayout_5->addWidget(pushButton_150rb);
+
+
+        verticalLayout->addLayout(horizontalLayout_5);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        pushButton_200rb = new QPushButton(centralwidget);
+        pushButton_200rb->setObjectName(QStringLiteral("pushButton_200rb"));
+        sizePolicy1.setHeightForWidth(pushButton_200rb->sizePolicy().hasHeightForWidth());
+        pushButton_200rb->setSizePolicy(sizePolicy1);
+        pushButton_200rb->setFont(font1);
+
+        horizontalLayout_6->addWidget(pushButton_200rb);
+
+        horizontalSpacer_20 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_20);
+
+        pushButton_300rb = new QPushButton(centralwidget);
+        pushButton_300rb->setObjectName(QStringLiteral("pushButton_300rb"));
+        sizePolicy1.setHeightForWidth(pushButton_300rb->sizePolicy().hasHeightForWidth());
+        pushButton_300rb->setSizePolicy(sizePolicy1);
+        pushButton_300rb->setFont(font1);
+
+        horizontalLayout_6->addWidget(pushButton_300rb);
+
+
+        verticalLayout->addLayout(horizontalLayout_6);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
@@ -216,13 +269,13 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_17);
 
-        pushButton_100rb = new QPushButton(centralwidget);
-        pushButton_100rb->setObjectName(QStringLiteral("pushButton_100rb"));
-        sizePolicy1.setHeightForWidth(pushButton_100rb->sizePolicy().hasHeightForWidth());
-        pushButton_100rb->setSizePolicy(sizePolicy1);
-        pushButton_100rb->setFont(font1);
+        pushButton_500rb = new QPushButton(centralwidget);
+        pushButton_500rb->setObjectName(QStringLiteral("pushButton_500rb"));
+        sizePolicy1.setHeightForWidth(pushButton_500rb->sizePolicy().hasHeightForWidth());
+        pushButton_500rb->setSizePolicy(sizePolicy1);
+        pushButton_500rb->setFont(font1);
 
-        horizontalLayout_4->addWidget(pushButton_100rb);
+        horizontalLayout_4->addWidget(pushButton_500rb);
 
         horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -306,7 +359,7 @@ public:
         NominalTopUpWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(NominalTopUpWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 833, 26));
+        menubar->setGeometry(QRect(0, 0, 802, 26));
         NominalTopUpWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(NominalTopUpWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -326,6 +379,10 @@ public:
         pushButton_20rb->setText(QApplication::translate("NominalTopUpWindow", "Rp 20.000,-", Q_NULLPTR));
         pushButton_50rb->setText(QApplication::translate("NominalTopUpWindow", "Rp 50.000,-", Q_NULLPTR));
         pushButton_100rb->setText(QApplication::translate("NominalTopUpWindow", "Rp 100.000,-", Q_NULLPTR));
+        pushButton_150rb->setText(QApplication::translate("NominalTopUpWindow", "Rp 150.000,-", Q_NULLPTR));
+        pushButton_200rb->setText(QApplication::translate("NominalTopUpWindow", "Rp 200.000,-", Q_NULLPTR));
+        pushButton_300rb->setText(QApplication::translate("NominalTopUpWindow", "Rp 300.000,-", Q_NULLPTR));
+        pushButton_500rb->setText(QApplication::translate("NominalTopUpWindow", "Rp 500.000,-", Q_NULLPTR));
         pushButton_keluar->setText(QApplication::translate("NominalTopUpWindow", "<  KEMBALI/KELUAR", Q_NULLPTR));
     } // retranslateUi
 

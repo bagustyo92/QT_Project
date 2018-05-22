@@ -19,6 +19,7 @@ public:
     void database_get_list_pending_transaksi();
     QString database_user_login(QVector <QString> user_pwd);
     QString database_set_new_member(QVector <QString> new_member_data);
+    QVector <QString> database_top_up(QString uid_card, QString user_login, int nominal);
     ~ControlMesin();
 
 
