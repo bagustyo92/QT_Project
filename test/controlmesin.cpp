@@ -61,7 +61,7 @@ QVector <QString> ControlMesin::database_top_up(QString uid_card, QString user_l
     QSqlQuery query;
     QVector <QString> respond_topUp;
 
-    query.prepare("SELECT topup_membercard(:uid, :user_login, :nominal)");
+    query.prepare("SELECT * FROM topup_membercard(:uid, :user_login, :nominal)");
     query.bindValue(":uid", uid_card);
     query.bindValue(":user_login", user_login);
     query.bindValue(":nominal", nominal);
@@ -74,7 +74,7 @@ QVector <QString> ControlMesin::database_top_up(QString uid_card, QString user_l
         respond_topUp.append(status);
         QString nokartu = query.value("nokartu").toString();
         respond_topUp.append(nokartu);
-        QString saldo = query.value("saldo").toString();
+        QString saldo = query.value("sld").toString();
         respond_topUp.append(saldo);
     }
     return respond_topUp;

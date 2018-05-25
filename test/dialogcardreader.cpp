@@ -53,7 +53,7 @@ void DialogCardReader::onServerReply(){
 
     if (getConnection->getMessage() != "OK" && getConnection->getMessage() != ""){
         if (getConnection->getMessage() == "KARTU TIDAK DIKENAL"){
-            QMessageBox reply (QMessageBox::Warning, "PERINGATAN..!", "Kartu yang Anda TAP TIDAK DIKENAL!\n\nSilahkan KEMBALI ke MENU UTAMA!",
+            QMessageBox reply (QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI ANDA GAGAL!\n\nKartu BELUM TEDAFTAR.\nSilahkan daftarkan terlebih dahulu kartu anda!",
                                QMessageBox::Ok, 0, Qt::FramelessWindowHint);
             reply.setStyleSheet(QMESSAGEBOX_STYLE);
             reply.exec();
@@ -109,17 +109,23 @@ void DialogCardReader::onServerReply(){
                     LoginWindow *getLoginWindow = new LoginWindow(this);
                     NominalTopUpWindow *getNominalWindow = new NominalTopUpWindow(this);
                     QVector <QString> respond_database = database->database_top_up(uid_card.rightJustified(10, '0'), getLoginWindow->getUserName(), getNominalWindow->getNominalTopUp());
-                    QString status, nokartu, saldo;
+                    QString status, nokartu, saldo, printSaldo;
+
                     status = respond_database[0];
                     nokartu = respond_database[1];
                     saldo = respond_database[2];
+
+                    for (int i = saldo.size(); i>0; i-=3){
+                        printSaldo = saldo.insert(i, '.');
+                    }
+
                     if (status == "OK TOPUP"){
-                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA BERHASIL!\n\nSALDO ANDA SAAT INI ADALAH :\nRp " + saldo + ",-",
+                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA BERHASIL!\n\nSALDO ANDA SAAT INI ADALAH :\nRp " + printSaldo + ",-",
                                            QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox.exec();
                     } else if (status == "GAGAL TOPUP"){
-                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA GAGAL!\n\nSALDO ANDA SAAT INI ADALAH :\nRp " + saldo + ",-",
+                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA GAGAL!\n\nKartu BELUM TEDAFTAR.\nSilahkan daftarkan terlebih dahulu kartu anda!",
                                            QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox.exec();
