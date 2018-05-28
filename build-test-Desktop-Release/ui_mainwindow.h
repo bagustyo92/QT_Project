@@ -37,7 +37,6 @@ public:
     QLabel *label_menuUtama;
     QSpacerItem *verticalSpacer_2;
     QFrame *line;
-    QSpacerItem *verticalSpacer_4;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_3;
@@ -61,14 +60,28 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_9;
     QSpacerItem *horizontalSpacer_17;
-    QPushButton *pushButton_ambilCucian;
+    QPushButton *pushButton_topUpSaldo;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_controlMesin;
     QSpacerItem *horizontalSpacer_16;
     QSpacerItem *horizontalSpacer_10;
     QSpacerItem *verticalSpacer_3;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_18;
+    QSpacerItem *horizontalSpacer_20;
+    QPushButton *pushButton_addMemberCard;
+    QSpacerItem *horizontalSpacer_21;
+    QSpacerItem *horizontalSpacer_19;
     QFrame *line_2;
+    QSpacerItem *verticalSpacer_4;
+    QHBoxLayout *horizontalLayout_6;
+    QSpacerItem *horizontalSpacer_22;
     QLabel *maytag_label;
+    QSpacerItem *horizontalSpacer_24;
+    QLabel *timeLabel;
+    QSpacerItem *horizontalSpacer_25;
+    QLabel *mytag_label2;
+    QSpacerItem *horizontalSpacer_23;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -77,7 +90,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(627, 452);
+        MainWindow->resize(1100, 926);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -156,10 +169,6 @@ public:
         line->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_2->addWidget(line);
-
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
-
-        verticalLayout_2->addItem(verticalSpacer_4);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
@@ -308,13 +317,13 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_17);
 
-        pushButton_ambilCucian = new QPushButton(centralWidget);
-        pushButton_ambilCucian->setObjectName(QStringLiteral("pushButton_ambilCucian"));
-        sizePolicy1.setHeightForWidth(pushButton_ambilCucian->sizePolicy().hasHeightForWidth());
-        pushButton_ambilCucian->setSizePolicy(sizePolicy1);
-        pushButton_ambilCucian->setFont(font);
+        pushButton_topUpSaldo = new QPushButton(centralWidget);
+        pushButton_topUpSaldo->setObjectName(QStringLiteral("pushButton_topUpSaldo"));
+        sizePolicy1.setHeightForWidth(pushButton_topUpSaldo->sizePolicy().hasHeightForWidth());
+        pushButton_topUpSaldo->setSizePolicy(sizePolicy1);
+        pushButton_topUpSaldo->setFont(font);
 
-        horizontalLayout->addWidget(pushButton_ambilCucian);
+        horizontalLayout->addWidget(pushButton_topUpSaldo);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Ignored, QSizePolicy::Minimum);
 
@@ -346,6 +355,34 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer_3);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_18);
+
+        horizontalSpacer_20 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_20);
+
+        pushButton_addMemberCard = new QPushButton(centralWidget);
+        pushButton_addMemberCard->setObjectName(QStringLiteral("pushButton_addMemberCard"));
+        pushButton_addMemberCard->setFont(font);
+
+        horizontalLayout_2->addWidget(pushButton_addMemberCard);
+
+        horizontalSpacer_21 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_21);
+
+        horizontalSpacer_19 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_19);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
         line_2 = new QFrame(centralWidget);
         line_2->setObjectName(QStringLiteral("line_2"));
         line_2->setFrameShape(QFrame::HLine);
@@ -353,18 +390,76 @@ public:
 
         verticalLayout_2->addWidget(line_2);
 
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        verticalLayout_2->addItem(verticalSpacer_4);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(2);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        horizontalSpacer_22 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_22);
+
         maytag_label = new QLabel(centralWidget);
         maytag_label->setObjectName(QStringLiteral("maytag_label"));
         sizePolicy.setHeightForWidth(maytag_label->sizePolicy().hasHeightForWidth());
         maytag_label->setSizePolicy(sizePolicy);
         maytag_label->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
 
-        verticalLayout_2->addWidget(maytag_label);
+        horizontalLayout_6->addWidget(maytag_label);
+
+        horizontalSpacer_24 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_24);
+
+        timeLabel = new QLabel(centralWidget);
+        timeLabel->setObjectName(QStringLiteral("timeLabel"));
+        sizePolicy.setHeightForWidth(timeLabel->sizePolicy().hasHeightForWidth());
+        timeLabel->setSizePolicy(sizePolicy);
+        QFont font1;
+        font1.setFamily(QStringLiteral("Liberation Mono"));
+        font1.setPointSize(16);
+        font1.setBold(true);
+        font1.setUnderline(false);
+        font1.setWeight(75);
+        font1.setStrikeOut(false);
+        font1.setKerning(false);
+        timeLabel->setFont(font1);
+        timeLabel->setFrameShape(QFrame::Box);
+        timeLabel->setFrameShadow(QFrame::Plain);
+        timeLabel->setLineWidth(2);
+        timeLabel->setMidLineWidth(0);
+        timeLabel->setAlignment(Qt::AlignCenter);
+        timeLabel->setMargin(10);
+
+        horizontalLayout_6->addWidget(timeLabel);
+
+        horizontalSpacer_25 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_25);
+
+        mytag_label2 = new QLabel(centralWidget);
+        mytag_label2->setObjectName(QStringLiteral("mytag_label2"));
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(mytag_label2->sizePolicy().hasHeightForWidth());
+        mytag_label2->setSizePolicy(sizePolicy3);
+
+        horizontalLayout_6->addWidget(mytag_label2);
+
+        horizontalSpacer_23 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_23);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_6);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 627, 21));
+        menuBar->setGeometry(QRect(0, 0, 1100, 26));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -385,9 +480,12 @@ public:
         pushButton_cuciSetrika->setText(QApplication::translate("MainWindow", "CUCI SETRIKA", Q_NULLPTR));
         pushButton_cuciKering->setText(QApplication::translate("MainWindow", "CUCI KERING", Q_NULLPTR));
         pushButton_cuciLipat->setText(QApplication::translate("MainWindow", "CUCI LIPAT", Q_NULLPTR));
-        pushButton_ambilCucian->setText(QApplication::translate("MainWindow", "AMBIL CUCIAN", Q_NULLPTR));
+        pushButton_topUpSaldo->setText(QApplication::translate("MainWindow", "TOP-UP SALDO", Q_NULLPTR));
         pushButton_controlMesin->setText(QApplication::translate("MainWindow", "CONTROL MESIN", Q_NULLPTR));
+        pushButton_addMemberCard->setText(QApplication::translate("MainWindow", "TAMBAH MEMBER CARD", Q_NULLPTR));
         maytag_label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        timeLabel->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        mytag_label2->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
     } // retranslateUi
 
 };

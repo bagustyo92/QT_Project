@@ -33,7 +33,7 @@ DialogCardReader::DialogCardReader(QWidget *parent) :
 }
 
 void DialogCardReader::show_server_reply(){
-    QMessageBox *msgBox = new QMessageBox(QMessageBox::Information, "title", "STATUS TRANSAKSI :\n" + getConnection->getMessage(),
+    QMessageBox *msgBox = new QMessageBox(QMessageBox::Information, "title", "STATUS TRANSAKSI\n\n" + getConnection->getMessage(),
                                           QMessageBox::Ok, 0, Qt::FramelessWindowHint);
     msgBox->setStyleSheet(QMESSAGEBOX_REPLY_SIZE);
     if (msgBox->exec() == QMessageBox::Ok){
@@ -120,7 +120,7 @@ void DialogCardReader::onServerReply(){
                     }
 
                     if (status == "OK TOPUP"){
-                        QMessageBox msgBox(QMessageBox::Warning, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA BERHASIL!\n\nSALDO ANDA SAAT INI ADALAH :\nRp " + printSaldo + ",-",
+                        QMessageBox msgBox(QMessageBox::Information, "PERINGATAN..!", "TRANSAKSI TOP-UP ANDA BERHASIL!\n\nSALDO ANDA SAAT INI ADALAH :\nRp " + printSaldo + ",-",
                                            QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox.exec();

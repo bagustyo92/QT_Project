@@ -76,7 +76,7 @@ public:
     {
         if (ControlMesin->objectName().isEmpty())
             ControlMesin->setObjectName(QStringLiteral("ControlMesin"));
-        ControlMesin->resize(663, 453);
+        ControlMesin->resize(663, 499);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -171,6 +171,15 @@ public:
         listNomerMesin->setObjectName(QStringLiteral("listNomerMesin"));
         sizePolicy.setHeightForWidth(listNomerMesin->sizePolicy().hasHeightForWidth());
         listNomerMesin->setSizePolicy(sizePolicy);
+        QPalette palette1;
+        QBrush brush3(QColor(191, 210, 214, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush3);
+        QBrush brush4(QColor(240, 240, 240, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        listNomerMesin->setPalette(palette1);
         QFont font2;
         font2.setPointSize(25);
         listNomerMesin->setFont(font2);
@@ -212,6 +221,11 @@ public:
 
         listResi = new QComboBox(ControlMesin);
         listResi->setObjectName(QStringLiteral("listResi"));
+        QPalette palette2;
+        palette2.setBrush(QPalette::Active, QPalette::Button, brush3);
+        palette2.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        palette2.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        listResi->setPalette(palette2);
         listResi->setFont(font2);
 
         verticalLayout_4->addWidget(listResi);
@@ -247,6 +261,20 @@ public:
         sizePolicy1.setVerticalStretch(30);
         sizePolicy1.setHeightForWidth(pushButton_cuci->sizePolicy().hasHeightForWidth());
         pushButton_cuci->setSizePolicy(sizePolicy1);
+        QPalette palette3;
+        palette3.setBrush(QPalette::Active, QPalette::Button, brush3);
+        palette3.setBrush(QPalette::Active, QPalette::ButtonText, brush1);
+        QBrush brush5(QColor(239, 235, 231, 255));
+        brush5.setStyle(Qt::SolidPattern);
+        palette3.setBrush(QPalette::Inactive, QPalette::Button, brush5);
+        palette3.setBrush(QPalette::Inactive, QPalette::ButtonText, brush1);
+        QBrush brush6(QColor(186, 189, 182, 255));
+        brush6.setStyle(Qt::SolidPattern);
+        palette3.setBrush(QPalette::Disabled, QPalette::Button, brush6);
+        QBrush brush7(QColor(136, 138, 133, 255));
+        brush7.setStyle(Qt::SolidPattern);
+        palette3.setBrush(QPalette::Disabled, QPalette::ButtonText, brush7);
+        pushButton_cuci->setPalette(palette3);
         QFont font3;
         font3.setPointSize(25);
         font3.setBold(true);
@@ -277,6 +305,14 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(pushButton_kering->sizePolicy().hasHeightForWidth());
         pushButton_kering->setSizePolicy(sizePolicy2);
+        QPalette palette4;
+        palette4.setBrush(QPalette::Active, QPalette::Button, brush3);
+        palette4.setBrush(QPalette::Active, QPalette::ButtonText, brush1);
+        palette4.setBrush(QPalette::Inactive, QPalette::Button, brush5);
+        palette4.setBrush(QPalette::Inactive, QPalette::ButtonText, brush1);
+        palette4.setBrush(QPalette::Disabled, QPalette::Button, brush6);
+        palette4.setBrush(QPalette::Disabled, QPalette::ButtonText, brush7);
+        pushButton_kering->setPalette(palette4);
         pushButton_kering->setFont(font3);
 
         horizontalLayout_2->addWidget(pushButton_kering);

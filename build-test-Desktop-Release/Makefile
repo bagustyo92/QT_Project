@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../test -I. -isystem /usr/include/arm-linux-gnueabihf/qt5 -isystem /usr/include/arm-linux-gnueabihf/qt5/QtWidgets -isystem /usr/include/arm-linux-gnueabihf/qt5/QtGui -isystem /usr/include/arm-linux-gnueabihf/qt5/QtNetwork -isystem /usr/include/arm-linux-gnueabihf/qt5/QtSql -isystem /usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I. -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++
+INCPATH       = -I../test -I. -I../Widgetkeyboard/src -isystem /usr/include/arm-linux-gnueabihf/qt5 -isystem /usr/include/arm-linux-gnueabihf/qt5/QtWidgets -isystem /usr/include/arm-linux-gnueabihf/qt5/QtGui -isystem /usr/include/arm-linux-gnueabihf/qt5/QtNetwork -isystem /usr/include/arm-linux-gnueabihf/qt5/QtSql -isystem /usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I. -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = test1.0.0
-DISTDIR = /home/enco/QT_Project/build-test-Desktop-Release/.tmp/test1.0.0
+DISTDIR = /home/pi/QT_Project/build-test-Desktop-Release/.tmp/test1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Sql -lQt5Core -lGLESv2 -lpthread 
@@ -48,29 +48,51 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../test/main.cpp \
+SOURCES       = ../Widgetkeyboard/src/WidgetKeyboard.cpp \
+		../test/main.cpp \
 		../test/mainwindow.cpp \
 		../test/readerdialog.cpp \
 		../test/controlmesin.cpp \
 		../test/socketconnectelm.cpp \
-		../test/dialogcardreader.cpp qrc_resouces.cpp \
+		../test/dialogcardreader.cpp \
+		../test/pendaftaranwindow.cpp \
+		../test/tapcard_window.cpp \
+		../test/loginwindow.cpp \
+		../test/nominaltopupwindow.cpp qrc_WidgetKeyboard.cpp \
+		qrc_resouces.cpp \
+		moc_WidgetKeyboard.cpp \
 		moc_mainwindow.cpp \
 		moc_readerdialog.cpp \
 		moc_controlmesin.cpp \
 		moc_socketconnectelm.cpp \
-		moc_dialogcardreader.cpp
-OBJECTS       = main.o \
+		moc_dialogcardreader.cpp \
+		moc_pendaftaranwindow.cpp \
+		moc_tapcard_window.cpp \
+		moc_loginwindow.cpp \
+		moc_nominaltopupwindow.cpp
+OBJECTS       = WidgetKeyboard.o \
+		main.o \
 		mainwindow.o \
 		readerdialog.o \
 		controlmesin.o \
 		socketconnectelm.o \
 		dialogcardreader.o \
+		pendaftaranwindow.o \
+		tapcard_window.o \
+		loginwindow.o \
+		nominaltopupwindow.o \
+		qrc_WidgetKeyboard.o \
 		qrc_resouces.o \
+		moc_WidgetKeyboard.o \
 		moc_mainwindow.o \
 		moc_readerdialog.o \
 		moc_controlmesin.o \
 		moc_socketconnectelm.o \
-		moc_dialogcardreader.o
+		moc_dialogcardreader.o \
+		moc_pendaftaranwindow.o \
+		moc_tapcard_window.o \
+		moc_loginwindow.o \
+		moc_nominaltopupwindow.o
 DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/unix.conf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/linux.conf \
@@ -117,6 +139,8 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/default_pre.prf \
+		../Widgetkeyboard/common.pri \
+		../Widgetkeyboard/src/WidgetKeyboard.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/default_post.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/warn_on.prf \
@@ -131,16 +155,26 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/lex.prf \
-		../test/test.pro ../test/mainwindow.h \
+		../test/test.pro ../Widgetkeyboard/src/WidgetKeyboard.h \
+		../test/mainwindow.h \
 		../test/readerdialog.h \
 		../test/controlmesin.h \
 		../test/socketconnectelm.h \
-		../test/dialogcardreader.h ../test/main.cpp \
+		../test/dialogcardreader.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h \
+		../test/loginwindow.h \
+		../test/nominaltopupwindow.h ../Widgetkeyboard/src/WidgetKeyboard.cpp \
+		../test/main.cpp \
 		../test/mainwindow.cpp \
 		../test/readerdialog.cpp \
 		../test/controlmesin.cpp \
 		../test/socketconnectelm.cpp \
-		../test/dialogcardreader.cpp
+		../test/dialogcardreader.cpp \
+		../test/pendaftaranwindow.cpp \
+		../test/tapcard_window.cpp \
+		../test/loginwindow.cpp \
+		../test/nominaltopupwindow.cpp
 QMAKE_TARGET  = test
 DESTDIR       = 
 TARGET        = test
@@ -149,7 +183,7 @@ TARGET        = test
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h $(OBJECTS)  
+$(TARGET): ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h ui_loginwindow.h ui_nominaltopupwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../test/test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
@@ -198,6 +232,8 @@ Makefile: ../test/test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qm
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/default_pre.prf \
+		../Widgetkeyboard/common.pri \
+		../Widgetkeyboard/src/WidgetKeyboard.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/default_post.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/warn_on.prf \
@@ -213,6 +249,7 @@ Makefile: ../test/test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qm
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/lex.prf \
 		../test/test.pro \
+		../Widgetkeyboard/src/WidgetKeyboard.qrc \
 		../test/resouces.qrc \
 		/usr/lib/arm-linux-gnueabihf/libQt5Widgets.prl \
 		/usr/lib/arm-linux-gnueabihf/libQt5Gui.prl \
@@ -266,6 +303,8 @@ Makefile: ../test/test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qm
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/default_pre.prf:
+../Widgetkeyboard/common.pri:
+../Widgetkeyboard/src/WidgetKeyboard.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/resolve_config.prf:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/default_post.prf:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/warn_on.prf:
@@ -281,6 +320,7 @@ Makefile: ../test/test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qm
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/yacc.prf:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/lex.prf:
 ../test/test.pro:
+../Widgetkeyboard/src/WidgetKeyboard.qrc:
 ../test/resouces.qrc:
 /usr/lib/arm-linux-gnueabihf/libQt5Widgets.prl:
 /usr/lib/arm-linux-gnueabihf/libQt5Gui.prl:
@@ -301,10 +341,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../test/resouces.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../test/mainwindow.h ../test/readerdialog.h ../test/controlmesin.h ../test/socketconnectelm.h ../test/dialogcardreader.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../test/main.cpp ../test/mainwindow.cpp ../test/readerdialog.cpp ../test/controlmesin.cpp ../test/socketconnectelm.cpp ../test/dialogcardreader.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../test/mainwindow.ui ../test/readerdialog.ui ../test/controlmesin.ui ../test/dialogcardreader.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.qrc ../test/resouces.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.h ../test/mainwindow.h ../test/readerdialog.h ../test/controlmesin.h ../test/socketconnectelm.h ../test/dialogcardreader.h ../test/pendaftaranwindow.h ../test/tapcard_window.h ../test/loginwindow.h ../test/nominaltopupwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.cpp ../test/main.cpp ../test/mainwindow.cpp ../test/readerdialog.cpp ../test/controlmesin.cpp ../test/socketconnectelm.cpp ../test/dialogcardreader.cpp ../test/pendaftaranwindow.cpp ../test/tapcard_window.cpp ../test/loginwindow.cpp ../test/nominaltopupwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Widgetkeyboard/src/WidgetKeyboard.ui ../test/mainwindow.ui ../test/readerdialog.ui ../test/controlmesin.ui ../test/dialogcardreader.ui ../test/pendaftaranwindow.ui ../test/tapcard_window.ui ../test/loginwindow.ui ../test/nominaltopupwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -328,9 +368,17 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_resouces.cpp
+compiler_rcc_make_all: qrc_WidgetKeyboard.cpp qrc_resouces.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_resouces.cpp
+	-$(DEL_FILE) qrc_WidgetKeyboard.cpp qrc_resouces.cpp
+qrc_WidgetKeyboard.cpp: ../Widgetkeyboard/src/WidgetKeyboard.qrc \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/rcc \
+		../Widgetkeyboard/src/res/right.JPG \
+		../Widgetkeyboard/src/res/left.JPG \
+		../Widgetkeyboard/src/res/up.JPG \
+		../Widgetkeyboard/src/res/down.JPG
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/rcc -name WidgetKeyboard ../Widgetkeyboard/src/WidgetKeyboard.qrc -o qrc_WidgetKeyboard.cpp
+
 qrc_resouces.cpp: ../test/resouces.qrc \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/rcc \
 		../test/img/may_tag.png \
@@ -338,41 +386,79 @@ qrc_resouces.cpp: ../test/resouces.qrc \
 		../test/img/kain_wangi.png
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/rcc -name resouces ../test/resouces.qrc -o qrc_resouces.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp
+compiler_moc_header_make_all: moc_WidgetKeyboard.cpp moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp moc_pendaftaranwindow.cpp moc_tapcard_window.cpp moc_loginwindow.cpp moc_nominaltopupwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp
+	-$(DEL_FILE) moc_WidgetKeyboard.cpp moc_mainwindow.cpp moc_readerdialog.cpp moc_controlmesin.cpp moc_socketconnectelm.cpp moc_dialogcardreader.cpp moc_pendaftaranwindow.cpp moc_tapcard_window.cpp moc_loginwindow.cpp moc_nominaltopupwindow.cpp
+moc_WidgetKeyboard.cpp: ui_WidgetKeyboard.h \
+		../Widgetkeyboard/src/WidgetKeyboard.h \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../Widgetkeyboard/src/WidgetKeyboard.h -o moc_WidgetKeyboard.cpp
+
 moc_mainwindow.cpp: ../test/controlmesin.h \
 		../test/socketconnectelm.h \
 		../test/dialogcardreader.h \
 		../test/readerdialog.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h \
 		../test/mainwindow.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
-	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/enco/QT_Project/test -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/mainwindow.h -o moc_mainwindow.cpp
 
 moc_readerdialog.cpp: ../test/socketconnectelm.h \
 		../test/readerdialog.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
-	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/enco/QT_Project/test -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/readerdialog.h -o moc_readerdialog.cpp
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/readerdialog.h -o moc_readerdialog.cpp
 
 moc_controlmesin.cpp: ../test/controlmesin.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
-	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/enco/QT_Project/test -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/controlmesin.h -o moc_controlmesin.cpp
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/controlmesin.h -o moc_controlmesin.cpp
 
 moc_socketconnectelm.cpp: ../test/socketconnectelm.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
-	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/enco/QT_Project/test -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/socketconnectelm.h -o moc_socketconnectelm.cpp
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/socketconnectelm.h -o moc_socketconnectelm.cpp
 
 moc_dialogcardreader.cpp: ../test/socketconnectelm.h \
 		../test/readerdialog.h \
 		../test/dialogcardreader.h \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
-	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/enco/QT_Project/test -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/dialogcardreader.h -o moc_dialogcardreader.cpp
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/dialogcardreader.h -o moc_dialogcardreader.cpp
+
+moc_pendaftaranwindow.cpp: ../test/dialogcardreader.h \
+		../test/socketconnectelm.h \
+		../test/readerdialog.h \
+		../test/pendaftaranwindow.h \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/pendaftaranwindow.h -o moc_pendaftaranwindow.cpp
+
+moc_tapcard_window.cpp: ../test/socketconnectelm.h \
+		../test/tapcard_window.h \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/tapcard_window.h -o moc_tapcard_window.cpp
+
+moc_loginwindow.cpp: ../test/loginwindow.h \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/loginwindow.h -o moc_loginwindow.cpp
+
+moc_nominaltopupwindow.cpp: ../test/mainwindow.h \
+		../test/controlmesin.h \
+		../test/socketconnectelm.h \
+		../test/dialogcardreader.h \
+		../test/readerdialog.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h \
+		../test/nominaltopupwindow.h \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/moc
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/QT_Project/test -I/home/pi/QT_Project/Widgetkeyboard/src -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/arm-linux-gnueabihf/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/arm-linux-gnueabihf/6/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../test/nominaltopupwindow.h -o moc_nominaltopupwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h
+compiler_uic_make_all: ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h ui_loginwindow.h ui_nominaltopupwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h
+	-$(DEL_FILE) ui_WidgetKeyboard.h ui_mainwindow.h ui_readerdialog.h ui_controlmesin.h ui_dialogcardreader.h ui_pendaftaranwindow.h ui_tapcard_window.h ui_loginwindow.h ui_nominaltopupwindow.h
+ui_WidgetKeyboard.h: ../Widgetkeyboard/src/WidgetKeyboard.ui \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../Widgetkeyboard/src/WidgetKeyboard.ui -o ui_WidgetKeyboard.h
+
 ui_mainwindow.h: ../test/mainwindow.ui \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/mainwindow.ui -o ui_mainwindow.h
@@ -389,6 +475,22 @@ ui_dialogcardreader.h: ../test/dialogcardreader.ui \
 		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/dialogcardreader.ui -o ui_dialogcardreader.h
 
+ui_pendaftaranwindow.h: ../test/pendaftaranwindow.ui \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/pendaftaranwindow.ui -o ui_pendaftaranwindow.h
+
+ui_tapcard_window.h: ../test/tapcard_window.ui \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/tapcard_window.ui -o ui_tapcard_window.h
+
+ui_loginwindow.h: ../test/loginwindow.ui \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/loginwindow.ui -o ui_loginwindow.h
+
+ui_nominaltopupwindow.h: ../test/nominaltopupwindow.ui \
+		/usr/lib/arm-linux-gnueabihf/qt5/bin/uic
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic ../test/nominaltopupwindow.ui -o ui_nominaltopupwindow.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -399,11 +501,17 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
+WidgetKeyboard.o: ../Widgetkeyboard/src/WidgetKeyboard.cpp ../Widgetkeyboard/src/WidgetKeyboard.h \
+		ui_WidgetKeyboard.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WidgetKeyboard.o ../Widgetkeyboard/src/WidgetKeyboard.cpp
+
 main.o: ../test/main.cpp ../test/mainwindow.h \
 		../test/controlmesin.h \
 		../test/socketconnectelm.h \
 		../test/dialogcardreader.h \
-		../test/readerdialog.h
+		../test/readerdialog.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../test/main.cpp
 
 mainwindow.o: ../test/mainwindow.cpp ../test/mainwindow.h \
@@ -411,7 +519,10 @@ mainwindow.o: ../test/mainwindow.cpp ../test/mainwindow.h \
 		../test/socketconnectelm.h \
 		../test/dialogcardreader.h \
 		../test/readerdialog.h \
-		ui_mainwindow.h
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h \
+		ui_mainwindow.h \
+		../test/loginwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../test/mainwindow.cpp
 
 readerdialog.o: ../test/readerdialog.cpp ../test/readerdialog.h \
@@ -419,7 +530,9 @@ readerdialog.o: ../test/readerdialog.cpp ../test/readerdialog.h \
 		ui_readerdialog.h \
 		../test/mainwindow.h \
 		../test/controlmesin.h \
-		../test/dialogcardreader.h
+		../test/dialogcardreader.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o readerdialog.o ../test/readerdialog.cpp
 
 controlmesin.o: ../test/controlmesin.cpp ../test/controlmesin.h \
@@ -430,7 +543,9 @@ socketconnectelm.o: ../test/socketconnectelm.cpp ../test/socketconnectelm.h \
 		../test/mainwindow.h \
 		../test/controlmesin.h \
 		../test/dialogcardreader.h \
-		../test/readerdialog.h
+		../test/readerdialog.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o socketconnectelm.o ../test/socketconnectelm.cpp
 
 dialogcardreader.o: ../test/dialogcardreader.cpp ../test/dialogcardreader.h \
@@ -438,11 +553,59 @@ dialogcardreader.o: ../test/dialogcardreader.cpp ../test/dialogcardreader.h \
 		../test/readerdialog.h \
 		ui_dialogcardreader.h \
 		../test/mainwindow.h \
-		../test/controlmesin.h
+		../test/controlmesin.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h \
+		../test/nominaltopupwindow.h \
+		../test/loginwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogcardreader.o ../test/dialogcardreader.cpp
+
+pendaftaranwindow.o: ../test/pendaftaranwindow.cpp ../test/pendaftaranwindow.h \
+		../test/dialogcardreader.h \
+		../test/socketconnectelm.h \
+		../test/readerdialog.h \
+		ui_pendaftaranwindow.h \
+		../test/controlmesin.h \
+		../Widgetkeyboard/src/WidgetKeyboard.h \
+		ui_WidgetKeyboard.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pendaftaranwindow.o ../test/pendaftaranwindow.cpp
+
+tapcard_window.o: ../test/tapcard_window.cpp ../test/tapcard_window.h \
+		../test/socketconnectelm.h \
+		ui_tapcard_window.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tapcard_window.o ../test/tapcard_window.cpp
+
+loginwindow.o: ../test/loginwindow.cpp ../test/loginwindow.h \
+		ui_loginwindow.h \
+		../test/nominaltopupwindow.h \
+		../test/mainwindow.h \
+		../test/controlmesin.h \
+		../test/socketconnectelm.h \
+		../test/dialogcardreader.h \
+		../test/readerdialog.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o ../test/loginwindow.cpp
+
+nominaltopupwindow.o: ../test/nominaltopupwindow.cpp ../test/nominaltopupwindow.h \
+		../test/mainwindow.h \
+		../test/controlmesin.h \
+		../test/socketconnectelm.h \
+		../test/dialogcardreader.h \
+		../test/readerdialog.h \
+		../test/pendaftaranwindow.h \
+		../test/tapcard_window.h \
+		ui_nominaltopupwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nominaltopupwindow.o ../test/nominaltopupwindow.cpp
+
+qrc_WidgetKeyboard.o: qrc_WidgetKeyboard.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_WidgetKeyboard.o qrc_WidgetKeyboard.cpp
 
 qrc_resouces.o: qrc_resouces.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resouces.o qrc_resouces.cpp
+
+moc_WidgetKeyboard.o: moc_WidgetKeyboard.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_WidgetKeyboard.o moc_WidgetKeyboard.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
@@ -458,6 +621,18 @@ moc_socketconnectelm.o: moc_socketconnectelm.cpp
 
 moc_dialogcardreader.o: moc_dialogcardreader.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialogcardreader.o moc_dialogcardreader.cpp
+
+moc_pendaftaranwindow.o: moc_pendaftaranwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_pendaftaranwindow.o moc_pendaftaranwindow.cpp
+
+moc_tapcard_window.o: moc_tapcard_window.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tapcard_window.o moc_tapcard_window.cpp
+
+moc_loginwindow.o: moc_loginwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_loginwindow.o moc_loginwindow.cpp
+
+moc_nominaltopupwindow.o: moc_nominaltopupwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_nominaltopupwindow.o moc_nominaltopupwindow.cpp
 
 ####### Install
 
