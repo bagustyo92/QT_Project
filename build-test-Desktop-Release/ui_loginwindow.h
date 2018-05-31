@@ -211,7 +211,11 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::Text, brush2);
         palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
         lineEdit_username->setPalette(palette1);
-        lineEdit_username->setFont(font1);
+        QFont font2;
+        font2.setPointSize(22);
+        font2.setBold(true);
+        font2.setWeight(75);
+        lineEdit_username->setFont(font2);
         lineEdit_username->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(lineEdit_username);
@@ -228,7 +232,7 @@ public:
         palette2.setBrush(QPalette::Disabled, QPalette::Text, brush2);
         palette2.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
         lineEdit_password->setPalette(palette2);
-        lineEdit_password->setFont(font1);
+        lineEdit_password->setFont(font2);
         lineEdit_password->setEchoMode(QLineEdit::Password);
         lineEdit_password->setAlignment(Qt::AlignCenter);
 

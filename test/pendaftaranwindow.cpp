@@ -46,6 +46,7 @@ QString nama,tglLahir, alamat, kelurahan, kecamatan, email, noHape;
 
 void PendaftaranWindow::on_nextButton_clicked()
 {
+    new_member.clear();
     nama = ui->lineEdit_Name->text();
     new_member.append(nama);
     tglLahir = ui->dateEdit->text();

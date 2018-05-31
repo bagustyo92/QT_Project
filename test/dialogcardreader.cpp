@@ -13,8 +13,8 @@
 #include <QVector>
 
 #define BUTTON_COLOR "background-color:rgb(191, 210, 214); color:rgb(108, 167, 191); font-weight: bold;"
-#define QMESSAGEBOX_REPLY_SIZE "QLabel{color:rgb(108,167,191); font-weight:bold; font-size:22px; min-height:300px;} QPushButton{width:200 px; font-size:18px}"
-#define QMESSAGEBOX_STYLE "QLabel{color:rgb(108,167,191); font-weight:bold; font-size:20px; min-height:200px;} QPushButton{width:200 px; font-size:18px}"
+#define QMESSAGEBOX_REPLY_SIZE "QLabel{color:rgb(108,167,191); font-family: 'Monospace'; font-weight:bold; font-size:22px; min-height:300px;} QPushButton{width:200 px; font-size:18px}"
+#define QMESSAGEBOX_STYLE "QLabel{color:rgb(108,167,191); font-family: 'Monospace'; font-weight:bold; font-size:22px; min-height:200px;} QPushButton{width:200 px; font-size:18px}"
 
 DialogCardReader::DialogCardReader(QWidget *parent) :
     QDialog(parent),
@@ -75,7 +75,7 @@ void DialogCardReader::onServerReply(){
                 } else {
                     QString status_database = database->database_set_new_member(new_member_data);
                     if (status_database == "OK INSERT"){
-                        QMessageBox msgBox_newMember(QMessageBox::Information, "PERINGATAN..!", "SELAMAT!\n\nanda telah BERHASIL menambahkan MEMBER dan KARTU BARU!",
+                        QMessageBox msgBox_newMember(QMessageBox::Information, "PERINGATAN..!", "SELAMAT!\n\nAnda telah BERHASIL menambahkan MEMBER dan KARTU BARU!",
                                                      QMessageBox::Ok, 0, Qt::FramelessWindowHint);
                         msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox_newMember.exec();
@@ -90,6 +90,7 @@ void DialogCardReader::onServerReply(){
                         msgBox_newMember.setStyleSheet(QMESSAGEBOX_STYLE);
                         msgBox_newMember.exec();
                     }
+                    new_member_data.clear();
                 }
             }
             //TOP_UP HANDLER
@@ -117,6 +118,7 @@ void DialogCardReader::onServerReply(){
 
                     for (int i = saldo.size(); i>0; i-=3){
                         printSaldo = saldo.insert(i, '.');
+
                     }
 
                     if (status == "OK TOPUP"){

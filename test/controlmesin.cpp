@@ -120,6 +120,7 @@ QString ControlMesin::database_set_new_member(QVector <QString> new_member_data)
         status_action = query.value(0).toString();
         qDebug() << "Status: " << status_action;
     }
+    new_member_data.clear();
     return status_action;
 }
 
