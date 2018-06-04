@@ -1,7 +1,6 @@
 # LAUNDRY CASHIER GUI
 
-Make a GUI interface for every cashier in every Kain Wangi franchise. This is running in QT IDE and write in C++.
-This project handle tcp socket connection for communication to the ELM (backend service who connected to reader).
+Make a GUI interface for every cashier in every Kain Wangi franchise. This is running in QT IDE and write in C++. This project handle tcp socket connection for communication to the ELM (backend service who connected to reader) and use PostgreSQL database connection to store and fetch all the data locally from database server using local connection wifi.
 
 ## TEST Project
 
